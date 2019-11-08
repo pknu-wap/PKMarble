@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>초기화면</title>
+    <meta charset="utf-8">
+    <style>
+    body{
+      background-image:url("sky_blue_modify.png");
+      background-size:cover;
+      background-repeat: no-repeat;
+      text-align:center;
+    }
+    #title{
+      margin-top:60px;
+      font-size:150px;
+    }
+    #nickname{
+      display:inline-block;
+      border-radius: 40px;
+      border: 1px solid black;
+      width:200px;
+      height:50px;
+      margin-top:60px;
+      margin-bottom:40px;
+      font-size:30px;
+      color:gray;
+      background-color:azure;
+    }
+    .button{
+      background-color:yellowgreen;
+      border-radius: 50%;
+      border:none;
+      width:300px;
+      padding:20px;
+      color:white;
+      font-size:50px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    .button:hover{
+      background-color:green;
+    }
+    .button:active{
+      transform:translateY(10px);
+    }
+    </style>
+  </head>
+  <body>
+    <div id="title">게임이름</div>
+      <div id="nickname">Player name</div>
+      <br>
+      <button class="button">start!</button>
+  </body>
+</html>
