@@ -23,6 +23,7 @@
       margin-top:60px;
       margin-bottom:40px;
       font-size:30px;
+      text-align:center;
       color:gray;
       background-color:azure;
     }
@@ -48,8 +49,12 @@
   </head>
   <body>
     <div id="title">게임이름</div>
-      <div id="nickname">Player name</div>
+      <input type="text" id="nickname" value="Player name" onkeydown="
+      if(event.keyCode===13){
+        location.href='waitingroom.html';
+      }
+      ">
       <br>
-      <button class="button">start!</button>
+      <a href="waitingroom.html"><input type="button" class="button" value="start!"></a>
   </body>
 </html>
