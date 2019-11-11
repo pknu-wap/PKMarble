@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html><!--주사위 굴리기-자기차례때 버튼 나오게하고 자기차례아니면 숨기기, 보드판 필요-->
+  <head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <style>
+    body{
+      background-color: #6AA5BB;
+      text-align: center;
+    }
+    #grid{
+      display: grid;
+      grid-template-columns: 200px 200px;
+      grid-gap:350px;
+    }
+    #Player1, #Player2, #Player3, #Player4{
+      display:grid;
+      grid-template-columns: 20% 50% 30%;
+      grid-template-rows: 50% 50%;
+      grid-template-areas:
+        "image name rank"
+        "image money rank";
+      border:2px solid black;
+      width: 280px;
+      height: 100px;
+    }
+    #Player1_image, #Player2_image, #Player3_image, #Player4_image{
+      grid-area: image;
+      margin:auto;
+      width:50px;
+    }
+    #PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
+      grid-area: name;
+      background-color: azure;
+      padding-top: 3px;
+      padding-left: 7px;
+      text-align: left;
+      font-size: 15px;
+    }
+    #PlayerMoney1, #PlayerMoney2, #PlayerMoney3, #PlayerMoney4{
+      grid-area: money;
+      background-color: powderblue;
+      padding-left:7px;
+      text-align: left;
+      font-size: 20px;
+    }
+    #PlayerRank1, #PlayerRank2, #PlayerRank3, #PlayerRank4{
+      background-color: green;
+      border-radius: 50%;
+      border:1px solid gray;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      color:orange;
+      grid-area: rank;
+    }
+    #dice{
+      border-radius: 50%;
+      border:1px solid gray;
+      background-color: violet;
+      width: 100px;
+      height: 50px;
+      font-size: 20px;
+      color:white;
+      transition-duration: 0.5s;
+      cursor: pointer;
+    }
+    #dice:active{
+      transform:translateY(10px);
+    }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div id = "Player1">
+        <image id="Player1_image" src="Player1_image.png">
+        <div id="PlayerName1">PlayerName1</div>
+        <div id="PlayerMoney1">money</div>
+        <div id="PlayerRank1">등수</div>
+      </div>
+      <div id = "Player2">
+        <image id="Player2_image" src="Player2_image.png">
+        <div id="PlayerName2">PlayerName2</div>
+        <div id="PlayerMoney2">money</div>
+        <div id="PlayerRank2">등수</div>
+      </div>
+      <div id = "Player3">
+        <image id="Player3_image" src="Player3_image.png">
+        <div id="PlayerName3">PlayerName3</div>
+        <div id="PlayerMoney3">money</div>
+        <div id="PlayerRank3">등수</div>
+      </div>
+      <div id = "Player4">
+        <image id="Player4_image" src="Player4_image.png">
+        <div id="PlayerName4">PlayerName4</div>
+        <div id="PlayerMoney4">money</div>
+        <div id="PlayerRank4">등수</div>
+      </div>
+    </div>
+    <input id="dice" type="button" value="Roll !">
+  </body>
+</html>

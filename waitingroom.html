@@ -5,9 +5,12 @@
     <title>대기실</title>
     <style>
     body{
+      background-color: #6AA5BB;
+      /*
       background-image:url("sky_blue_modify.png");
       background-size:cover;
       background-repeat:repeat;
+      */
       margin: 10px;
       text-align: center;
     }
@@ -42,7 +45,7 @@
     }
     #Player1_image, #Player2_image, #Player3_image, #Player4_image{
       margin:auto;
-      margin-bottom:10px;
+      margin-bottom:40px;
       width:100px;
     }
     #showready{
@@ -50,6 +53,7 @@
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       border: none;
+      border-top: 3px solid gray;
       padding:0;
       width:299px;      /*Player1,2,3,4의 width - 1 */
       height:70px;
@@ -101,10 +105,16 @@
       var u = window.getComputedStyle(document.querySelector('#showready')).visibility;
       if(u === 'hidden'){
         document.querySelector('#showready').style.visibility = 'visible';
+        this.value='준비해재';
+        this.style.backgroundColor='green';
       }
       else{
         document.querySelector('#showready').style.visibility = 'hidden';
+        this.value='준비하기';
+        this.style.backgroundColor='red';
       }
     ">
+    <input type="button" value="게임화면으로 가기" style="height: 30px;" onclick="
+    location.href='game.html'"> <!--임시로 만든 거임-->
   </body>
 </html>
