@@ -1,11 +1,110 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>대기실</title>
+    <style>
+    body{
+      background-image:url("sky_blue_modify.png");
+      background-size:cover;
+      background-repeat:repeat;
+      margin: 10px;
+      text-align: center;
+    }
+    #grid{
+      display:grid;
+      grid-gap:20px;
+      justify-content: center;
+      grid-template-columns: auto auto auto auto;
+    }
+    #Player1, #Player2, #Player3, #Player4{
+      display:grid;
+      justify-content: center;
+      grid-template-rows: auto auto 70px;
+      background-color: white;
+      border-radius: 10px;
+      border: 2px solid black;
+      width:300px;
+      height:400px;
+    }
+    #PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
+      border-radius: 40px;
+      border: 2px solid black;
+      margin:auto;
+      margin-top:20px;
+      margin-bottom:20px;
+      width:150px;
+      height:35px;
+      font-size:20px;
+      text-align:center;
+      color:gray;
+      background-color:azure;
+    }
+    #Player1_image, #Player2_image, #Player3_image, #Player4_image{
+      margin:auto;
+      margin-bottom:10px;
+      width:100px;
+    }
+    #showready{
+      background-color: yellow;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: none;
+      padding:0;
+      width:299px;      /*Player1,2,3,4의 width - 1 */
+      height:70px;
+      font-size: 30px;
+      font-style:italic;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      color: white;
+      -webkit-text-stroke: 1px red;
+      visibility: hidden;
+    }
+    #ready{
+      background-color:red;
+      border-radius:10px;
+      border:none;
+      margin-top:20px;
+      width:100px;
+      height:50px;
+      color:white;
+    }
+    </style>
   </head>
   <body>
-    Hi!<br>
-    Here is waitingroom
+    <div style="font-size:20px; color:white; margin-top:30px;margin-bottom:40px">Hi! Here is waitingroom</div>
+    <div id="grid">
+      <div id="Player1">
+        <div id="PlayerName1">PlayerName1</div>
+        <image id="Player1_image" src="Player1_image.png">
+        <input id="showready" type="button" value="준비 완료">
+      </div>
+      <div id="Player2">
+        <div id="PlayerName2">PlayerName2</div>
+        <image id="Player2_image" src="Player2_image.png">
+        <input id="showready" type="button" value="준비완료">
+      </div>
+      <div id="Player3">
+        <div id="PlayerName3">PlayerName3</div>
+        <image id="Player3_image" src="Player3_image.png">
+        <input id="showready" type="button" value="준비완료">
+      </div>
+      <div id="Player4">
+        <div id="PlayerName4">PlayerName4</div>
+        <image id="Player4_image" src="Player4_image.png">
+        <input id="showready" type="button" value="준비완료">
+      </div>
+    </div>
+    <input id="ready" type="button" value="준비하기" onclick="
+      /*var t = document.querySelector('#showready');
+      var y = window.getComputedStyle(t).visibility;*/
+      var u = window.getComputedStyle(document.querySelector('#showready')).visibility;
+      if(u === 'hidden'){
+        document.querySelector('#showready').style.visibility = 'visible';
+      }
+      else{
+        document.querySelector('#showready').style.visibility = 'hidden';
+      }
+    ">
   </body>
 </html>
