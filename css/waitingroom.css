@@ -1,0 +1,80 @@
+@font-face {
+  font-family: koverwatch;
+  src: url('koverwatch.ttf');
+}
+body{
+  background: linear-gradient( to bottom, #00A5FF, #ACF3FF);
+  background-size: 100vw 100vh;
+  margin: 10px;
+  font-family: koverwatch;
+  text-align: center;
+  min-width:1300px;
+}
+#grid{
+  display:grid;
+  grid-gap:20px;
+  justify-content: center;
+  grid-template-columns: auto auto auto auto;
+}
+#Player1, #Player2, #Player3, #Player4{
+  display:grid;
+  justify-content: center;
+  grid-template-rows: auto auto 70px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid black;
+  width:300px;
+  height:400px;
+}
+#PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
+  /*background-color:azure;
+  border-radius: 40px;
+  border: 2px solid black;*/
+  border-bottom:1.27px solid gray;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  /*width:150px;*/
+  height:35px;
+  font-size:30px;
+  text-align:center;
+  color:gray;
+}
+#Player1_image, #Player2_image, #Player3_image, #Player4_image{
+  margin:auto;
+  margin-bottom:40px;
+  width:100px;
+}
+.showready{
+
+  background-color: orange;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  border-top: 3px solid gray;
+  padding:0;
+  width:299px;      /*Player1,2,3,4의 width - 1 */
+  height:70px;
+  font-size: 50px;
+  /*font-family: "Comic Sans MS", cursive, sans-serif;*/
+  color: white;
+  font-family: koverwatch;
+  -webkit-text-stroke: 2px black;
+  visibility: hidden;
+}
+.ready{
+  background-color:red;
+  border-radius:10px;
+  border:none;
+  margin-top:20px;
+  width:100px;
+  height:50px;
+  color:white;
+  font-size: 24px;
+  font-family: koverwatch;
+  transition-duration: 0.4s;
+  cursor:pointer;
+}
+.ready:active{
+  transform:translateY(10px);
+}

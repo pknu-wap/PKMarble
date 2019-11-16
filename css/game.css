@@ -1,0 +1,78 @@
+@font-face {
+  font-family: koverwatch;
+  src: url('koverwatch.ttf');
+}
+body{
+  background: linear-gradient( to bottom, #00A5FF, #ACF3FF);
+  background-size: 100vw 100vh;
+  font-family:koverwatch;
+  text-align: center;
+}
+#title{
+  font-size: 60px;
+  color: white;
+  -webkit-text-stroke:1px black;
+}
+#grid{
+  display: grid;
+  grid-template-row: 200px 200px 200px 200px;
+  grid-gap:50px;
+}
+#Player1, #Player2, #Player3, #Player4{
+  display:grid;
+  grid-template-columns: 20% 50% 30%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "image name rank"
+    "image money rank";
+  border:2px solid black;
+  width: 280px;
+  height: 100px;
+}
+#Player1_image, #Player2_image, #Player3_image, #Player4_image{
+  grid-area: image;
+  margin:auto;
+  width:50px;
+}
+#PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
+  grid-area: name;
+  background-color: azure;
+  padding-top: 7px;
+  padding-left: 14px;
+  text-align: left;
+  font-size: 23px;
+}
+#PlayerMoney1, #PlayerMoney2, #PlayerMoney3, #PlayerMoney4{
+  grid-area: money;
+  background-color: powderblue;
+  padding-top: 5px;
+  padding-left: 14px;
+  text-align: left;
+  font-size: 30px;
+}
+#PlayerRank1, #PlayerRank2, #PlayerRank3, #PlayerRank4{
+  background-color: #ACF3FF;
+  border-radius: 50%;
+  border:1px solid gray;
+  padding-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color:orange;
+  grid-area: rank;
+}
+#dice{
+  border-radius: 50%;
+  border:1px solid gray;
+  background-color: violet;
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: 35px;
+  font-family: koverwatch;
+  color:white;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+#dice:active{
+  transform:translateY(10px);
+}
