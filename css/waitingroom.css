@@ -34,6 +34,8 @@ body{
   margin:auto;
   margin-top:20px;
   margin-bottom:20px;
+  padding-left: 10px;
+  padding-right: 10px;
   /*width:150px;*/
   height:35px;
   font-size:30px;
@@ -46,7 +48,6 @@ body{
   width:100px;
 }
 .showready{
-
   background-color: orange;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;

@@ -13,6 +13,10 @@ body{
   color: white;
   -webkit-text-stroke:1px black;
 }
+#flex{
+  display: flex;
+
+}
 #grid{
   display: grid;
   grid-template-row: 200px 200px 200px 200px;
@@ -59,6 +63,10 @@ body{
   margin-bottom: 15px;
   color:orange;
   grid-area: rank;
+}
+#board{
+  margin:auto;
+  width: 800px;
 }
 #dice{
   border-radius: 50%;
