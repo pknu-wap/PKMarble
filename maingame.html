@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>horol</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script src="/js/object.js"></script>
+    <script type="text/javascript">
+    var player = 0;
+    var sum_of_turn = 1;
+
+    function main() {
+        throw_dice();
+    }
+
+    function throw_dice(player) {
+        var dice = Math.floor(Math.random() * 12 + 1);
+        playermove(player, dice);
+    }
+
+    function playermove(player,
+        dice) {
+        players[player].cell += dice;
+        if (players[player].cell > 7) {
+            players[player].line++;
+            players[player].cell -= 7;
+            if (players[player].line > 4)
+                players[player].line = 1;
+        }
+        check_board(player);
+    }
+
+    function check_board(player) {
+        var building_number = (players[player].cell + players[player].line * 7) - 1;
+        if (!build[building_number].special_building) {
+
+            if (build[building_number].buyer != players[player].id) {
+                cost_entrancefee();
+                return;
+            } else if (build[building_number].buildings == 4) {
+                alert("랜드마크를 건설했으므로 더이상 건설이 불가능합니다!!");
+                return;
+            }
+            construct_building(player, building_number);
+        } else {
+            // 특수 건물 경우를 넣어주는 부분
+        }
+    }
+
+    function construct_building(player, building_number) {
+        var input = prompt("지을 건물 단계를 정해주세요(랜드 마크 건설은 4를 입력해주시면 됩니다. 0은 취소)" +
+            "\n현재 건물 단계 : " + build[building_number].buildings +
+            "\n1단계 가격 : " + build[building_number].build_cost[0] +
+            "\n2단계 가격 : " + build[building_number].build_cost[1] +
+            "\n3단계 가격 : " + build[building_number].build_cost[2],
+            +"\n랜드 마크 가격 : " + build[building_number].build_cost[3], 0);
+        switch (input) {
+            case 0:
+                break;
+            case 1:
+            case 2:
+            case 3:
+                if (input > build[building_number].buildings) {
+                    check_buying_possibility(player, building_number, input);
+                } else {
+                    alert("현재 건물의 단계보다 높은 값을 입력해주세요.");
+                    construct_building(player, building_number);
+                }
+                break;
+            case 4:
+                if (build[building_number].buildings == 3) {
+                    check_buying_possibility(player, building_number, input);
+                } else {
+                    alert("현재 건물의 단계가 3이 아니므로 랜드 마크를 지을 수 없습니다.");
+                    construct_building(player, building_number);
+                }
+                break;
+            default:
+                alert("제대로된 값을 입력해주세요");
+                construct_building(player, building_number);
+                break;
+        } else if (input > 0) {
+            if (players[player].money > build[building_number].build_cost[input - 1])
+        }
+    }
+
+    function check_buying_possibility(player, building_number, input) {
+        if (players[player].money >= build[building_number].build_cost[input]) {
+            players[player].money -= build[building_number].build_cost[input];
+            build[building_number].owner = players[player].id;
+            //건물 샀음 
+            //다음 턴으로 넘어감
+        } else {
+            alert("현재 돈이 부족합니다.");
+            construct_building(player, building_number);
+        }
+    }
+
+    function cost_entrancefee(player) {
+        // body... 
+    }
+
+    function reset_board() {}
+    main();
+    </script>
+</body>
+
+</html>
