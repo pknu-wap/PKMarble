@@ -30,67 +30,107 @@
             if (players[player].line > 4)
                 players[player].line = 1;
         }
-        check_board(player);
+        check_current_board_cell(player);
     }
 
-    function check_board(player) {
+    function check_current_board_cell(player) {
         var building_number = (players[player].cell + players[player].line * 7) - 1;
         if (!build[building_number].special_building) {
-
-            if (build[building_number].buyer != players[player].id) {
+            if (build[building_number].owner != players[player].id) {
                 cost_entrancefee();
                 return;
             } else if (build[building_number].buildings == 4) {
                 alert("랜드마크를 건설했으므로 더이상 건설이 불가능합니다!!");
+                end_turn();
                 return;
             }
             construct_building(player, building_number);
         } else {
             // 특수 건물 경우를 넣어주는 부분
+            var building_name = build[building_number].name;
+            switch (building_name) {
+                case "START":
+                    players[player].money += 1000000;
+                    construct_building(player, building_number);
+                    break;
+                case "게스트 하우스":
+                    break;
+                case "대학휴학":
+                    end_turn();
+                    break;
+                case "호연관":
+                    break;
+                case "대학축제":
+                    festival();
+                    end_turn();
+                    break;
+                case "수위실":
+                    break;
+                case "환경해양관":
+                    break;
+                case "셔틀버스":
+                    bus();
+                    break;
+                case "향파관":
+                    break;
+                default:
+                    alert("특수 건물 오류 발생");
+                    break;
+            }
         }
     }
 
     function construct_building(player, building_number) {
-        var input = prompt("지을 건물 단계를 정해주세요(랜드 마크 건설은 4를 입력해주시면 됩니다. 0은 취소)" +
-            "\n현재 건물 단계 : " + build[building_number].buildings +
-            "\n1단계 가격 : " + build[building_number].build_cost[0] +
-            "\n2단계 가격 : " + build[building_number].build_cost[1] +
-            "\n3단계 가격 : " + build[building_number].build_cost[2],
-            +"\n랜드 마크 가격 : " + build[building_number].build_cost[3], 0);
-        switch (input) {
-            case 0:
-                break;
-            case 1:
-            case 2:
-            case 3:
-                if (input > build[building_number].buildings) {
-                    check_buying_possibility(player, building_number, input);
-                } else {
-                    alert("현재 건물의 단계보다 높은 값을 입력해주세요.");
+        var confirm = confirm("건물을 지으시겠습니까??");
+        if (confirm) {
+            var input = prompt("지을 건물 단계를 정해주세요(랜드 마크 건설은 4를 입력해주시면 됩니다. 0은 취소)" +
+                "\n현재 건물 단계 : " + build[building_number].buildings +
+                "\n1단계 가격 : " + build[building_number].build_cost[0] +
+                "\n2단계 가격 : " + build[building_number].build_cost[1] +
+                "\n3단계 가격 : " + build[building_number].build_cost[2],
+                +"\n랜드 마크 가격 : " + build[building_number].build_cost[3], 0);
+            switch (input) {
+                case 0:
+                    //건물을 건설하지 않는다고 했으므로 턴 끝
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                    if (input > build[building_number].buildings) {
+                        check_buying_possibility_and_buying(player, building_number, input);
+                    } else {
+                        alert("현재 건물의 단계보다 높은 값을 입력해주세요.");
+                        construct_building(player, building_number);
+                    }
+                    break;
+                case 4:
+                    if (build[building_number].buildings == 3) {
+                        check_buying_possibility_and_buying(player, building_number, input);
+                    } else {
+                        alert("현재 건물의 단계가 3이 아니므로 랜드 마크를 지을 수 없습니다.");
+                        construct_building(player, building_number);
+                    }
+                    break;
+                default:
+                    alert("제대로된 값을 입력해주세요");
                     construct_building(player, building_number);
-                }
-                break;
-            case 4:
-                if (build[building_number].buildings == 3) {
-                    check_buying_possibility(player, building_number, input);
-                } else {
-                    alert("현재 건물의 단계가 3이 아니므로 랜드 마크를 지을 수 없습니다.");
-                    construct_building(player, building_number);
-                }
-                break;
-            default:
-                alert("제대로된 값을 입력해주세요");
-                construct_building(player, building_number);
-                break;
-        } else if (input > 0) {
-            if (players[player].money > build[building_number].build_cost[input - 1])
+                    break;
+            }
+        } else {
+
+            //건물을 건설하지 않는다고 했으므로 턴 끝
         }
+
     }
 
-    function check_buying_possibility(player, building_number, input) {
-        if (players[player].money >= build[building_number].build_cost[input]) {
-            players[player].money -= build[building_number].build_cost[input];
+    function check_buying_possibility_and_buying(player, building_number, input) {
+        var build_cost = build[building_number].build_cost[input]
+        if (players[player].money >= build_cost) {
+            players[player].assets -= build_cost;
+            players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
+            set_acquire_cost(building_number);
+            end_turn();
             //건물 샀음 
             //다음 턴으로 넘어감
         } else {
@@ -99,11 +139,113 @@
         }
     }
 
-    function cost_entrancefee(player) {
-        // body... 
+    function cost_entrancefee(player, building_number) {
+        //build_cost가 배열이기 때문에 인덱스 값을 취해주기 위해 -1을 함
+        var buildings_status = build[building_number].buildings - 1;
+        var entrancefee = build[buildings_status].build_cost[buildings_status];
+        if (players[player].money >= entrancefee) {
+            players[player].money -= entrancefee;
+            //통행료를 지불했기 때문에 인수로 넘어감
+            acquire_buildings(player, building_number);
+        } else {
+            if (players[player].assets >= entrancefee) {
+                //총 자산이 통행세보다 많을 경우 매각 단계에 돌입
+                var confirm = confirm("현재 보유 중인 현금이 통행세보다 비싸서 땅을 매각 하시겠습니까?\n" +
+                    "취소시 파산 처리됩니다.");
+                if (confirm) {
+                    dispose_asset(player);
+                } else {
+                    end_player();
+                    //패배 처리 및 턴 종료
+                }
+            }
+        }
     }
 
-    function reset_board() {}
+    function acquire_buildings(player, building_number) {
+        var acquire_cost = build[building_number].acquire_cost[build[building_number].buildings];
+        if (players[player].money >= acquire_cost) {
+            var confirm = confirm("현재 이 건물을 인수할 수 있습니다. 인수하시겠습니까?");
+            if (confirm) {
+                players[player].money -= acquire_cost;
+                players[player].assets -= acquire_cost;
+                build[building_number].owner = players[player].id;
+                construct_building(player, building_number);
+            } else {
+                end_turn();
+            }
+
+        } else {
+            alert("인수할 현금이 부족합니다!");
+            end_turn();
+        }
+    }
+
+    function set_acquire_cost(building_number) {
+        var current_cell_line = build[building_number].line;
+        var acquire_cell_cost = build[building_number].acquire_cost[current_cell_line - 1]
+        var current_building_status == build[building_number].buildings;
+        switch (cureent_cell_line) {
+            case 1:
+                acquire_cell_cost = build[building_number].build_cost[current_building_status] * 1.2;
+                break;
+            case 2:
+                acquire_cell_cost = build[building_number].build_cost[current_building_status] * 1.25;
+                break;
+            case 3:
+                acquire_cell_cost = build[building_number].build_cost[current_building_status] * 1.25;
+                break;
+            case 4:
+                acquire_cell_cost = build[building_number].build_cost[current_building_status] * 1.3;
+                break;
+            default:
+                alert("오류가 발생했습니다. 턴을 종료합니다.");
+                end_turn();
+        }
+    }
+
+    function dispose_asset(player) {
+
+    }
+
+    function reset_board() {
+
+    }
+
+    function end_turn(player) {
+        sum_of_turn++;
+        alert("턴이 종료되었습니다.");
+    }
+
+    function end_player(argument) {
+
+    }
+
+    function check_possibility_to_end_game() {
+        var count_player[4] = { 0, 0, 0, 0 };
+        for (int i = 0; i < 28; i++) {
+            if (i < 7) {
+                switch (build[i].owner) {
+                    case 1:
+                        count_player[0] += build[i].owner;
+                    case 2:
+                        count_player[1] += build[i].owner;
+                    case 3:
+                        count_player[2] += build[i].owner;
+                    case 4:
+                        count_player[3] += build[i].owner;
+                }
+            }
+        }
+    }
+
+    function festival(player) {
+
+    }
+
+    function bus(player) {
+        // body... 
+    }
     main();
     </script>
 </body>
