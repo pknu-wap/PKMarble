@@ -13,7 +13,11 @@
     var sum_of_turn = 1;
 
     function main() {
-        throw_dice();
+        if (players[player].bus) {
+            bus();
+        } else {
+            throw_dice();
+        }
     }
 
     function throw_dice(player) {
@@ -54,24 +58,41 @@
                     construct_building(player, building_number);
                     break;
                 case "게스트 하우스":
+                    get_money();
                     break;
                 case "대학휴학":
+                    alert("한 턴 스킵됩니다.");
                     end_turn();
                     break;
                 case "호연관":
+                    //향파관 이동
+                    players[player].line = 4;
+                    players[player].ceil = 4;
                     break;
                 case "대학축제":
+                    //모든 소유 건물 통행료 1.2배
                     festival();
                     end_turn();
                     break;
                 case "수위실":
+                    // 돈 10퍼센트 압수
+                    rob_money(player, 0.1, 16);
+                    end_turn();
                     break;
                 case "환경해양관":
+                    // 돈 5퍼센트 압수
+                    rob_money(player, 0.05, 19);
+                    end_turn();
                     break;
                 case "셔틀버스":
-                    bus();
+                    // 세계 여행
+                    players[player].bus = true;
+                    end_turn();
                     break;
                 case "향파관":
+                    //호연관 이동
+                    players[player].line = 2;
+                    players[player].cell = 5;
                     break;
                 default:
                     alert("특수 건물 오류 발생");
@@ -117,7 +138,7 @@
                     break;
             }
         } else {
-
+            end_turn();
             //건물을 건설하지 않는다고 했으므로 턴 끝
         }
 
@@ -142,7 +163,11 @@
     function cost_entrancefee(player, building_number) {
         //build_cost가 배열이기 때문에 인덱스 값을 취해주기 위해 -1을 함
         var buildings_status = build[building_number].buildings - 1;
-        var entrancefee = build[buildings_status].build_cost[buildings_status];
+        if (build[building_number].festival) {
+            var entrancefee = build[buildings_status].build_cost[buildings_status];
+        } else {
+            var entrancefee = build[buildings_status].build_cost[buildings_status] * 1.2;
+        }
         if (players[player].money >= entrancefee) {
             players[player].money -= entrancefee;
             //통행료를 지불했기 때문에 인수로 넘어감
@@ -212,17 +237,70 @@
 
     }
 
-    function end_turn(player) {
-        sum_of_turn++;
-        alert("턴이 종료되었습니다.");
+    function festival(player) {
+        for (int i = 0; i < 28; i++) {
+            if (build[i].owner == players[player].id) {
+                build[i].festival = true;
+            }
+        }
     }
 
-    function end_player(argument) {
+    function bus(player) {
+        var bus_input = prompt("가고 싶은 지역의 번호를 입력해주세요.\n" +
+            "(단 띄어 쓰기는 하셔야합니다.)", "1");
+        var parse_bus_input = parseInt(bus_input);
+        if (parse_bus_input == NaN) {
+            alert("제대로 숫자를 입력 해주세요.")
+            bus(player);
+        }
+        players[player].line = build[bus_input - 1].line;
+        players[player].cell = build[bus_input - 1].cell;
+        players[player].bus = false;
+    }
 
+    function rob_money(player, percent, index) {
+        //수위실은 배열 인덱스가 16
+        build[3].stack_of_money += players[player].money * percent;
+        players[player].money *= (1 - percent);
+        alert("현금 자산의 " + percent + "퍼센트가 몰수 당했습니다.");
+    }
+
+    function get_money(player) {
+        if (build[3].stack_of_money > 0) {
+            build[3].stack_of_money = 0;
+            players[player].money += build[3].stack_of_money;
+            end_turn();
+        } else {
+            alert("해당 지역에 쌓인 돈이 없습니다.");
+            end_turn();
+
+        }
+
+    }
+
+    function end_turn(player) {
+        sum_of_turn++;
+        player++;
+        for (int i = player; i < 4; i++) {
+            if (!players[i].gameover) {
+                break;
+            } else {
+                player++;
+            }
+        }
+        if (player > 3)
+            player = 0;
+    }
+
+    function end_player(player) {
+        players[player].gameover = true;
     }
 
     function check_possibility_to_end_game() {
         var count_player[4] = { 0, 0, 0, 0 };
+        if (sum_of_turn > 30) {
+
+        }
         for (int i = 0; i < 28; i++) {
             if (i < 7) {
                 switch (build[i].owner) {
@@ -239,14 +317,9 @@
         }
     }
 
-    function festival(player) {
-
+    while (true) {
+        main();
     }
-
-    function bus(player) {
-        // body... 
-    }
-    main();
     </script>
 </body>
 

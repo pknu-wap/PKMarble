@@ -7,6 +7,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 1,
+        'cell': 1,
+        'festival': false,
     },
     {
         'id': 2,
@@ -17,6 +19,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 1,
+        'cell': 2,
+        'festival': false,
     },
     {
         'id': 3,
@@ -27,6 +31,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 1,
+        'cell': 3,
+        'festival': false,
     },
     {
         'id': 4,
@@ -37,6 +43,9 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 1,
+        'cell': 4,
+        'festival': false,
+        'stack_of_money': 0,
 
     },
     {
@@ -48,6 +57,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 1,
+        'cell': 5,
+        'festival': false,
 
     },
     {
@@ -58,7 +69,9 @@ var build = [{
         'acquisition_cost': [1, 3, 6],
         'buildings': 0,
         'special_building': false,
-        'line' : 1,
+        'line': 1,
+        'cell': 6,
+        'festival': false,
     },
     {
         'id': 7,
@@ -69,6 +82,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 1,
+        'cell': 7,
+        'festival': false,
 
     },
 
@@ -81,6 +96,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 2,
+        'cell': 1,
+        'festival': false,
 
     },
     {
@@ -92,6 +109,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 2,
+        'cell': 2,
+        'festival': false,
 
     },
     {
@@ -103,6 +122,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 2,
+        'cell': 3,
+        'festival': false,
 
     },
     {
@@ -112,8 +133,10 @@ var build = [{
         'build_cost': [170000, 510000, 850000, 850000],
         'acquisition_cost': [1, 3, 6],
         'buildings': 0,
-        'special_building' : false,
-        'line' : 2,
+        'special_building': false,
+        'line': 2,
+        'cell': 4,
+        'festival': false,
 
     },
     {
@@ -125,6 +148,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 2,
+        'cell': 5,
+        'festival': false,
 
     },
     {
@@ -136,6 +161,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 2,
+        'cell': 6,
+        'festival': false,
     },
     {
         'id': 14,
@@ -146,6 +173,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 2,
+        'cell': 7,
+        'festival': false,
 
     },
     {
@@ -156,7 +185,9 @@ var build = [{
         'acquisition_cost': [1, 3, 6],
         'buildings': 0,
         'special_building': true,
-        'line': 2,
+        'line': 3,
+        'cell': 1,
+        'festival': false,
 
     },
     {
@@ -168,6 +199,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 3,
+        'cell': 2,
+        'festival': false,
 
     },
     {
@@ -179,6 +212,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 3,
+        'cell': 3,
+        'festival': false,
 
     },
     {
@@ -190,6 +225,7 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 3,
+        'cell': 4,
 
     },
     {
@@ -201,6 +237,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 3,
+        'cell': 5,
+        'festival': false,
 
     },
     {
@@ -212,6 +250,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 3,
+        'cell': 6,
+        'festival': false,
 
     },
     {
@@ -223,6 +263,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 3,
+        'cell': 7,
+        'festival': false,
 
     },
     {
@@ -234,6 +276,8 @@ var build = [{
         'buildings': 0,
         'special_building': true,
         'line': 4,
+        'cell': 1,
+        'festival': false,
 
     },
     {
@@ -245,6 +289,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 4,
+        'cell': 2,
+        'festival': false,
 
     },
     {
@@ -256,6 +302,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 4,
+        'cell': 3,
+        'festival': false,
 
     },
     {
@@ -266,6 +314,9 @@ var build = [{
         'acquisition_cost': [1, 3, 6],
         'buildings': 0,
         'special_building': true,
+        'line': 4,
+        'cell': 4,
+        'festival': false,
 
     },
     {
@@ -277,6 +328,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 4,
+        'cell': 5,
+        'festival': false,
 
     },
 
@@ -289,6 +342,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 4,
+        'cell': 6,
+        'festival': false,
 
     },
     {
@@ -300,6 +355,8 @@ var build = [{
         'buildings': 0,
         'special_building': false,
         'line': 4,
+        'cell': 7,
+        'festival': false,
 
     }
 ];
@@ -313,7 +370,7 @@ var players = [{
         'money': 10000000,
         'loan': false,
         'gameover': false,
-        'bus' : false,
+        'bus': false,
     },
     {
         'id': 2,
@@ -324,7 +381,7 @@ var players = [{
         'assets': 10000000,
         'loan': false,
         'gameover': false,
-        'bus' : false,
+        'bus': false,
     },
     {
         'id': 3,
@@ -335,7 +392,7 @@ var players = [{
         'assets': 10000000,
         'loan': false,
         'gameover': false,
-        'bus' : false,
+        'bus': false,
     },
     {
         'id': 4,
@@ -346,6 +403,6 @@ var players = [{
         'assets': 10000000,
         'loan': false,
         'gameover': false,
-        'bus' : false,
+        'bus': false,
     }
 ]
