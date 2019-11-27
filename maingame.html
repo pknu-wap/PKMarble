@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <script src="/js/object.js"></script>
+    <script src="./js/object.js"></script>
     <script type="text/javascript">
     var player = 0;
     var sum_of_turn = 1;
@@ -16,13 +16,20 @@
         if (players[player].bus) {
             bus();
         } else {
-            throw_dice();
+            throw_dice(player);
         }
     }
 
     function throw_dice(player) {
-        var dice = Math.floor(Math.random() * 12 + 1);
+        var dice = random(1, 12);
+        console.log("dice : " + dice);
         playermove(player, dice);
+    }
+
+    function random(min, max) {
+        var ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        return ranNum;
+        // body... 
     }
 
     function playermove(player,
@@ -34,18 +41,22 @@
             if (players[player].line > 4)
                 players[player].line = 1;
         }
+
+        console.log("players[player].cell" + players[player].cell);
+        console.log("players[player].line" + players[player].line);
         check_current_board_cell(player);
     }
 
     function check_current_board_cell(player) {
-        var building_number = (players[player].cell + players[player].line * 7) - 1;
+        var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
+        console.log("building_number : " + building_number);
         if (!build[building_number].special_building) {
             if (build[building_number].owner != players[player].id) {
-                cost_entrancefee();
+                cost_entrancefee(player, building_number);
                 return;
             } else if (build[building_number].buildings == 4) {
                 alert("랜드마크를 건설했으므로 더이상 건설이 불가능합니다!!");
-                end_turn();
+                end_turn(player);
                 return;
             }
             construct_building(player, building_number);
@@ -57,12 +68,12 @@
                     players[player].money += 1000000;
                     construct_building(player, building_number);
                     break;
-                case "게스트 하우스":
+                case "미래관":
                     get_money();
                     break;
                 case "대학휴학":
-                    alert("한 턴 스킵됩니다.");
-                    end_turn();
+                    alert("한 턴 스킵됩니다1.");
+                    end_turn(player);
                     break;
                 case "호연관":
                     //향파관 이동
@@ -72,22 +83,22 @@
                 case "대학축제":
                     //모든 소유 건물 통행료 1.2배
                     festival();
-                    end_turn();
+                    end_turn(player);
                     break;
                 case "수위실":
                     // 돈 10퍼센트 압수
                     rob_money(player, 0.1, 16);
-                    end_turn();
+                    end_turn(player);
                     break;
                 case "환경해양관":
                     // 돈 5퍼센트 압수
                     rob_money(player, 0.05, 19);
-                    end_turn();
+                    end_turn(player);
                     break;
                 case "셔틀버스":
                     // 세계 여행
                     players[player].bus = true;
-                    end_turn();
+                    end_turn(player);
                     break;
                 case "향파관":
                     //호연관 이동
@@ -113,6 +124,7 @@
             switch (input) {
                 case 0:
                     //건물을 건설하지 않는다고 했으므로 턴 끝
+                    end_turn(player);
                     break;
                 case 1:
                 case 2:
@@ -138,7 +150,7 @@
                     break;
             }
         } else {
-            end_turn();
+            end_turn(player);
             //건물을 건설하지 않는다고 했으므로 턴 끝
         }
 
@@ -151,7 +163,7 @@
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             set_acquire_cost(building_number);
-            end_turn();
+            end_turn(player);
             //건물 샀음 
             //다음 턴으로 넘어감
         } else {
@@ -162,11 +174,11 @@
 
     function cost_entrancefee(player, building_number) {
         //build_cost가 배열이기 때문에 인덱스 값을 취해주기 위해 -1을 함
-        var buildings_status = build[building_number].buildings - 1;
+        var entrancefee = 0;
         if (build[building_number].festival) {
-            var entrancefee = build[buildings_status].build_cost[buildings_status];
+            entrancefee = build[building_number].build_cost[building_number];
         } else {
-            var entrancefee = build[buildings_status].build_cost[buildings_status] * 1.2;
+            entrancefee = build[building_number].build_cost[building_number] * 1.2;
         }
         if (players[player].money >= entrancefee) {
             players[player].money -= entrancefee;
@@ -180,7 +192,7 @@
                 if (confirm) {
                     dispose_asset(player);
                 } else {
-                    end_player();
+                    end_player(player);
                     //패배 처리 및 턴 종료
                 }
             }
@@ -197,19 +209,19 @@
                 build[building_number].owner = players[player].id;
                 construct_building(player, building_number);
             } else {
-                end_turn();
+                end_turn(player);
             }
 
         } else {
             alert("인수할 현금이 부족합니다!");
-            end_turn();
+            end_turn(player);
         }
     }
 
     function set_acquire_cost(building_number) {
         var current_cell_line = build[building_number].line;
         var acquire_cell_cost = build[building_number].acquire_cost[current_cell_line - 1]
-        var current_building_status == build[building_number].buildings;
+        var current_building_status = build[building_number].buildings;
         switch (cureent_cell_line) {
             case 1:
                 acquire_cell_cost = build[building_number].build_cost[current_building_status] * 1.2;
@@ -225,7 +237,7 @@
                 break;
             default:
                 alert("오류가 발생했습니다. 턴을 종료합니다.");
-                end_turn();
+                end_turn(player);
         }
     }
 
@@ -238,7 +250,7 @@
     }
 
     function festival(player) {
-        for (int i = 0; i < 28; i++) {
+        for (var i = 0; i < 28; i++) {
             if (build[i].owner == players[player].id) {
                 build[i].festival = true;
             }
@@ -269,27 +281,27 @@
         if (build[3].stack_of_money > 0) {
             build[3].stack_of_money = 0;
             players[player].money += build[3].stack_of_money;
-            end_turn();
+            end_turn(player);
         } else {
             alert("해당 지역에 쌓인 돈이 없습니다.");
-            end_turn();
+            end_turn(player);
 
-        }
+        } 
 
     }
 
     function end_turn(player) {
         sum_of_turn++;
         player++;
-        for (int i = player; i < 4; i++) {
-            if (!players[i].gameover) {
-                break;
-            } else {
-                player++;
-            }
-        }
         if (player > 3)
             player = 0;
+        while (players[player].gameover) {
+            player++;
+            if (player > 3)
+                player = 0;
+        }
+
+        console.log("plyer : " + player);
     }
 
     function end_player(player) {
@@ -297,11 +309,11 @@
     }
 
     function check_possibility_to_end_game() {
-        var count_player[4] = { 0, 0, 0, 0 };
+        var count_player = [0, 0, 0, 0];
         if (sum_of_turn > 30) {
 
         }
-        for (int i = 0; i < 28; i++) {
+        for (var i = 0; i < 28; i++) {
             if (i < 7) {
                 switch (build[i].owner) {
                     case 1:
@@ -316,10 +328,11 @@
             }
         }
     }
-
-    while (true) {
-        main();
-    }
+    main();
+    main();
+    main();
+    main();
+    main();
     </script>
 </body>
 

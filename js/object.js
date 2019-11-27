@@ -36,7 +36,7 @@ var build = [{
     },
     {
         'id': 4,
-        'name': "게스트 하우스",
+        'name': "미래관",
         'owner': 0,
         'build_cost': [1, 3, 6, 10],
         'acquisition_cost': [1, 3, 6],
