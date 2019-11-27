@@ -7,6 +7,9 @@ body{
   background-size: 100vw 100vh;
   font-family:koverwatch;
   text-align: center;
+  margin: 20px;
+  min-width: 1000px;
+  min-height: 650px;
 }
 #title{
   font-size: 60px;
@@ -15,66 +18,246 @@ body{
 }
 #flex{
   display: flex;
-
 }
 #grid{
   display: grid;
-  grid-template-row: 200px 200px 200px 200px;
-  grid-gap:50px;
+  grid-template-row: auto auto auto auto;
+  grid-gap: 10px;
+  margin-right: 50px;
 }
-#Player1, #Player2, #Player3, #Player4{
+.Player{
   display:grid;
   grid-template-columns: 20% 50% 30%;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 35% 65%;
   grid-template-areas:
     "image name rank"
     "image money rank";
   border:2px solid black;
   width: 280px;
   height: 100px;
+  transition-duration: 0.3s;
 }
-#Player1_image, #Player2_image, #Player3_image, #Player4_image{
+#Player1{
+  background-color: #13A5D6;
+}
+#Player2{
+  background-color: #BCFF66;
+}
+#Player3{
+  background-color: #EC4F2F;
+}
+#Player4{
+  background-color: #FFA887;
+}
+.P_image{
   grid-area: image;
-  margin:auto;
+  margin: auto;
   width:50px;
 }
-#PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
+.P_name{
   grid-area: name;
   background-color: azure;
+  border-left: 1px solid black;
   padding-top: 7px;
   padding-left: 14px;
   text-align: left;
   font-size: 23px;
 }
-#PlayerMoney1, #PlayerMoney2, #PlayerMoney3, #PlayerMoney4{
+.P_money{
   grid-area: money;
   background-color: powderblue;
+  border-left: 1px solid black;
   padding-top: 5px;
   padding-left: 14px;
   text-align: left;
   font-size: 30px;
 }
-#PlayerRank1, #PlayerRank2, #PlayerRank3, #PlayerRank4{
-  background-color: #ACF3FF;
-  border-radius: 50%;
-  border:1px solid gray;
+.P_rank{
+  background-color: #646464;
   padding-top: 20px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  color:orange;
+  font-size: 40px;
+  color: black;
   grid-area: rank;
 }
 #board{
-  margin:auto;
-  width: 800px;
+  display:grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "top top top"
+    "left center right"
+    "bottom bottom bottom";
+  box-sizing: border-box;
+}
+.b{
+  position: relative;
+  border: 1px solid black;
+  background-color: white;
+  width: 120px;
+  height: 80px;
+  box-sizing: border-box;
+}
+#r1 .b, #r3 .b{
+  border-right: none;
+}
+#r2 .b, #r4 .b{
+  border-bottom: none;
+}
+#r1{
+  grid-area: top;
+  display: flex;
+  box-sizing: border-box;
+}
+#r2{
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+#r3{
+  grid-area: bottom;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#r4{
+  grid-area: left;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#center{
+  position: relative;
+  grid-area: center;
+  width:720px;
+  height: 480px;
+}
+#a1{
+  background-color: #B778FF;
+  border-right: 1px solid black !important;
+}
+#a2{
+  border-left: none !important;
+}
+#a3{
+
+}
+#a4{
+  background-color: powderblue;
+}
+#a5{
+
+}
+#a6{
+
+}
+#a7{
+
+}
+#a8{
+  background-color: #B778FF;
+  border-right: 1px solid black !important;
+}
+#a9{
+  border-top: none !important;
+}
+#a10{
+
+}
+#a11{
+
+}
+#a12{
+
+}
+#a13{
+  background-color: powderblue;
+}
+#a14{
+
+}
+#a15{
+  background-color: #B778FF;
+  border-right: 1px solid black !important;
+}
+#a16{
+  background-color: powderblue;
+}
+#a17{
+
+}
+#a18{
+
+}
+#a19{
+
+}
+#a20{
+  background-color: powderblue;
+}
+#a21{
+  border-left: none !important;
+}
+#a22{
+  background-color: #B778FF;
+  border-right: 1px solid black !important;
+}
+#a23{
+
+}
+#a24{
+
+}
+#a25{
+  background-color: powderblue;
+}
+#a26{
+
+}
+#a27{
+
+}
+#a28{
+  border-top: none !important;
+}
+#a29{
+
+}
+#a30{
+
+}
+#a31{
+
+}
+#a32{
+
+}
+.build img{
+  visibility: hidden;
+}
+.name{
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  right: 0px;
+  font-size: 20px;
+}
+.price{
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  right: 0px;
 }
 #dice{
+  position: absolute;
+  bottom: 0px;
+  left: 310px;
   border-radius: 50%;
   border:1px solid gray;
   background-color: violet;
   width: 100px;
   height: 50px;
-  margin-top: 10px;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: 20px;
   font-size: 35px;
   font-family: koverwatch;
   color:white;

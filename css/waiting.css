@@ -3,7 +3,8 @@
   src: url('koverwatch.ttf');
 }
 body{
-  background: linear-gradient(to bottom, #00A5FF, #ACF3FF);
+  background: -webkit-linear-gradient(165deg, #646464 70%, #6F887B 40%);
+  /*background: linear-gradient(to bottom, #00A5FF, #ACF3FF);*/
   /*position: relative;*/
   background-size: 100vw 100vh;
   font-family: koverwatch;
@@ -23,12 +24,12 @@ body:after{
   z-index: -1;
 }
 */
-#a{
+/*#a{
   text-align: center;
   background-color: black;
   margin:auto;
   width: 600px;
-}
+}*/
 #title{
   margin-top:130px;
   font-size:150px;
@@ -100,12 +101,41 @@ body:after{
 }
 @keyframes updown{
   0%{
-
+    /*transform: rotate(0deg);*/
   }
   50%{
     transform: translateY(-100px);
   }
   100%{
+    /*transform: rotate(360deg);*/
     transform: translateY(0px);
+  }
+}
+.pk{
+  animation: lf 5s ease infinite;
+}
+.pk1{
+  animation: lf1 5s ease infinite;
+}
+@keyframes lf{
+  0%{
+
+  }
+  50%{
+    transform: translateX(600px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
+@keyframes lf1{
+  0%{
+
+  }
+  50%{
+    transform: translateX(-600px);
+  }
+  100%{
+    transform: translateX(0px);
   }
 }

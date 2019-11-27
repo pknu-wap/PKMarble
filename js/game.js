@@ -1,23 +1,27 @@
-function turn(){
+function dp(number, j){
+  var x = document.querySelectorAll('.build');
+  var y = x[number].childNodes;
+  y[j].style.visibility = "visible";
 }
+
+function cl(number){
+  var x = document.querySelectorAll('.build');
+  var y = x[number].childNodes;
+  for(var p = 1; p < 6; p++) {
+    y[p].style.visibility = "hidden";
+     //왜 한번만 반복되지?
+  }
+}
+
 function c(self){
-  var x1 = document.querySelector('#Player1');
-  var x2 = document.querySelector('#Player2');
-  var x3 = document.querySelector('#Player3');
-  var x4 = document.querySelector('#Player4');
+  var x = document.querySelectorAll('.Player')
   var y = document.querySelector('#a');
   if(y.value === "오른쪽"){
-    x1.style.transform = 'translateX(35px)';
+    x[0].style.transform = 'translateX(35px)';
     self.value="왼쪽";
-    x2.style.filter = 'blur(2px)';
-    x3.style.filter = 'blur(2px)';
-    x4.style.filter = 'blur(2px)';
   }
   else{
-    x1.style.transform= 'translateX(0px)';
+    x[0].style.transform= 'translateX(0px)';
     self.value="오른쪽";
-    x2.style.filter = 'blur(0px)';
-    x3.style.filter = 'blur(0px)';
-    x4.style.filter = 'blur(0px)';
   }
 }

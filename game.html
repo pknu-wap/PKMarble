@@ -6,38 +6,204 @@
     <link rel="stylesheet" href="css\game.css">
   </head>
   <body>
-    <div id="title">PK Marble</div>
     <div id="flex">
       <div id="grid">
-        <div id = "Player1">
-          <image id="Player1_image" src="image\Player1_image.png">
-          <div id="PlayerName1">PlayerName1</div>
-          <div id="PlayerMoney1">money</div>
-          <div id="PlayerRank1">등수</div>
+        <div class="Player" id = "Player1">
+          <image class="P_image" id="Player1_image" src="image\Player1_image.png">
+          <div class="P_name" id="PlayerName1">PlayerName1</div>
+          <div class="P_money" id="PlayerMoney1">All money<br>money</div>
+          <div class="P_rank" id="PlayerRank1">등수</div>
         </div>
-        <div id = "Player2">
-          <image id="Player2_image" src="image\Player2_image.png">
-          <div id="PlayerName2">PlayerName2</div>
-          <div id="PlayerMoney2">money</div>
-          <div id="PlayerRank2">등수</div>
+        <div class="Player" id = "Player2">
+          <image class="P_image" id="Player2_image" src="image\Player2_image.png">
+          <div class="P_name" id="PlayerName2">PlayerName2</div>
+          <div class="P_money" id="PlayerMoney2">All money<br>money</div>
+          <div class="P_rank" id="PlayerRank2">등수</div>
         </div>
-        <div id = "Player3">
-          <image id="Player3_image" src="image\Player3_image.png">
-          <div id="PlayerName3">PlayerName3</div>
-          <div id="PlayerMoney3">money</div>
-          <div id="PlayerRank3">등수</div>
+        <div class="Player" id = "Player3">
+          <image class="P_image" id="Player3_image" src="image\Player3_image.png">
+          <div class="P_name" id="PlayerName3">PlayerName3</div>
+          <div class="P_money" id="PlayerMoney3">All money<br>money</div>
+          <div class="P_rank" id="PlayerRank3">등수</div>
         </div>
-        <div id = "Player4">
-          <image id="Player4_image" src="image\Player4_image.png">
-          <div id="PlayerName4">PlayerName4</div>
-          <div id="PlayerMoney4">money</div>
-          <div id="PlayerRank4">등수</div>
+        <div class="Player" id = "Player4">
+          <image class="P_image" id="Player4_image" src="image\Player4_image.png">
+          <div class="P_name" id="PlayerName4">PlayerName4</div>
+          <div class="P_money" id="PlayerMoney4">All money<br>money</div>
+          <div class="P_rank" id="PlayerRank4">등수</div>
         </div>
       </div>
-      <img id="board" src="image/board.jpg">
+      <div id="board">
+        <div id="r1">
+          <div class="b" id="a1">
+            <div class="name">1. start</div>
+          </div>
+          <div class="b" id="a2">
+            <div class="build">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="Bigben.png" width="25px" height="25px">
+            </div>
+            <div class="name">2. 양어장</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a3">
+            <div class="build">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="Bigben.png" width="25px" height="25px">
+            </div>
+            <div class="name">3. 테니스장</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a4">
+            <div class="build">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="image/building1.png" width="25px">
+              <img src="Bigben.png" width="25px" height="25px">
+            </div>
+            <div class="name">4. 미래관</div>
+            <div class="price"></div>
+          </div>
+          <div class="b" id="a5">
+            <div class="build">건물현황</div>
+            <div class="name">5. 세종관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a6">
+            <div class="build">건물현황</div>
+            <div class="name">6. 장보고관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a7">
+            <div class="build">건물현황</div>
+            <div class="name">7. 한결관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a8">
+            <div class="name">8. 대학휴학<br>
+          안녕히계세요여러분</div>
+          </div>
+        </div>
+        <div id="r2">
+          <div class="b" id="a9">
+            <div class="build">건물현황</div>
+            <div class="name">9. 수산과학과</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a10">
+            <div class="build">건물현황</div>
+            <div class="name">10. 경영관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a11">
+            <div class="build">건물현황</div>
+            <div class="name">11. 자연과학관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a12">
+            <div class="build">건물현황</div>
+            <div class="name">12. 아름관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a13">
+            <div class="build"></div>
+            <div class="name">13. 호연관</div>
+            <div class="price"></div>
+          </div>
+          <div class="b" id="a14">
+            <div class="build">건물현황</div>
+            <div class="name">14. 건축관</div>
+            <div class="price">가격</div>
+          </div>
+        </div>
+        <div id="r3">
+          <div class="b" id="a15">
+            <div class="name">15. 대학축제</div>
+          </div>
+          <div class="b" id="a16">
+            <div class="build"></div>
+            <div class="name">16. 수위실</div>
+            <div class="price"></div>
+          </div>
+          <div class="b" id="a17">
+            <div class="build">건물현황</div>
+            <div class="name">17. 위드센터</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a18">
+            <div class="build">건물현황</div>
+            <div class="name">18. 충무관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a19">
+            <div class="build">건물현황</div>
+            <div class="name">19. 청운관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a20">
+            <div class="build"></div>
+            <div class="name">20. 환경해양관</div>
+            <div class="price"></div>
+          </div>
+          <div class="b" id="a21">
+            <div class="build">건물현황</div>
+            <div class="name">21. 가온관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a22">
+            <div class="name">22. 셔틀버스</div>
+          </div>
+        </div>
+        <div id="r4">
+          <div class="b" id="a23">
+            <div class="build">건물현황</div>
+            <div class="name">23. 나래관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a24">
+            <div class="build">건물현황</div>
+            <div class="name">24. 자산관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a25">
+            <div class="build"></div>
+            <div class="name">25. 향파관</div>
+            <div class="price"></div>
+          </div>
+          <div class="b" id="a26">
+            <div class="build">건물현황</div>
+            <div class="name">26. 누리관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a27">
+            <div class="build">건물현황</div>
+            <div class="name">27. 웅비관</div>
+            <div class="price">가격</div>
+          </div>
+          <div class="b" id="a28">
+            <div class="build">건물현황</div>
+            <div class="name">28. 대학본부</div>
+            <div class="price">가격</div>
+          </div>
+        </div>
+        <div id="center">
+          <div id="title">PK Marble</div>
+          <div>정보</div>
+          <!--https://codepen.io/tameraydin/pen/CADvB 주사위 에니메이션-->
+          <input id="dice" type="button" value="Roll !">
+        </div>
+      </div>
     </div>
-    <input id="dice" type="button" value="Roll !">
     <input type="button" id="a" value="오른쪽" onclick="c(this)" style="width: 100px;">
+    <input type="button" value="건물1" onclick="dp(0, 1)">
+    <input type="button" value="건물2" onclick="dp(0, 3)">
+    <input type="button" value="건물3" onclick="dp(0, 5)">
+    <input type="button" value="랜드마크" onclick="dp(0, 7)">
+    <input type="button" value="없애기" onclick="cl(0)">
     <script type="text/javascript" src="js\game.js"></script>
   </body>
 </html>
