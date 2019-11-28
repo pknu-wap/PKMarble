@@ -8,7 +8,7 @@ var build = [{
         'special_building': true,
         'line': 1,
         'cell': 1,
-        
+
     },
     {
         'id': 2,
@@ -20,7 +20,7 @@ var build = [{
         'special_building': false,
         'line': 1,
         'cell': 2,
-        
+
     },
     {
         'id': 3,
@@ -32,7 +32,7 @@ var build = [{
         'special_building': false,
         'line': 1,
         'cell': 3,
-        
+
     },
     {
         'id': 4,
@@ -44,7 +44,7 @@ var build = [{
         'special_building': true,
         'line': 1,
         'cell': 4,
-        
+
         'stack_of_money': 0,
 
     },
@@ -58,7 +58,7 @@ var build = [{
         'special_building': false,
         'line': 1,
         'cell': 5,
-        
+
 
     },
     {
@@ -71,7 +71,6 @@ var build = [{
         'special_building': false,
         'line': 1,
         'cell': 6,
-        
     },
     {
         'id': 7,
@@ -83,7 +82,7 @@ var build = [{
         'special_building': false,
         'line': 1,
         'cell': 7,
-        
+
 
     },
 
@@ -97,7 +96,7 @@ var build = [{
         'special_building': true,
         'line': 2,
         'cell': 1,
-        
+
 
     },
     {
@@ -110,8 +109,6 @@ var build = [{
         'special_building': false,
         'line': 2,
         'cell': 2,
-        
-
     },
     {
         'id': 10,
@@ -123,7 +120,7 @@ var build = [{
         'special_building': false,
         'line': 2,
         'cell': 3,
-        
+
 
     },
     {
@@ -136,7 +133,7 @@ var build = [{
         'special_building': false,
         'line': 2,
         'cell': 4,
-        
+
 
     },
     {
@@ -149,7 +146,7 @@ var build = [{
         'special_building': true,
         'line': 2,
         'cell': 5,
-        
+
 
     },
     {
@@ -162,7 +159,7 @@ var build = [{
         'special_building': false,
         'line': 2,
         'cell': 6,
-        
+
     },
     {
         'id': 14,
@@ -174,7 +171,7 @@ var build = [{
         'special_building': false,
         'line': 2,
         'cell': 7,
-        
+
 
     },
     {
@@ -187,7 +184,7 @@ var build = [{
         'special_building': true,
         'line': 3,
         'cell': 1,
-        
+
 
     },
     {
@@ -200,7 +197,7 @@ var build = [{
         'special_building': false,
         'line': 3,
         'cell': 2,
-        
+
 
     },
     {
@@ -213,7 +210,7 @@ var build = [{
         'special_building': true,
         'line': 3,
         'cell': 3,
-        
+
 
     },
     {
@@ -238,7 +235,7 @@ var build = [{
         'special_building': false,
         'line': 3,
         'cell': 5,
-        
+
 
     },
     {
@@ -251,7 +248,7 @@ var build = [{
         'special_building': true,
         'line': 3,
         'cell': 6,
-        
+
 
     },
     {
@@ -264,7 +261,7 @@ var build = [{
         'special_building': false,
         'line': 3,
         'cell': 7,
-        
+
 
     },
     {
@@ -277,7 +274,7 @@ var build = [{
         'special_building': true,
         'line': 4,
         'cell': 1,
-        
+
 
     },
     {
@@ -290,7 +287,7 @@ var build = [{
         'special_building': false,
         'line': 4,
         'cell': 2,
-        
+
 
     },
     {
@@ -303,7 +300,7 @@ var build = [{
         'special_building': false,
         'line': 4,
         'cell': 3,
-        
+
 
     },
     {
@@ -316,7 +313,7 @@ var build = [{
         'special_building': true,
         'line': 4,
         'cell': 4,
-        
+
 
     },
     {
@@ -329,7 +326,7 @@ var build = [{
         'special_building': false,
         'line': 4,
         'cell': 5,
-        
+
 
     },
 
@@ -343,7 +340,7 @@ var build = [{
         'special_building': false,
         'line': 4,
         'cell': 6,
-        
+
 
     },
     {
@@ -356,7 +353,7 @@ var build = [{
         'special_building': false,
         'line': 4,
         'cell': 7,
-        
+
 
     }
 ];
@@ -372,6 +369,11 @@ var players = [{
         'gameover': false,
         'bus': false,
         'festival': false,
+        'assets_rank': 1,
+        'line_monopoly': false,
+        'winner' : false,
+        'count_double_dice' : 0,
+        'double_dice_mode' : false,
     },
     {
         'id': 2,
@@ -383,6 +385,12 @@ var players = [{
         'loan': false,
         'gameover': false,
         'bus': false,
+        'festival': false,
+        'assets_rank': 2,
+        'line_monopoly': false,
+        'winner' : false,
+        'count_double_dice' : 0,
+        'double_dice_mode' : false,
     },
     {
         'id': 3,
@@ -394,6 +402,12 @@ var players = [{
         'loan': false,
         'gameover': false,
         'bus': false,
+        'festival': false,
+        'assets_rank': 3,
+        'line_monopoly': false,
+        'winner' : false,
+        'count_double_dice' : 0,
+        'double_dice_mode' : false,
     },
     {
         'id': 4,
@@ -405,5 +419,11 @@ var players = [{
         'loan': false,
         'gameover': false,
         'bus': false,
+        'festival': false,
+        'assets_rank': 4,
+        'line_monopoly': false,
+        'winner' : false,
+        'count_double_dice' : 0,
+        'double_dice_mode' : false,
     }
 ]

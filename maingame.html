@@ -19,15 +19,32 @@
             bus(player);
         } else if (players[player].festival) {
             festvial(player);
+        } else if (players[player].double_dice_mode) {
+            if(players[player].count_double_dice >= 3){
+                players[player].count_double_dice = 0;
+                players[player].double_dice_mode = false;
+                end_turn();
+            }
+            throw_dice(player);
         } else {
             throw_dice(player);
         }
     }
 
     function throw_dice(player) {
-        var dice = random(1, 12);
-        console.log("dice : " + dice);
-        playermove(player, dice);
+        var dice1 = random(1, 6);
+        var dice2 = random(1, 6);
+        var sum_of_dice = dice1 + dice2;
+        console.log("dice1 : " + dice1);
+        console.log("dice2 : " + dice2);
+        console.log("sum_of_dice : " + sum_of_dice);
+        if (dice1 == dice2) {
+            players[player].count_double_dice++;
+        } else {
+            players[player].double_dice_mode = false;
+            players[player].count_double_dice = 0;
+        }
+        playermove(player, sum_of_dice);
     }
 
     function random(min, max) {
@@ -40,7 +57,6 @@
         var player_cell = players[player].cell;
         var player_line = players[player].line;
         player_cell += dice;
-        console.log("players[player].cell : " + player_cell);
         if (player_cell > 7 && player_cell <= 14) {
             player_line++;
             player_cell -= 7;
@@ -64,6 +80,7 @@
         var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
         console.log("building_number : " + building_number);
         console.log("special_building : " + build[building_number].special_building);
+        alert("도착 건물 : " + build[building_number].name);
         if (!build[building_number].special_building) {
             if (build[building_number].owner != players[player].id && build[building_number].owner != 0) {
                 cost_entrancefee(player, building_number);
@@ -289,7 +306,6 @@
 
     function disposal_asset(player, building_number) {
         var parse_input_disposal = parseInt(input_disposal);
-        var land = build[parse_input_disposal]
         var seller = players[player].id;
         var input_disposal_land;
         var sum_of_disposal = 0;
@@ -303,9 +319,9 @@
                 continue;
             }
 
-            if (land.owner == seller) {
-                players[player].money += land.build_cost[building_number];
-                sum_of_disposal += land.build_cost[building_number];
+            if (build[parse_input_disposal].owner == seller) {
+                players[player].money += build[parse_input_disposal].build_cost[building_number];
+                sum_of_disposal += build[parse_input_disposal].build_cost[building_number];
                 build[parse_input_disposal].owner = 0;
             } else {
                 alert("입력하신 땅은 다른 사람의 소유입니다.");
@@ -363,7 +379,55 @@
 
     }
 
+    function rank_assets() {
+        for (var i = 0; i < 4; i++) {
+            players[i].assets_rank = 0;
+        }
+        for (var i = 0; i < 4; i++) {
+            for (var j = i + 1; j < 4; j++) {
+                if (players[i].assets < players[j].assets)
+                    players[i].assets_rank += 1;
+            }
+
+        }
+        check_line_monopoly();
+    }
+
+    function check_double_dice(dice1, dice2, player) {
+    }
+
+    function dispose_other_land(argument) {
+        // body... 
+    }
+
+    function check_line_monopoly() {
+        var somebody_monopolize_line = false;
+        var amount_of_monopolized_ceil = 0;
+        var building_number = 0;
+        for (var p = 0; p < 4; p++) {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 1; j < 8; j++) {
+                    building_number = j + (7 * i) - 1;
+                    if (build[building_number].owner == players[p].id)
+                        amount_of_monopolized_ceil++;
+                }
+            }
+            if (amount_of_monopolized_ceil == 7) {
+                players[p].line_monopoly = true;
+                somebody_monopolize_line = true;
+                break;
+            }
+            amount_of_monopolized_ceil = 0;
+        }
+        check_possibility_to_end_game(somebody_monopolize_line);
+    }
+
     function end_turn() {
+        console.log("턴 종료");
+        if(players[player_turn].count_double_dice >= 1) {
+            rank_assets();
+            return;
+        }
         sum_of_turn++;
         player_turn++;
         if (player_turn > 3)
@@ -373,8 +437,8 @@
             if (player_turn > 3)
                 player_turn = 0;
         }
-
         console.log("턴 종료 player : " + player_turn);
+        rank_assets();
     }
 
     function end_player(player) {
@@ -382,23 +446,21 @@
         end_turn();
     }
 
-    function check_possibility_to_end_game() {
-        var count_player = [0, 0, 0, 0];
-        if (sum_of_turn > 30) {
-
-        }
-        for (var i = 0; i < 28; i++) {
-            if (i < 7) {
-                switch (build[i].owner) {
-                    case 1:
-                        count_player[0] += build[i].owner;
-                    case 2:
-                        count_player[1] += build[i].owner;
-                    case 3:
-                        count_player[2] += build[i].owner;
-                    case 4:
-                        count_player[3] += build[i].owner;
+    function check_possibility_to_end_game(somebody_monopolize_line) {
+        if (somebody_monopolize_line) {
+            for (var i = 0; i < 4; i++) {
+                if (players[i].line_monopoly) {
+                    players[i].winner = true;
+                    break;
                 }
+            }
+        } else if (sum_of_turn > 30) {
+            for (var i = 0; i < 4; i++) {
+                if (players[i].assets_ranks == 1) {
+                    players[i].winner = true;
+                    break;
+                }
+
             }
         }
     }
