@@ -34,58 +34,63 @@
         </div>
       </div>
       <div id="board">
+        <div style="display: none"> <!--배열을 1부터 시작하기 위해 넣음-->
+          <div class="b">
+            <div class="build"></div>
+            <div class="name"></div>
+            <div class="price"></div>
+          </div>
+        </div>
         <div id="r1">
           <div class="b" id="a1">
+            <div class="build"></div>
             <div class="name">1. start</div>
+            <div class="price"></div>
           </div>
-          <div class="b" id="a2">
+          <button class="b" id="a2" onclick="clickland(2)">
             <div class="build">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="Bigben.png" width="25px" height="25px">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img class="landmark" src="Bigben.png">
             </div>
             <div class="name">2. 양어장</div>
             <div class="price">가격</div>
-          </div>
-          <div class="b" id="a3">
+          </button>
+          <button class="b" id="a3" onclick="clickland(2)">
             <div class="build">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="Bigben.png" width="25px" height="25px">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img class="landmark" src="Bigben.png">
             </div>
             <div class="name">3. 테니스장</div>
             <div class="price">가격</div>
-          </div>
-          <div class="b" id="a4">
-            <div class="build">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="image/building1.png" width="25px">
-              <img src="Bigben.png" width="25px" height="25px">
-            </div>
+          </button>
+          <button class="b" id="a4" onclick="clickland(2)">
+            <div class="build"></div>
             <div class="name">4. 미래관</div>
             <div class="price"></div>
-          </div>
-          <div class="b" id="a5">
+          </button>
+          <button class="b" id="a5" onclick="clickland(2)">
             <div class="build">건물현황</div>
             <div class="name">5. 세종관</div>
             <div class="price">가격</div>
-          </div>
-          <div class="b" id="a6">
+          </button>
+          <button class="b" id="a6" onclick="clickland(2)">
             <div class="build">건물현황</div>
             <div class="name">6. 장보고관</div>
             <div class="price">가격</div>
-          </div>
-          <div class="b" id="a7">
+          </button>
+          <button class="b" id="a7" onclick="clickland(2)">
             <div class="build">건물현황</div>
             <div class="name">7. 한결관</div>
             <div class="price">가격</div>
-          </div>
+          </button>
           <div class="b" id="a8">
-            <div class="name">8. 대학휴학<br>
-          안녕히계세요여러분</div>
+            <div class="build"></div>
+            <div class="name">8. 대학휴학</div>
+            <div class="price"></div>
           </div>
         </div>
         <div id="r2">
@@ -100,7 +105,12 @@
             <div class="price">가격</div>
           </div>
           <div class="b" id="a11">
-            <div class="build">건물현황</div>
+            <div class="build">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img src="image/building1.png">
+              <img class="landmark" src="Bigben.png">
+            </div>
             <div class="name">11. 자연과학관</div>
             <div class="price">가격</div>
           </div>
@@ -122,7 +132,9 @@
         </div>
         <div id="r3">
           <div class="b" id="a15">
+            <div class="build"></div>
             <div class="name">15. 대학축제</div>
+            <div class="price"></div>
           </div>
           <div class="b" id="a16">
             <div class="build"></div>
@@ -155,7 +167,9 @@
             <div class="price">가격</div>
           </div>
           <div class="b" id="a22">
+            <div class="build"></div>
             <div class="name">22. 셔틀버스</div>
+            <div class="price"></div>
           </div>
         </div>
         <div id="r4">
@@ -192,18 +206,63 @@
         </div>
         <div id="center">
           <div id="title">PK Marble</div>
-          <div>정보</div>
+          <div class="bb">
+            <div class="information">
+              <div class="info_name">지역 이름
+                <span class="closebtn" onclick="document.querySelector('.bb').style.visibility='hidden';">&times;</span>
+              </div>
+              <div class="ctn">
+                <img class="info_image" src="Bigben.png">
+                <div class="info_price">
+                  <div class="p1">
+                    <span class="p1_b">건물</span>
+                    <span class="p1_m">가격</span>
+                  </div>
+                  <div class="p2">
+                    <span class="p2_b">빌라</span>
+                    <span class="p2_m">돈</span>
+                  </div>
+                  <div class="p3">
+                    <span class="p3_b">빌딩</span>
+                    <span class="p3_m">돈</span>
+                  </div>
+                  <div class="p4">
+                    <span class="p4_b">호텔</span>
+                    <span class="p4_m">돈</span>
+                  </div>
+                  <div class="p5">
+                    <span class="p5_b">랜드마크</span>
+                    <span class="p5_m">돈</span>
+                  </div>
+                  <div class="p6">
+                    <div class="p6_b">인수비용</div>
+                    <div class="p6_m">돈</div>
+                  </div>
+                  <div class="p7">
+                    <div class="p7_b">현재 통행료</div>
+                    <div class="p7_m">돈</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!--https://codepen.io/tameraydin/pen/CADvB 주사위 에니메이션-->
           <input id="dice" type="button" value="Roll !">
         </div>
       </div>
     </div>
-    <input type="button" id="a" value="오른쪽" onclick="c(this)" style="width: 100px;">
-    <input type="button" value="건물1" onclick="dp(0, 1)">
-    <input type="button" value="건물2" onclick="dp(0, 3)">
-    <input type="button" value="건물3" onclick="dp(0, 5)">
-    <input type="button" value="랜드마크" onclick="dp(0, 7)">
-    <input type="button" value="없애기" onclick="cl(0)">
+    <input type="button" id="a" value="오른쪽" onclick="slt(this)" style="width: 100px;">
+    <input type="button" value="건물1" onclick="PlaceBuilding(2, 0)">
+    <input type="button" value="건물2" onclick="PlaceBuilding(2, 1)">
+    <input type="button" value="건물3" onclick="PlaceBuilding(2, 2)">
+    <input type="button" value="랜드마크" onclick="PlaceBuilding(2, 3)">
+    <input type="button" value="없애기" onclick="cl(2)"><br>
+    <input type="button" value="건물1" onclick="PlaceBuilding(11, 0)">
+    <input type="button" value="건물2" onclick="PlaceBuilding(11, 1)">
+    <input type="button" value="건물3" onclick="PlaceBuilding(11, 2)">
+    <input type="button" value="랜드마크" onclick="PlaceBuilding(11, 3)">
+    <input type="button" value="없애기" onclick="cl(11)">
+    <input type="button" value="주사위 굴리기버튼생성" onclick="show()">
     <script type="text/javascript" src="js\game.js"></script>
   </body>
 </html>
