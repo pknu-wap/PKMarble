@@ -20,7 +20,7 @@
         } else if (players[player].festival) {
             festvial(player);
         } else if (players[player].double_dice_mode) {
-            if(players[player].count_double_dice >= 3){
+            if (players[player].count_double_dice >= 3) {
                 players[player].count_double_dice = 0;
                 players[player].double_dice_mode = false;
                 end_turn();
@@ -118,12 +118,12 @@
                     festival(player);
                     break;
                 case "수위실":
+                dispose_other_land(player);
                     // 돈 10퍼센트 압수
-                    rob_money(player, 0.1, 16);
                     break;
                 case "환경해양관":
                     // 돈 5퍼센트 압수
-                    rob_money(player, 0.05, 19);
+                    rob_money(player, 0.1, 19);
                     break;
                 case "셔틀버스":
                     // 세계 여행
@@ -305,7 +305,7 @@
     }
 
     function disposal_asset(player, building_number) {
-        var parse_input_disposal = parseInt(input_disposal);
+        var parse_input_disposal;
         var seller = players[player].id;
         var input_disposal_land;
         var sum_of_disposal = 0;
@@ -313,6 +313,7 @@
             input_disposal_land = prompt("매각할 땅을 입력해주세요\n" +
                 "(땅의 번호를 입력해주세요.)\n" +
                 "현재 현금 : " + players[player].money, 0);
+            parse_input_disposal_other_land = parseInt(input_disposal_land);
 
             if (parse_input_disposal_land == NaN) {
                 alert("제대로된 값을 입력해주세요.");
@@ -344,19 +345,21 @@
     }
 
     function bus(player) {
-        if (players[player].bus) {
-            var bus_input = prompt("가고 싶은 지역의 번호를 입력해주세요.\n" +
-                "(단 띄어 쓰기는 하셔야합니다.)", "1");
-            var parse_bus_input = parseInt(bus_input);
-            if (parse_bus_input == NaN) {
-                alert("제대로 숫자를 입력 해주세요.")
-                bus(player);
-            }
+        var bus_input = prompt("가고 싶은 지역의 번호를 입력해주세요.\n" +
+            "(단 띄어 쓰기는 하셔야합니다.)", "1");
+        var parse_bus_input = parseInt(bus_input);
+        if (parse_bus_input < 29 && parse_bus_input > 0) {
             players[player].line = build[bus_input - 1].line;
             players[player].cell = build[bus_input - 1].cell;
             players[player].bus = false;
-            end_turn();
+        } else {
+            alert("제대로 숫자를 입력 해주세요.")
+            bus(player);
         }
+
+
+        end_turn();
+
     }
 
     function rob_money(player, percent, index) {
@@ -393,11 +396,22 @@
         check_line_monopoly();
     }
 
-    function check_double_dice(dice1, dice2, player) {
-    }
-
-    function dispose_other_land(argument) {
-        // body... 
+    function dispose_other_land(player) {
+        var input_disposal_other_land = prompt("매각하실 땅을 선택해주세요.\n" +
+            "(땅의 번호를 입력하세요.)", NaN);
+        var parse_input_disposal_other_land = parseInt(input_disposal_other_land);
+        if (parse_input_disposal_other_land == NaN) {
+            alert("제대로된 값을 입력해주세요.");
+            dispose_other_land(player);
+            return;
+        } else if (build[parse_input_disposal_other_land].buildings == 4) {
+            build[parse_input_disposal_other_land].buildings = 3;
+        } else {
+            build[parse_input_disposal_other_land].owner = 0;
+            build[parse_input_disposal_other_land].buildings = 0;
+        }
+        alert(build[parse_input_disposal_other_land].name + " 을/를 매각하였습니다.");
+        end_turn();
     }
 
     function check_line_monopoly() {
@@ -424,7 +438,7 @@
 
     function end_turn() {
         console.log("턴 종료");
-        if(players[player_turn].count_double_dice >= 1) {
+        if (players[player_turn].count_double_dice >= 1) {
             rank_assets();
             return;
         }
