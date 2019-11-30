@@ -1,35 +1,47 @@
 <!DOCTYPE html>
-<html><!--주사위 굴리기-자기차례때 버튼 나오게하고 자기차례아니면 숨기기, 보드판 필요-->
+<html>
   <head>
     <meta charset="utf-8">
     <title>Game</title>
     <link rel="stylesheet" href="css\game.css">
   </head>
-  <body>
+  <body onkeydown="keydown()">
     <div id="flex">
       <div id="grid">
         <div class="Player" id = "Player1">
           <image class="P_image" id="Player1_image" src="image\Player1_image.png">
           <div class="P_name" id="PlayerName1">PlayerName1</div>
-          <div class="P_money" id="PlayerMoney1">All money<br>money</div>
+          <div class="P_money" id="PlayerMoney1">
+            <div class="allmoney">All money</div>
+            <div class="money">money</div>
+          </div>
           <div class="P_rank" id="PlayerRank1">등수</div>
         </div>
         <div class="Player" id = "Player2">
           <image class="P_image" id="Player2_image" src="image\Player2_image.png">
           <div class="P_name" id="PlayerName2">PlayerName2</div>
-          <div class="P_money" id="PlayerMoney2">All money<br>money</div>
+          <div class="P_money" id="PlayerMoney2">
+            <div class="allmoney">All money</div>
+            <div class="money">money</div>
+          </div>
           <div class="P_rank" id="PlayerRank2">등수</div>
         </div>
         <div class="Player" id = "Player3">
           <image class="P_image" id="Player3_image" src="image\Player3_image.png">
           <div class="P_name" id="PlayerName3">PlayerName3</div>
-          <div class="P_money" id="PlayerMoney3">All money<br>money</div>
+          <div class="P_money" id="PlayerMoney3">
+            <div class="allmoney">All money</div>
+            <div class="money">money</div>
+          </div>
           <div class="P_rank" id="PlayerRank3">등수</div>
         </div>
         <div class="Player" id = "Player4">
           <image class="P_image" id="Player4_image" src="image\Player4_image.png">
           <div class="P_name" id="PlayerName4">PlayerName4</div>
-          <div class="P_money" id="PlayerMoney4">All money<br>money</div>
+          <div class="P_money" id="PlayerMoney4">
+            <div class="allmoney">All money</div>
+            <div class="money">money</div>
+          </div>
           <div class="P_rank" id="PlayerRank4">등수</div>
         </div>
       </div>
@@ -52,40 +64,40 @@
               <img src="image/building1.png">
               <img src="image/building1.png">
               <img src="image/building1.png">
-              <img class="landmark" src="Bigben.png">
             </div>
+            <img class="landmark" src="Bigben.png">
             <div class="name">2. 양어장</div>
-            <div class="price">가격</div>
+            <div class="price">양어장 가격</div>
           </button>
-          <button class="b" id="a3" onclick="clickland(2)">
+          <button class="b" id="a3" onclick="clickland(3)">
             <div class="build">
               <img src="image/building1.png">
               <img src="image/building1.png">
               <img src="image/building1.png">
-              <img class="landmark" src="Bigben.png">
             </div>
+            <img class="landmark" src="Bigben.png">
             <div class="name">3. 테니스장</div>
-            <div class="price">가격</div>
+            <div class="price">테니스장 가격</div>
           </button>
-          <button class="b" id="a4" onclick="clickland(2)">
+          <button class="b" id="a4" onclick="clickland(4)">
             <div class="build"></div>
             <div class="name">4. 미래관</div>
             <div class="price"></div>
           </button>
-          <button class="b" id="a5" onclick="clickland(2)">
+          <button class="b" id="a5" onclick="clickland(5)">
             <div class="build">건물현황</div>
             <div class="name">5. 세종관</div>
-            <div class="price">가격</div>
+            <div class="price">세종관 가격</div>
           </button>
-          <button class="b" id="a6" onclick="clickland(2)">
+          <button class="b" id="a6" onclick="clickland(6)">
             <div class="build">건물현황</div>
             <div class="name">6. 장보고관</div>
-            <div class="price">가격</div>
+            <div class="price">장보고관 가격</div>
           </button>
-          <button class="b" id="a7" onclick="clickland(2)">
+          <button class="b" id="a7" onclick="clickland(7)">
             <div class="build">건물현황</div>
             <div class="name">7. 한결관</div>
-            <div class="price">가격</div>
+            <div class="price">한결관 가격</div>
           </button>
           <div class="b" id="a8">
             <div class="build"></div>
@@ -207,10 +219,9 @@
         <div id="center">
           <div id="title">PK Marble</div>
           <div class="bb">
+            <div class="closebtn" onclick="document.querySelector('.bb').style.visibility='hidden';">&times;</div>
             <div class="information">
-              <div class="info_name">지역 이름
-                <span class="closebtn" onclick="document.querySelector('.bb').style.visibility='hidden';">&times;</span>
-              </div>
+              <div class="info_name">지역 이름</div>
               <div class="ctn">
                 <img class="info_image" src="Bigben.png">
                 <div class="info_price">
@@ -255,8 +266,8 @@
     <input type="button" value="건물1" onclick="PlaceBuilding(2, 0)">
     <input type="button" value="건물2" onclick="PlaceBuilding(2, 1)">
     <input type="button" value="건물3" onclick="PlaceBuilding(2, 2)">
-    <input type="button" value="랜드마크" onclick="PlaceBuilding(2, 3)">
-    <input type="button" value="없애기" onclick="cl(2)"><br>
+    <input type="button" value="랜드마크" onclick="PlaceLandmark(0)">
+    <input type="button" value="없애기" onclick="cl(2), destroyLandmark(0)" ><br>
     <input type="button" value="건물1" onclick="PlaceBuilding(11, 0)">
     <input type="button" value="건물2" onclick="PlaceBuilding(11, 1)">
     <input type="button" value="건물3" onclick="PlaceBuilding(11, 2)">

@@ -7,36 +7,41 @@
   </head>
   <body onkeydown = "if(event.keyCode === 82){
     document.querySelector('.ready').click();
-  }
-  ">
-    <div style="font-size:40px; color:white; margin-top:30px; margin-bottom:40px">Hi! Here is waitingroom</div>
-    <div id="grid">
-      <div id="Player1">
-        <div id="PlayerName1">PlayerName1</div>
-        <image id="Player1_image" src="image\Player1_image.png">
-        <input class="showready" type="button" value="Ready">
+    }">
+    <div class="cover">
+      <div style="font-size:40px; color:#402C2C; margin-top:30px; margin-bottom:40px">Hi! Here is waitingroom</div>
+      <div id="grid">
+        <div class="Player" id="Player1">
+          <div class="PlayerName" id="PlayerName1">PlayerName1</div>
+          <image class="PlayerImg" id="Player1_image" src="https://cdn.pixabay.com/photo/2018/03/26/18/20/man-3263509_960_720.png">
+          <div class="showready">Ready</div>
+        </div>
+        <div class="Player" id="Player2">
+          <div class="PlayerName" id="PlayerName2">PlayerName2</div>
+          <image class="PlayerImg" id="Player2_image" src="https://cdn.pixabay.com/photo/2016/09/02/14/26/doctor-1639328_960_720.png">
+          <input class="showready" type="button" value="Ready">
+        </div>
+        <div class="Player" id="Player3">
+          <div class="PlayerName" id="PlayerName3">PlayerName3</div>
+          <image class="PlayerImg" id="Player3_image" src="https://cdn.pixabay.com/photo/2018/08/25/16/28/vaping-3630389_960_720.png">
+          <input class="showready" type="button" value="Ready">
+        </div>
+        <div class="Player" id="Player4">
+          <div class="PlayerName" id="PlayerName4">PlayerName4</div>
+          <image class="PlayerImg" id="Player4_image" src="https://cdn.pixabay.com/photo/2018/08/28/13/29/avatar-3637561_960_720.png">
+          <input class="showready" type="button" value="Ready">
+        </div>
       </div>
-      <div id="Player2">
-        <div id="PlayerName2">PlayerName2</div>
-        <image id="Player2_image" src="image\Player2_image.png">
-        <input class="showready" type="button" value="Ready">
-      </div>
-      <div id="Player3">
-        <div id="PlayerName3">PlayerName3</div>
-        <image id="Player3_image" src="image\Player3_image.png">
-        <input class="showready" type="button" value="Ready">
-      </div>
-      <div id="Player4">
-        <div id="PlayerName4">PlayerName4</div>
-        <image id="Player4_image" src="image\Player4_image.png">
-        <input class="showready" type="button" value="Ready">
-      </div>
+      <input class="ready" type="button" value="준비하기(R)"onclick="keydown(0, this), active()">
+      <input class="join" type="button" value="참가" onclick="join(0, this)">
+      <input class="join" type="button" value="참가" onclick="join(1, this)">
+      <input class="join" type="button" value="참가" onclick="join(2, this)">
+      <input class="join" type="button" value="참가" onclick="join(3, this)">
+      <!-- <input class="ready" type="button" value="준비하기"onclick="keydown(1, this), active()">
+      <input class="ready" type="button" value="준비하기"onclick="keydown(2, this), active()">
+      <input class="ready" type="button" value="준비하기"onclick="keydown(3, this), active()"><br><br>
+      전부 준비 완료시 게임화면으로 넘어감-->
     </div>
-    <input class="ready" type="button" value="준비하기(R)"onclick="keydown(0, this), active()">
-    <input class="ready" type="button" value="준비하기"onclick="keydown(1, this), active()">
-    <input class="ready" type="button" value="준비하기"onclick="keydown(2, this), active()">
-    <input class="ready" type="button" value="준비하기"onclick="keydown(3, this), active()"><br><br>
-    전부 준비 완료시 게임화면으로 넘어감
     <script type="text/javascript" src="js\waitingroom.js"></script>
   </body>
 </html>

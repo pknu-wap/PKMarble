@@ -7,7 +7,14 @@ function PlaceBuilding(number, j){
   y[j].offsetHeight; /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
   y[j].style.animation = null;
 }
-
+function PlaceLandmark(number){
+  var x = document.querySelectorAll('.landmark');
+  x[number].style.visibility = "visible";
+}
+function destroyLandmark(number){
+  var x = document.querySelectorAll('.landmark');
+  x[number].style.visibility = "hidden";
+}
 function cl(number){
   var x = document.querySelectorAll('.build');
   var y = x[number].children;
@@ -31,13 +38,26 @@ function slt(self){
 function show(){
   document.querySelector('#dice').style.visibility = 'visible';
 }
-function getland(i, j){
-  //i플레이어 컬러 가져오기
-  //j랜드를 i플레이어 컬러로 바꾸기
-  var b = document.querySelectorAll('.b');
-  var x = document.querySelectorAll('.Player');
-  b[j].style.backgroundColor = x[i].style.backgroundColor; //작동 안됨
-}
+// function getland(i, j){
+//   //i플레이어 컬러 가져오기
+//   //j랜드를 i플레이어 컬러로 바꾸기
+//   var b = document.querySelectorAll('.b');
+//   var x = document.querySelectorAll('.Player');
+//   b[j].style.backgroundColor = x[i].style.backgroundColor; //작동 안됨
+// }
 function clickland(i){
+  var x = document.querySelectorAll('.name');
+  var x1 = x[i].innerText;
+  document.querySelector('.info_name').innerText = x1;
+
+  var y = document.querySelectorAll('.price');
+  var y1 = y[i].innerText;
+  document.querySelector('.p7_m').innerText = y1;
+
   document.querySelector('.bb').style.visibility = "visible";
+}
+function keydown(){
+  if(event.keyCode===27){
+    document.querySelector('.bb').style.visibility = "hidden";
+  }
 }

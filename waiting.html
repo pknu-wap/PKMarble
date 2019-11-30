@@ -5,20 +5,21 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css\waiting.css">
   </head>
-  <body>
-    <div id="a"><div id="title">PK Marble</div></div>
-      <input type="text" id="nickname" placeholder="Player name" value="" onkeydown="keydown()">
-      <br>
-      <input type="button" id="button" value="Start !" onclick="clk()">
-      <img id="dice" src="image/dice.png">
-      <!--
-      <img src="image\pj.png" class="pk" style="display: block; position: relative; left:10vw; bottom: 240px;">
-      <img src="image\pj_reverse.png" class="pk1" style="display: block; position: relative; left:70vw; bottom: 573px;">
-      -->
-      <iframe src="silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
-      <audio id="player" controls autoplay loop>
-        <source src="모두의마블 주제가.mp3">
-      </audio>
-      <script type="text/javascript" src="js\waiting.js"></script>
+  <body onload="startmusic()">
+    <div id="title">PK Marble</div>
+    <input type="text" id="nickname" placeholder="Player name" value="" onkeydown="keydown()">
+    <br>
+    <input type="button" id="button" value="Start !" onclick="clk()">
+    <img id="dice" src="image/dice.png">
+    <!-- <img src="image\pj.png" style="position: absolute; bottom: 10px; right: 10px; cursor: pointer;" onclick="clk()"> -->
+    <!--
+    <img src="image\pj.png" class="pk" style="display: block; position: relative; left:10vw; bottom: 240px;">
+    <img src="image\pj_reverse.png" class="pk1" style="display: block; position: relative; left:70vw; bottom: 573px;">
+    -->
+    <audio id="audio" autoplay loop>
+      <source src="모두의마블 주제가.mp3">
+    </audio>
+    <input id="BGMbtn" type="button" value="BGM On" onclick="BGM()">
+    <script type="text/javascript" src="js\waiting.js"></script>
   </body>
 </html>

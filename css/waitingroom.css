@@ -3,74 +3,98 @@
   src: url('koverwatch.ttf');
 }
 body{
-  background: linear-gradient( to bottom, #00A5FF, #ACF3FF);
+  /* background-image: linear-gradient(160deg, #FFE97A, #FFB152, #FF6B4D, #FFF0B4); */
+  /* background-image: linear-gradient(160deg, #3DF2F2, #2AA4BF, #2AA4BF, #3DF2F2); */
+  /* background-image: linear-gradient(70deg, #3E4666, #25257D 10%, #3C3D80, #3E4666 120%);  파란색*/
+  background-image: linear-gradient(150deg, #402C2C, #D9D4C5, #F2EFE4, #8C7D77, #402C2C);
   background-size: 100vw 100vh;
   margin: 10px;
   font-family: koverwatch;
   text-align: center;
-  min-width:1300px;
+  min-width: 1300px;
 }
+
+.cover{
+  /* background: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100; */
+}
+
 #grid{
   display:grid;
   grid-gap:20px;
   justify-content: center;
   grid-template-columns: auto auto auto auto;
 }
-#Player1, #Player2, #Player3, #Player4{
+.Player{
+  /* visibility: hidden; */
   display:grid;
   justify-content: center;
-  grid-template-rows: auto auto 70px;
-  background-color: white;
+  grid-template-rows: 76px auto 70px;
+  background-image: linear-gradient(to bottom, #8A7A6E, #A39183);
+  /* background-image: linear-gradient(70deg, #3E4666, #25257D 10%, #3C3D80, #3E4666 120%); */
   border-radius: 10px;
-  border: 2px solid black;
   width:300px;
   height:400px;
+  box-sizing: border-box;
+  animation: participate 3s linear;
 }
-#PlayerName1, #PlayerName2, #PlayerName3, #PlayerName4{
-  /*background-color:azure;
-  border-radius: 40px;
-  border: 2px solid black;*/
-  border-bottom:1.27px solid gray;
-  margin:auto;
-  margin-top:20px;
-  margin-bottom:20px;
+@keyframes participate{
+  0%{
+    background-color: #FCFCFC;
+    background-blend-mode: lighten;
+    filter: blur(5px);
+  }
+  25%{
+    filter: blur(0px);
+  }
+  100%{
+
+  }
+}
+.PlayerName{
+  border-bottom: 1.27px solid #d7dcdd;
+  margin: auto;/*
+  margin-top: 20px;
+  margin-bottom: 20px; */
   padding-left: 10px;
   padding-right: 10px;
-  /*width:150px;*/
-  height:35px;
-  font-size:30px;
-  text-align:center;
-  color:gray;
+  height: 35px;
+  font-size: 30px;
+  text-align: center;
+  color: #402C2C;
+  /* color: #FFE58C; */
+  animation: participate 0.3s linear;
 }
-#Player1_image, #Player2_image, #Player3_image, #Player4_image{
+.PlayerImg{
   margin:auto;
-  margin-bottom:40px;
-  width:100px;
+  width: 150px;
+  animation: participate 0.3s linear;
 }
 .showready{
-  background-color: orange;
+  visibility: hidden;
+  box-sizing: border-box;
+  background-color: #70635A;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border: none;
-  border-top: 3px solid gray;
-  padding:0;
-  width:299px;      /*Player1,2,3,4의 width - 1 */
-  height:70px;
+  border-top: 2px solid #d7dcdd;
+  width: 300px;
+  height: 100%;
+  line-height: 70px;
   font-size: 50px;
-  /*font-family: "Comic Sans MS", cursive, sans-serif;*/
-  color: white;
-  font-family: koverwatch;
+  color: #eff2f3;
   -webkit-text-stroke: 2px black;
-  visibility: hidden;
+  animation: participate 1.5s linear;
 }
 .ready{
-  background-color:red;
-  border-radius:10px;
-  border:none;
-  margin-top:20px;
-  width:100px;
-  height:50px;
-  color:white;
+  background-color: red;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  width: 100px;
+  height: 50px;
+  color: white;
   font-size: 24px;
   font-family: koverwatch;
   transition-duration: 0.4s;
