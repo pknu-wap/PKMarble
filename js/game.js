@@ -1,11 +1,13 @@
 function PlaceBuilding(number, j){
   var x = document.querySelectorAll('.build');
   var y = x[number].children;
-  y[j].style.visibility = "visible";
-/* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
-  y[j].style.animation = 'none';
-  y[j].offsetHeight;
-  y[j].style.animation = null;
+  for(i=0; i<j+1; i++){
+    y[i].style.visibility = "visible";
+    /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
+    y[i].style.animation = 'none';
+    y[i].offsetHeight;
+    y[i].style.animation = null;
+  }
 }
 function PlaceLandmark(number){
   var x = document.querySelectorAll('.landmark');
@@ -91,5 +93,10 @@ function playermove(){
 }
 //test
 var btn = document.querySelector('.test');
-btn.addEventListener("click", function(){cl(2)});
+btn.addEventListener("click", function(){cl(1)});
 btn.addEventListener("click", function(){destroyLandmark(0)});
+//게임 기록 함수
+function record(){
+  var x = document.querySelector('.record');
+  x.innerHTML = x.innerHTML + "<br>" + "string";
+}

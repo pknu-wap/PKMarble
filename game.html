@@ -58,13 +58,6 @@
         </div>
       </div>
       <div id="board">
-        <div style="display: none"> <!--배열을 1부터 시작하기 위해 넣음-->
-          <div class="b">
-            <div class="build"></div>
-            <div class="name"></div>
-            <div class="price"></div>
-          </div>
-        </div>
         <div id="r1">
           <div class="b" id="a1">
             <div class="build"></div>
@@ -285,18 +278,19 @@
       </div>
     </div>
     <input type="button" id="a" value="오른쪽" onclick="slt(this)" style="width: 100px;">
-    <input type="button" value="건물1" onclick="PlaceBuilding(2, 0)">
-    <input type="button" value="건물2" onclick="PlaceBuilding(2, 1)">
-    <input type="button" value="건물3" onclick="PlaceBuilding(2, 2)">
+    <input type="button" value="건물1" onclick="PlaceBuilding(1, 0)">
+    <input type="button" value="건물2" onclick="PlaceBuilding(1, 1)">
+    <input type="button" value="건물3" onclick="PlaceBuilding(1, 2)">
     <input type="button" value="랜드마크" onclick="PlaceLandmark(0)">
     <input class="test" type="button" value="없애기"><br>
-    <input type="button" value="건물1" onclick="PlaceBuilding(11, 0)">
-    <input type="button" value="건물2" onclick="PlaceBuilding(11, 1)">
-    <input type="button" value="건물3" onclick="PlaceBuilding(11, 2)">
-    <input type="button" value="랜드마크" onclick="PlaceBuilding(11, 3)">
-    <input type="button" value="없애기" onclick="cl(11)">
+    <input type="button" value="건물1" onclick="PlaceBuilding(10, 0)">
+    <input type="button" value="건물2" onclick="PlaceBuilding(10, 1)">
+    <input type="button" value="건물3" onclick="PlaceBuilding(10, 2)">
+    <input type="button" value="랜드마크" onclick="PlaceBuilding(10, 3)">
+    <input type="button" value="없애기" onclick="cl(10)">
     <input type="button" value="주사위 굴리기버튼생성" onclick="show()">
     <input type="button" value="돈 없음" onclick="getmoney(this)">
+    <input type="button" value="게임기록" onclick="record()">
     <script type="text/javascript" src="js\game.js"></script>
   </body>
 </html>
