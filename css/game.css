@@ -53,7 +53,7 @@ body{
   grid-template-areas:
     "image name rank"
     "image money rank";
-
+  box-shadow: 0px 0px 10px 5px #ffffff;
   width: 280px;
   height: 100px;
   transition-duration: 0.3s;
@@ -166,6 +166,11 @@ body{
 #a4{
   background-image: radial-gradient(farthest-corner at 20% 20%, #11D97C, #0BBF8C, #08A689, #035949, transparent);
   background-size: 200px 130px;
+}
+.moneybag{
+  visibility: hidden;
+  margin: auto;
+  width: 50px;
 }
 #a5{
   background-image: linear-gradient(to right, #595959, #8C8C8C 20%, #D9D9D9);
@@ -473,4 +478,11 @@ img.landmark{
 }
 #dice:active{
   transform:translateY(10px);
+}
+.chat{
+  background-color: #ffffff;
+  border: 1px solid black;
+  margin-left: 10px;
+  width: 200px;
+  height: 85vh;
 }

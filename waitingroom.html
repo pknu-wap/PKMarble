@@ -11,25 +11,53 @@
     <div class="cover">
       <div style="font-size:40px; color:#402C2C; margin-top:30px; margin-bottom:40px">Hi! Here is waitingroom</div>
       <div id="grid">
-        <div class="Player" id="Player1">
-          <div class="PlayerName" id="PlayerName1">PlayerName1</div>
-          <image class="PlayerImg" id="Player1_image" src="https://cdn.pixabay.com/photo/2018/03/26/18/20/man-3263509_960_720.png">
-          <div class="showready">Ready</div>
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="Player flip-front" id="Player1">
+              <div class="PlayerName" id="PlayerName1">PlayerName1</div>
+              <image class="PlayerImg" id="Player1_image" src="https://cdn.pixabay.com/photo/2018/03/26/18/20/man-3263509_960_720.png">
+              <div class="showready">Ready</div>
+            </div>
+            <div class="flip-back">
+              능력 설명
+            </div>
+          </div>
         </div>
-        <div class="Player" id="Player2">
-          <div class="PlayerName" id="PlayerName2">PlayerName2</div>
-          <image class="PlayerImg" id="Player2_image" src="https://cdn.pixabay.com/photo/2016/09/02/14/26/doctor-1639328_960_720.png">
-          <input class="showready" type="button" value="Ready">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="Player flip-front" id="Player2">
+              <div class="PlayerName" id="PlayerName2">PlayerName2</div>
+              <image class="PlayerImg" id="Player2_image" src="https://cdn.pixabay.com/photo/2016/09/02/14/26/doctor-1639328_960_720.png">
+              <div class="showready">Ready</div>
+            </div>
+            <div class="flip-back">
+              뒷면
+            </div>
+          </div>
         </div>
-        <div class="Player" id="Player3">
-          <div class="PlayerName" id="PlayerName3">PlayerName3</div>
-          <image class="PlayerImg" id="Player3_image" src="https://cdn.pixabay.com/photo/2018/08/25/16/28/vaping-3630389_960_720.png">
-          <input class="showready" type="button" value="Ready">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="Player flip-front" id="Player3">
+              <div class="PlayerName" id="PlayerName3">PlayerName3</div>
+              <image class="PlayerImg" id="Player3_image" src="https://cdn.pixabay.com/photo/2018/08/25/16/28/vaping-3630389_960_720.png">
+              <div class="showready">Ready</div>
+            </div>
+            <div class="flip-back">
+              뒷면
+            </div>
+          </div>
         </div>
-        <div class="Player" id="Player4">
-          <div class="PlayerName" id="PlayerName4">PlayerName4</div>
-          <image class="PlayerImg" id="Player4_image" src="https://cdn.pixabay.com/photo/2018/08/28/13/29/avatar-3637561_960_720.png">
-          <input class="showready" type="button" value="Ready">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="Player flip-front" id="Player4">
+              <div class="PlayerName" id="PlayerName4">PlayerName4</div>
+              <image class="PlayerImg" id="Player4_image" src="https://cdn.pixabay.com/photo/2018/08/28/13/29/avatar-3637561_960_720.png">
+              <div class="showready">Ready</div>
+            </div>
+            <div class="flip-back">
+              뒷면
+            </div>
+          </div>
         </div>
       </div>
       <input class="ready" type="button" value="준비하기(R)"onclick="keydown(0, this), active()">

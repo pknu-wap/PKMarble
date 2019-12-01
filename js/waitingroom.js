@@ -27,18 +27,26 @@ function active(){
 }
 
 function join(i, self){
-  var x = document.querySelectorAll('.Player');
+  var x = document.querySelectorAll('.flip-card');
   var y = window.getComputedStyle(x[i]).visibility;
+  var z = document.querySelectorAll('.flip-front');
+  var w = document.querySelectorAll('.flip-back');
+  var t = document.querySelectorAll('.showready')
   if(y === 'hidden'){
     x[i].style.visibility = 'visible';
     self.value='나가기';
     self.style.backgroundColor='green';
-    x[i].style.animation = 'none';
-    x[i].offsetHeight;
-    x[i].style.animation = null;
+
+    z[i].style.animation = 'none';
+    z[i].offsetHeight;
+    z[i].style.animation = null;
+    w[i].style.animation = 'none';
+    w[i].offsetHeight;
+    w[i].style.animation = null;
   }
   else{
     x[i].style.visibility = 'hidden';
+    t[i].style.visibility = 'hidden';
     self.value='참가';
     self.style.backgroundColor='red';
   }

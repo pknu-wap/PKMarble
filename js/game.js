@@ -61,3 +61,15 @@ function keydown(){
     document.querySelector('.bb').style.visibility = "hidden";
   }
 }
+function getmoney(self){
+  var x = document.querySelector('.moneybag');
+  var y = window.getComputedStyle(x).visibility;
+  if(y === 'hidden'){
+    x.style.visibility = "visible";
+    self.value = "돈 강탈";
+  }
+  else{
+    x.style.visibility = "hidden";
+    self.value = "돈 없음";
+  }
+}
