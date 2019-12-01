@@ -8,41 +8,53 @@
   <body onkeydown="keydown()">
     <div id="flex">
       <div id="grid">
-        <div class="Player" id = "Player1">
-          <image class="P_image" id="Player1_image" src="image\Player1_image.png">
-          <div class="P_name" id="PlayerName1">PlayerName1</div>
-          <div class="P_money" id="PlayerMoney1">
-            <div class="allmoney">All money</div>
-            <div class="money">money</div>
+        <div class="PlayerCard">
+          <div class="Player" id = "Player1">
+            <image class="P_image" id="Player1_image" src="image\Player1_image.png">
+            <div class="P_name" id="PlayerName1">PlayerName1</div>
+            <div class="P_money" id="PlayerMoney1">
+              <div class="allmoney">All money</div>
+              <div class="money">money</div>
+            </div>
+            <div class="P_rank" id="PlayerRank1">등수</div>
           </div>
-          <div class="P_rank" id="PlayerRank1">등수</div>
+          <div class="PlayerInfo" id="PlayerInfo1">능력</div>
         </div>
-        <div class="Player" id = "Player2">
-          <image class="P_image" id="Player2_image" src="image\Player2_image.png">
-          <div class="P_name" id="PlayerName2">PlayerName2</div>
-          <div class="P_money" id="PlayerMoney2">
-            <div class="allmoney">All money</div>
-            <div class="money">money</div>
+        <div class="PlayerCard">
+          <div class="Player" id = "Player2">
+            <image class="P_image" id="Player2_image" src="image\Player2_image.png">
+            <div class="P_name" id="PlayerName2">PlayerName2</div>
+            <div class="P_money" id="PlayerMoney2">
+              <div class="allmoney">All money</div>
+              <div class="money">money</div>
+            </div>
+            <div class="P_rank" id="PlayerRank2">등수</div>
           </div>
-          <div class="P_rank" id="PlayerRank2">등수</div>
+          <div class="PlayerInfo" id="PlayerInfo2">능력</div>
         </div>
-        <div class="Player" id = "Player3">
-          <image class="P_image" id="Player3_image" src="image\Player3_image.png">
-          <div class="P_name" id="PlayerName3">PlayerName3</div>
-          <div class="P_money" id="PlayerMoney3">
-            <div class="allmoney">All money</div>
-            <div class="money">money</div>
+        <div class="PlayerCard">
+          <div class="Player" id = "Player3">
+            <image class="P_image" id="Player3_image" src="image\Player3_image.png">
+            <div class="P_name" id="PlayerName3">PlayerName3</div>
+            <div class="P_money" id="PlayerMoney3">
+              <div class="allmoney">All money</div>
+              <div class="money">money</div>
+            </div>
+            <div class="P_rank" id="PlayerRank3">등수</div>
           </div>
-          <div class="P_rank" id="PlayerRank3">등수</div>
+          <div class="PlayerInfo" id="PlayerInfo3">능력</div>
         </div>
-        <div class="Player" id = "Player4">
-          <image class="P_image" id="Player4_image" src="image\Player4_image.png">
-          <div class="P_name" id="PlayerName4">PlayerName4</div>
-          <div class="P_money" id="PlayerMoney4">
-            <div class="allmoney">All money</div>
-            <div class="money">money</div>
+        <div class="PlayerCard">
+          <div class="Player" id = "Player4">
+            <image class="P_image" id="Player4_image" src="image\Player4_image.png">
+            <div class="P_name" id="PlayerName4">PlayerName4</div>
+            <div class="P_money" id="PlayerMoney4">
+              <div class="allmoney">All money</div>
+              <div class="money">money</div>
+            </div>
+            <div class="P_rank" id="PlayerRank4">등수</div>
           </div>
-          <div class="P_rank" id="PlayerRank4">등수</div>
+          <div class="PlayerInfo" id="PlayerInfo4">능력</div>
         </div>
       </div>
       <div id="board">
@@ -57,7 +69,7 @@
           <div class="b" id="a1">
             <div class="build"></div>
             <div class="name">1. start</div>
-            <div class="price"></div>
+            <div class="price">용돈 n원</div>
           </div>
           <button class="b" id="a2" onclick="clickland(2)">
             <div class="build">
@@ -82,7 +94,7 @@
           <button class="b" id="a4" onclick="clickland(4)">
             <div class="build"></div>
             <div class="name">4. 미래관</div>
-            <div class="price"></div>
+            <img class="price moneybag" src="image/moneybag.png">
           </button>
           <button class="b" id="a5" onclick="clickland(5)">
             <div class="build">건물현황</div>
@@ -258,7 +270,17 @@
             </div>
           </div>
           <!--https://codepen.io/tameraydin/pen/CADvB 주사위 에니메이션-->
-          <input id="dice" type="button" value="Roll !">
+          <img class="dice" src="image/dice.png">
+          <input id="rollbtn" type="button" value="Roll !" onclick="rolldice()">
+        </div>
+      </div>
+      <div class="chat">
+        <div class="sticky">
+          <div class="turnleft">n턴 남았습니다</div>
+          <div class="timer">제한시간: 00초</div>
+        </div>
+        <div class="record" style="text-align: left;">
+          게임 기록<br>Player1이 휴학을 했습니다<br>Player2가 세종관을 샀습니다<br>...<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....<br>....
         </div>
       </div>
     </div>
@@ -267,13 +289,14 @@
     <input type="button" value="건물2" onclick="PlaceBuilding(2, 1)">
     <input type="button" value="건물3" onclick="PlaceBuilding(2, 2)">
     <input type="button" value="랜드마크" onclick="PlaceLandmark(0)">
-    <input type="button" value="없애기" onclick="cl(2), destroyLandmark(0)" ><br>
+    <input class="test" type="button" value="없애기"><br>
     <input type="button" value="건물1" onclick="PlaceBuilding(11, 0)">
     <input type="button" value="건물2" onclick="PlaceBuilding(11, 1)">
     <input type="button" value="건물3" onclick="PlaceBuilding(11, 2)">
     <input type="button" value="랜드마크" onclick="PlaceBuilding(11, 3)">
     <input type="button" value="없애기" onclick="cl(11)">
     <input type="button" value="주사위 굴리기버튼생성" onclick="show()">
+    <input type="button" value="돈 없음" onclick="getmoney(this)">
     <script type="text/javascript" src="js\game.js"></script>
   </body>
 </html>

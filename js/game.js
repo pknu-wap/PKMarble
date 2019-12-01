@@ -2,9 +2,9 @@ function PlaceBuilding(number, j){
   var x = document.querySelectorAll('.build');
   var y = x[number].children;
   y[j].style.visibility = "visible";
-
+/* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
   y[j].style.animation = 'none';
-  y[j].offsetHeight; /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
+  y[j].offsetHeight;
   y[j].style.animation = null;
 }
 function PlaceLandmark(number){
@@ -22,9 +22,9 @@ function cl(number){
     y[p].style.visibility = "hidden";
   }
 }
-
+//자기 차례에 오른쪽으로 살짝 이동
 function slt(self){
-  var x = document.querySelectorAll('.Player')
+  var x = document.querySelectorAll('.PlayerCard')
   var y = document.querySelector('#a');
   if(y.value === "오른쪽"){
     x[0].style.transform = 'translateX(35px)';
@@ -35,8 +35,9 @@ function slt(self){
     self.value="오른쪽";
   }
 }
+//자기 차례에 주사위 버튼 보이게 하기
 function show(){
-  document.querySelector('#dice').style.visibility = 'visible';
+  document.querySelector('#rollbtn').style.visibility = 'visible';
 }
 // function getland(i, j){
 //   //i플레이어 컬러 가져오기
@@ -46,21 +47,24 @@ function show(){
 //   b[j].style.backgroundColor = x[i].style.backgroundColor; //작동 안됨
 // }
 function clickland(i){
+  //이름 가져오기
   var x = document.querySelectorAll('.name');
   var x1 = x[i].innerText;
   document.querySelector('.info_name').innerText = x1;
-
+  //통행료 가져오기
   var y = document.querySelectorAll('.price');
   var y1 = y[i].innerText;
   document.querySelector('.p7_m').innerText = y1;
 
   document.querySelector('.bb').style.visibility = "visible";
 }
+//esc누르면 information끄기
 function keydown(){
   if(event.keyCode===27){
     document.querySelector('.bb').style.visibility = "hidden";
   }
 }
+//특수지역 돈 뺏은거
 function getmoney(self){
   var x = document.querySelector('.moneybag');
   var y = window.getComputedStyle(x).visibility;
@@ -73,3 +77,19 @@ function getmoney(self){
     self.value = "돈 없음";
   }
 }
+//roll  dice animation
+function rolldice(){
+  var x = document.querySelector('.dice');
+  x.style.visibility = "visible";
+  x.style.animation = 'none';
+  x.offsetHeight;
+  x.style.animation = null;
+}
+//플레이어 이동 에니매이션
+function playermove(){
+
+}
+//test
+var btn = document.querySelector('.test');
+btn.addEventListener("click", function(){cl(2)});
+btn.addEventListener("click", function(){destroyLandmark(0)});

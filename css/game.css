@@ -3,14 +3,15 @@
   src: url('koverwatch.ttf');
 }
 body{
-  background-image: linear-gradient(160deg, #16193B, #35478C, #4E7AC7 85%, #F28B50, #F2A03D 98.5%, #4E7AC7, #F2A03D);
+  background-image: linear-gradient(175deg, #16193B, #35478C, #4E7AC7 85%, #F28B50, #F2A03D 98.5%, #4E7AC7, #F2A03D);
+  background-image: linear-gradient(135deg, #000000, #0D0D0D, #262626, #112959,  #113059, #616F8C, #112959);
   background-size: 100vw 100vh;
   font-family:koverwatch;
   text-align: center;
   margin: 20px;
   min-width: 1000px;
   min-height: 650px;
-  animation: backColor 3s linear;
+  /* animation: backColor 3s linear; */
 }
 /* @keyframes backColor{
   0%{
@@ -36,6 +37,7 @@ body{
   font-size: 60px;
   color: white;
   -webkit-text-stroke:1px black;
+  text-shadow: 0px 0px 5px #ffffff;
 }
 #flex{
   display: flex;
@@ -45,6 +47,29 @@ body{
   grid-template-rows: auto auto auto auto;
   grid-gap: 10px;
   margin-right: 50px;
+  margin-top: 20px;
+}
+.PlayerCard{
+  position: relative;
+  width: 280px;
+  height: 100px;
+  transition-duration: 0.3s;
+}
+.PlayerInfo{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  filter: opacity(0);
+  transition: filter 0.5s;
+}
+.PlayerCard:hover .PlayerInfo{
+  filter: opacity(1);
+  z-index: 1;
+}
+.PlayerCard:hover .Player{
+  filter: opacity(0);
 }
 .Player{
   display:grid;
@@ -56,23 +81,35 @@ body{
   box-shadow: 0px 0px 10px 5px #ffffff;
   width: 280px;
   height: 100px;
-  transition-duration: 0.3s;
+  transition: filter 0.5s;
 }
 #Player1{
   background-color: #13A5D6;
-  background-image: linear-gradient(to right, #F2D750, #D9B343, #F2DA91, #BF861B, #F2F2F2 50%);
+  background-image: linear-gradient(to right, #FF837E, #FFBFB4, #FF837E);
 }
 #Player2{
   background-color: #BCFF66;
-  background-image: linear-gradient(to right, #91D7F2, #F2B6C1 80%, #BF4974);
+  background-image: linear-gradient(to right, #F2E527, #F2E085, #F2E527);
 }
 #Player3{
   background-color: #EC4F2F;
-  background-image: linear-gradient(to right, #595959, #8C8C8C 20%, #D9D9D9);
+  background-image: linear-gradient(to right, #9ABF75, #EFF299, #9ABF75);
 }
 #Player4{
   background-color: #FFA887;
-  background-image: linear-gradient(to right, #4F1A73, #F29E6D 70%, #3270A6, #36ABD9);
+  background-image: linear-gradient(to right, #3270A6, #36ABD9, #3270A6);
+}
+#PlayerInfo1{
+  box-shadow: 0px 0px 10px 5px #FF837E;
+}
+#PlayerInfo2{
+  box-shadow: 0px 0px 10px 5px #F2E527;
+}
+#PlayerInfo3{
+  box-shadow: 0px 0px 10px 5px #9ABF75;
+}
+#PlayerInfo4{
+  box-shadow: 0px 0px 10px 5px #36ABD9;
 }
 .P_image{
   grid-area: image;
@@ -81,8 +118,6 @@ body{
 }
 .P_name{
   grid-area: name;
-  background-color: azure;
-  border-left: 1px solid black;
   padding-top: 7px;
   padding-left: 14px;
   text-align: left;
@@ -90,8 +125,6 @@ body{
 }
 .P_money{
   grid-area: money;
-  background-color: powderblue;
-  border-left: 1px solid black;
   padding-top: 5px;
   padding-left: 14px;
   text-align: left;
@@ -104,12 +137,13 @@ body{
 
 }
 .P_rank{
-  background-color: #FAE0D4;
+  /* background-color: #FAE0D4; */
   padding-top: 20px;
   font-size: 40px;
   color: black;
   grid-area: rank;
 }
+
 #board{
   display:grid;
   grid-template-columns: auto auto auto;
@@ -152,20 +186,20 @@ body{
   height: 480px;
 }
 #a1{
-  background-color: #B778FF;
+  background-color: #AFA570;
+  background-image: linear-gradient(to right, #B28BD9, #D3B3F2, #B28BD9);
   border-top-left-radius: 5px;
   border-right: 1px solid black !important;
 }
 #a2{
   border-left: none;
-  background-image: linear-gradient(to right, #F2F2F2, #F2D750, #D9B343, #F2DA91, #D9B343, #F2D750, #F2F2F2);
+  background-image: linear-gradient(to right, #FF837E, #FFBFB4, #FF837E);
 }
 #a3{
-  background-image: linear-gradient(to right, #91D7F2, #F2B6C1 80%, #BF4974);
+  background-image: linear-gradient(to right, #FF837E, #FFBFB4, #FF837E);
 }
 #a4{
-  background-image: radial-gradient(farthest-corner at 20% 20%, #11D97C, #0BBF8C, #08A689, #035949, transparent);
-  background-size: 200px 130px;
+  background-image: linear-gradient(to bottom, #A6A6A6, #D9D9D9, #A6A6A6);
 }
 .moneybag{
   visibility: hidden;
@@ -173,62 +207,63 @@ body{
   width: 50px;
 }
 #a5{
-  background-image: linear-gradient(to right, #595959, #8C8C8C 20%, #D9D9D9);
+  background-image: linear-gradient(to right, #F2E527, #F2E085, #F2E527);
 }
 #a6{
-  background-image: linear-gradient(to right, #4F1A73, #F29E6D 70%, #3270A6, #36ABD9);
+  background-image: linear-gradient(to right, #F2E527, #F2E085, #F2E527);
 }
 #a7{
-
+  background-image: linear-gradient(to right, #F2E527, #F2E085, #F2E527);
 }
 #a8{
-  background-color: #B778FF;
+  background-image: linear-gradient(to right, #B28BD9, #D3B3F2, #B28BD9);
   border-top-right-radius: 5px;
   border-right: 1px solid black !important;
 }
 #a9{
+  background-image: linear-gradient(to right, #9ABF75, #EFF299, #9ABF75);
   border-top: none;
 }
 #a10{
-
+  background-image: linear-gradient(to right, #9ABF75, #EFF299, #9ABF75);
 }
 #a11{
-
+  background-image: linear-gradient(to right, #9ABF75, #EFF299, #9ABF75);
 }
 #a12{
-
+  background-image: linear-gradient(to right, #9ABF75, #EFF299, #9ABF75);
 }
 #a13{
-  background-color: powderblue;
+  background-image: linear-gradient(to right, #8C8C8C, #D9D9D9, #8C8C8C);
 }
 #a14{
 
 }
 #a15{
-  background-color: #B778FF;
+  background-image: linear-gradient(to right, #B28BD9, #D3B3F2, #B28BD9);
   border-bottom-right-radius: 5px;
   border-right: 1px solid black !important;
 }
 #a16{
-  background-color: powderblue;
+  background-image: linear-gradient(to right, #8C8C8C, #D9D9D9, #8C8C8C);
 }
 #a17{
-
+  background-image: linear-gradient(to right, #3270A6, #36ABD9, #3270A6);
 }
 #a18{
-
+  background-image: linear-gradient(to right, #3270A6, #36ABD9, #3270A6);
 }
 #a19{
-
+  background-image: linear-gradient(to right, #3270A6, #36ABD9, #3270A6);
 }
 #a20{
-  background-color: powderblue;
+  background-image: linear-gradient(to right, #8C8C8C, #D9D9D9, #8C8C8C);
 }
 #a21{
   border-left: none;
 }
 #a22{
-  background-color: #B778FF;
+  background-image: linear-gradient(to right, #B28BD9, #D3B3F2, #B28BD9);
   border-bottom-left-radius: 5px;
   border-right: 1px solid black !important;
 }
@@ -239,7 +274,7 @@ body{
 
 }
 #a25{
-  background-color: powderblue;
+  background-image: linear-gradient(to bottom, #8C8C8C, #D9D9D9, #8C8C8C);
 }
 #a26{
 
@@ -268,7 +303,9 @@ body{
   background-color: white;
   width: 120px;
   height: 80px;
+  color: #3D3927;
   font-family: koverwatch;
+  box-shadow: 0px 0px 3px #FFFFFF;
   box-sizing: border-box;
   transition-duration: 0.3s;
   cursor: pointer;
@@ -298,11 +335,11 @@ body{
     transform: translateY(0px);
   }
 }
-img.landmark{
+.landmark{
   visibility: hidden;
   width: 100%;
   height: 100%;
-  filter: opacity(50%);
+  filter: opacity(70%);
 }
 .name{
   position: absolute;
@@ -460,7 +497,34 @@ img.landmark{
   margin: auto;
   color: #AC3A25;
 }
-#dice{
+.dice{
+  visibility: hidden;
+  position: absolute;
+  bottom: 80px;
+  left: 500px;
+  width: 200px;
+  animation: diceroll 3s linear;
+}
+@keyframes diceroll{
+  0%{
+    transform: rotate(0deg);
+    bottom: 150px;
+    left: 0px;
+  }
+  10%{
+    bottom: 200px;
+    left: 50px;
+  }
+  20%{
+    transform: rotate(230deg);
+    bottom: 100px;
+    left: 100px;
+  }
+  100%{
+    transform: rotate(1080deg);
+  }
+}
+#rollbtn{
   visibility: hidden;
   position: absolute;
   bottom: 20px;
@@ -476,13 +540,34 @@ img.landmark{
   transition-duration: 0.5s;
   cursor: pointer;
 }
-#dice:active{
+#rollbtn:active{
   transform:translateY(10px);
 }
 .chat{
+  overflow-y: auto;
   background-color: #ffffff;
+  background-image: linear-gradient(to bottom, #4F1A73, #3270A6, #36ABD9);
   border: 1px solid black;
   margin-left: 10px;
   width: 200px;
   height: 85vh;
+}
+.sticky{
+  position: sticky;
+  top: 0px;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+.turnleft{
+  /* background-color: brown; */
+  font-size: 30px;
+}
+.timer{
+  /* background-color: purple; */
+  font-size: 30px;
+}
+.record{
+  color: #FFFFFF;
+  text-shadow: 0px 0px 5px #000000;
+  font-size: 1rem;
 }

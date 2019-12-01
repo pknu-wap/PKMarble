@@ -51,3 +51,11 @@ function join(i, self){
     self.style.backgroundColor='red';
   }
 }
+
+function scrtrs(){
+  document.querySelector(".cover1").style.animationPlayState = "running";
+  document.querySelector(".cover2").style.animationPlayState = "running";
+}
+function link(){
+  location.href='game.html';
+}
