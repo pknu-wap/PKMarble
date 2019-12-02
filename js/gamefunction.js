@@ -663,12 +663,13 @@
     function check_buying_possibility_and_buying(player, building_number, input) {
         console.log(player, building_number, input);
         console.log(building_number);
-        var build_cost = build[building_number].build_cost[input]
+        var build_cost = build[building_number].build_cost[input - 1]
         if (players[player].money >= build_cost) {
 
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             build[building_number].buildings = input;
+            rank_assets();
 
             get_land(building_number, player);
             set_entrancefee(building_number);
@@ -738,6 +739,7 @@
                 players[build[building_number].owner - 1].assets -= build[building_number].build_cost[(build[building_number].buildings - 1)];
                 players[player].assets += build[building_number].build_cost[(build[building_number].buildings - 1)];
                 build[building_number].owner = players[player].id;
+                rank_assets();
                 get_land(building_number, player);
                 construct_building(player, building_number);
             } else {
@@ -873,11 +875,12 @@
     }
 
     function rank_assets() {
-        for (var i = 0; i < 4; i++) {
-            players[i].assets_rank = 0;
+        for (let i = 0; i < 4; i++) {
+            players[i].assets_rank = 1;
         }
-        for (var i = 0; i < 4; i++) {
-            for (var j = i + 1; j < 4; j++) {
+
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
                 if (players[i].assets < players[j].assets)
                     players[i].assets_rank += 1;
             }
@@ -943,6 +946,7 @@
                 player_turn = 0;
         }
         console.log("턴 종료 player : " + player_turn);
+        rank_assets();
         check_line_monopoly();
     }
 
