@@ -156,21 +156,22 @@ function land_price(i){
 }
 //능력 입력 함수
 function avility(i){
-    
+    var x = document.querySelectorAll('.PlayerInfo');
+    x[i].innerText = 능력;
 }
 //땅 색 바꾸기
 function get_land(i, j){
-    var x = document.querySelectorAll('b');
+    var x = document.querySelectorAll('.b');
     if(j == 0){
-         b[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
+         x[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
     }
     if(j == 1){
-         b[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
+         x[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
     }
     if(j == 2){
-         b[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
+         x[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
     }
     if(j == 3){
-         b[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
+         x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
     }
 }
