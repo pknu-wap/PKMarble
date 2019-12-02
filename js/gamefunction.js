@@ -565,7 +565,7 @@
                     //향파관 이동
                     players[player].line = 4;
                     players[player].ceil = 4;
-                    playericon_move(player, players[player].line, players[player].ceil);
+                    playericon_move(player, players[player].line, players[player].cell);
                     end_turn();
                     break;
                 case "대학축제":
@@ -589,7 +589,7 @@
                     //호연관 이동
                     players[player].line = 2;
                     players[player].cell = 5;
-                    playericon_move(player, players[player].line, players[player].ceil);
+                    playericon_move(player, players[player].line, players[player].cell);
                     end_turn();
                     break;
                 default:
@@ -823,12 +823,12 @@
     function bus(player) {
         record("플레이어 " + (player + 1) + "이 버스를 탔습니다.");
         var bus_input = prompt("가고 싶은 지역의 번호를 입력해주세요.\n" +
-            "(단 띄어 쓰기는 하셔야합니다.)", "1");
+            "(단 띄어 쓰기는 하셔야합니다.)", 1);
         var parse_bus_input = parseInt(bus_input);
         if (parse_bus_input < 29 && parse_bus_input > 0) {
             players[player].line = build[bus_input - 1].line;
             players[player].cell = build[bus_input - 1].cell;
-            playericon_move(player, players[player].line, players[player].ceil);
+            playericon_move(player, players[player].line, players[player].cell);
             players[player].bus = false;
         } else {
             alert("제대로 숫자를 입력 해주세요.")
