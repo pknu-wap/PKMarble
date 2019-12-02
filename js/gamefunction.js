@@ -459,6 +459,7 @@
     window.onload = dice_show();
 
     function main() {
+        rank_assets();
         record_player();
         start_turn(player_turn);
     }
@@ -737,6 +738,7 @@
                 players[build[building_number].owner - 1].assets -= build[building_number].build_cost[(build[building_number].buildings - 1)];
                 players[player].assets += build[building_number].build_cost[(build[building_number].buildings - 1)];
                 build[building_number].owner = players[player].id;
+                get_land(building_number, player);
                 construct_building(player, building_number);
             } else {
                 end_turn();
@@ -851,9 +853,9 @@
         //수위실은 배열 인덱스가 16
         var rob_money = players[player].money * percent;
         build[3].stack_of_money += rob_money;
-        players[player].assets += players[player].money * (1 - percent);
+        players[player].assets -= players[player].money * (1 - percent);
         players[player].money *= (1 - percent);
-        alert("현금 자산의 " + percent + "퍼센트가 몰수 당했습니다.");
+        alert("현금 자산의 " + (percent *100) + "퍼센트가 몰수 당했습니다.");
         record("플레이어 " + (player + 1) + "의 돈이 몰수 당했습니다.");
         end_turn();
     }
@@ -881,7 +883,7 @@
             }
 
         }
-        check_line_monopoly();
+        
     }
 
     function dispose_other_land(player) {
@@ -941,7 +943,7 @@
                 player_turn = 0;
         }
         console.log("턴 종료 player : " + player_turn);
-        rank_assets();
+        check_line_monopoly();
     }
 
     function end_player(player) {
