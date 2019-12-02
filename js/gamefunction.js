@@ -4,7 +4,8 @@
             'name': "START",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 1,
@@ -16,19 +17,20 @@
             'name': "양어장",
             'owner': 0,
             'build_cost': [60000, 180000, 300000, 300000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 1,
             'cell': 2,
-
         },
         {
             'id': 3,
             'name': "테니스장",
             'owner': 0,
             'build_cost': [80000, 240000, 320000, 320000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 1,
@@ -40,12 +42,12 @@
             'name': "미래관",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 1,
             'cell': 4,
-
             'stack_of_money': 0,
 
         },
@@ -54,7 +56,8 @@
             'name': "세종관",
             'owner': 0,
             'build_cost': [100000, 300000, 500000, 500000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 1,
@@ -67,7 +70,8 @@
             'name': "장보고관",
             'owner': 0,
             'build_cost': [110000, 330000, 550000, 550000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 1,
@@ -78,7 +82,8 @@
             'name': "한결관",
             'owner': 0,
             'build_cost': [120000, 360000, 600000, 600000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 1,
@@ -92,7 +97,8 @@
             'name': "대학휴학",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 2,
@@ -105,7 +111,8 @@
             'name': "수산과학관",
             'owner': 0,
             'build_cost': [150000, 450000, 750000, 750000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 2,
@@ -116,7 +123,8 @@
             'name': "경영관",
             'owner': 0,
             'build_cost': [160000, 480000, 800000, 800000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 2,
@@ -129,7 +137,8 @@
             'name': "자연과확관",
             'owner': 0,
             'build_cost': [170000, 510000, 850000, 850000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 2,
@@ -142,7 +151,8 @@
             'name': "호연관",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 2,
@@ -155,7 +165,8 @@
             'name': "아름관",
             'owner': 0,
             'build_cost': [170000, 510000, 850000, 850000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 2,
@@ -167,7 +178,8 @@
             'name': "건축관",
             'owner': 0,
             'build_cost': [180000, 540000, 900000, 900000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 2,
@@ -180,7 +192,8 @@
             'name': "대학축제",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 3,
@@ -193,7 +206,8 @@
             'name': "위드센터",
             'owner': 0,
             'build_cost': [200000, 600000, 1000000, 1000000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 3,
@@ -206,7 +220,8 @@
             'name': "수위실",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 3,
@@ -219,7 +234,8 @@
             'name': "충무관",
             'owner': 0,
             'build_cost': [210000, 630000, 1050000, 1050000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 3,
@@ -231,7 +247,8 @@
             'name': "청운관",
             'owner': 0,
             'build_cost': [220000, 660000, 1100000, 1100000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 3,
@@ -244,7 +261,8 @@
             'name': "환경해양관",
             'owner': 0,
             'build_cost': [220000, 660000, 1100000, 1100000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 3,
@@ -257,7 +275,8 @@
             'name': "가온관",
             'owner': 0,
             'build_cost': [220000, 660000, 1100000, 1100000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 3,
@@ -270,7 +289,8 @@
             'name': "셔틀버스",
             'owner': 0,
             'build_cost': [1, 3, 6, 10],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 4,
@@ -283,7 +303,8 @@
             'name': "나래관",
             'owner': 0,
             'build_cost': [240000, 720000, 1200000, 1200000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 4,
@@ -296,7 +317,8 @@
             'name': "자산관",
             'owner': 0,
             'build_cost': [260000, 780000, 1300000, 1300000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 4,
@@ -309,7 +331,8 @@
             'name': "향파관",
             'owner': 0,
             'build_cost': [270000, 810000, 1350000, 1350000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': true,
             'line': 4,
@@ -322,7 +345,8 @@
             'name': "웅비관",
             'owner': 0,
             'build_cost': [270000, 810000, 1350000, 1350000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 4,
@@ -336,7 +360,8 @@
             'name': "누리관",
             'owner': 0,
             'build_cost': [300000, 900000, 1500000, 1500000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 4,
@@ -349,7 +374,8 @@
             'name': "대학본부",
             'owner': 0,
             'build_cost': [320000, 960000, 1600000, 1600000],
-            'acquisition_cost': 1,
+            'acquisition_cost': 0,
+            'current_entrancefee': 0,
             'buildings': 0,
             'special_building': false,
             'line': 4,
@@ -358,7 +384,6 @@
 
         }
     ];
-
     var players = [{
             'id': 1,
             'line': 1,
@@ -432,8 +457,9 @@
     var sum_of_turn = 1;
 
     window.onload = dice_show();
-
+    
     function main() {
+        record_player();
         start_turn(player_turn);
     }
 
@@ -460,12 +486,15 @@
         var dice1 = random(1, 6);
         var dice2 = random(1, 6);
         var sum_of_dice = dice1 + dice2;
-        record("플레이어 " + (player + 1) + "이 " + sum_of_dice +"만큼 이동함");
+        alert("첫번째 주사위 : " + dice1 + "\n" +
+            "두번째 주사위 : " + dice2 + "\n");
+        record("플레이어 " + (player + 1) + "이 " + sum_of_dice + "만큼 이동함");
         console.log("dice1 : " + dice1);
         console.log("dice2 : " + dice2);
         console.log("sum_of_dice : " + sum_of_dice);
         if (dice1 == dice2) {
             players[player].count_double_dice++;
+            record("플레이어 " + (player + 1) + "이 주사위 더블을 함");
         } else {
             players[player].double_dice_mode = false;
             players[player].count_double_dice = 0;
@@ -627,10 +656,10 @@
         console.log(building_number);
         var build_cost = build[building_number].build_cost[input]
         if (players[player].money >= build_cost) {
-            players[player].assets -= build_cost;
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             build[building_number].buildings = input;
+            set_entrancefee(building_number);
             PlaceBuilding(building_number, input - 1);
             set_acquisition_cost(building_number);
             //건물 샀음 
@@ -643,25 +672,17 @@
 
     function cost_entrancefee(player, building_number) {
         //build_cost가 배열이기 때문에 인덱스 값을 취해주기 위해 -1을 함
-        var entrancefee = 0;
         var land_owner = build[building_number].owner - 1;
         var current_building_status = build[building_number].buildings - 1;
-        console.log(players[player].money);
-        console.log(land_owner);
-        console.log(current_building_status);
-        if (!players[land_owner].festival) {
-            entrancefee = build[building_number].build_cost[current_building_status];
-        } else {
-            entrancefee = build[building_number].build_cost[current_building_status] * 1.2;
-        }
-        console.log("통행비 : " + entrancefee);
 
-        if (players[player].money >= entrancefee) {
-            players[player].money -= entrancefee;
+        if (players[player].money >= build[building_number].current_entrancefee) {
+            players[player].money -= build[building_number].current_entrancefee;
+            players[land_owner].money += build[building_number].current_entrancefee;
             //통행료를 지불했기 때문에 인수로 넘어감
             acquire_buildings(player, building_number);
         } else {
-            if (players[player].assets >= entrancefee) {
+            players[land_owner].money += build[building_number].current_entrancefee;
+            if (players[player].assets >= build[building_number].current_entrancefee) {
                 //총 자산이 통행세보다 많을 경우 매각 단계에 돌입
                 var confirm_disposal = confirm("현재 보유 중인 현금이 통행세보다 비싸서 땅을 매각 하시겠습니까?\n" +
                     "취소시 파산 처리됩니다.");
@@ -710,6 +731,21 @@
         }
     }
 
+    function set_entrancefee(building_number) {
+        var land_owner = build[building_number].owner - 1;
+        var current_building_status = build[building_number].buildings - 1;
+        if (!players[land_owner].festival) {
+            entrancefee1 = build[building_number].build_cost[current_building_status];
+            build[building_number].current_entrancefee = entrancefee1;
+            console.log(entrancefee1);
+            land_price(building_number);
+        } else {
+            entrancefee1 = build[building_number].build_cost[current_building_status] * 1.2;
+            build[building_number].current_entrancefee = entrancefee1;
+            land_price(building_number);
+        }
+    }
+
     function set_acquisition_cost(building_number) {
         var current_cell_line = build[building_number].line;
         var current_building_status = build[building_number].buildings
@@ -745,7 +781,6 @@
                 "(땅의 번호를 입력해주세요.)\n" +
                 "현재 현금 : " + players[player].money, 0);
             parse_input_disposal_other_land = parseInt(input_disposal_land);
-
             if (parse_input_disposal_land == NaN) {
                 alert("제대로된 값을 입력해주세요.");
                 continue;
@@ -767,8 +802,10 @@
     function reset_board() {}
 
     function festival(player) {
+        record("플레이어 " + (player + 1) + "이 축제를 열었습니다!");
         if (players[player].festival) {
             players[player].festival = false;
+            record("플레이어 " + (player + 1) + "의 축제가 끝났습니다!");
         } else {
             players[player].festvial = true;
         }
@@ -776,6 +813,7 @@
     }
 
     function bus(player) {
+        record("플레이어 " + (player + 1) + "이 버스를 탔습니다.");
         var bus_input = prompt("가고 싶은 지역의 번호를 입력해주세요.\n" +
             "(단 띄어 쓰기는 하셔야합니다.)", "1");
         var parse_bus_input = parseInt(bus_input);
@@ -787,8 +825,6 @@
             alert("제대로 숫자를 입력 해주세요.")
             bus(player);
         }
-
-
         end_turn();
 
     }
@@ -798,6 +834,7 @@
         build[3].stack_of_money += players[player].money * percent;
         players[player].money *= (1 - percent);
         alert("현금 자산의 " + percent + "퍼센트가 몰수 당했습니다.");
+        record("플레이어 " + (player + 1) + "의 돈이 몰수 당했습니다.");
         end_turn();
     }
 
@@ -869,6 +906,7 @@
 
     function end_turn() {
         console.log("턴 종료");
+        record_player();
         if (players[player_turn].count_double_dice >= 1) {
             rank_assets();
             return;

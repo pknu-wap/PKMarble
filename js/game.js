@@ -167,7 +167,7 @@ function record_player(){
 //건물 통행료 바꾸는 함수
 function land_price(i){
   var x = document.querySelectorAll('.price');
-  x.innerHTML = build[i].current_entrancefee;
+  x[i].innerText = build[i].current_entrancefee;
 }
 //능력 입력 함수
 function avility(i){
