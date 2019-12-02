@@ -91,17 +91,24 @@ function dice_show() {
 // }
 
 //땅 클릭시 information 창 띄우기
-function clickland(i) {
-    //땅 이름 정보 가져오기
-    var x = document.querySelectorAll('.name');
-    var x1 = x[i].innerText;
-    document.querySelector('.info_name').innerText = x1;
-    //통행료 정보 가져오기
-    var y = document.querySelectorAll('.price');
-    var y1 = y[i].innerText;
-    document.querySelector('.p7_m').innerText = y1;
+function clickland(i){
+  //땅 이름 정보 가져오기
+  var x = document.querySelectorAll('.name');
+  var x1 = x[i].innerText;
+  document.querySelector('.info_name').innerText = x1;
+  //건물 가격
+  document.querySelector('.p2_m').innerText = build[i].build_cost[0];
+  document.querySelector('.p3_m').innerText = build[i].build_cost[1];
+  document.querySelector('.p4_m').innerText = build[i].build_cost[2];
+  document.querySelector('.p5_m').innerText = build[i].build_cost[3];
+  //인수비용
+  document.querySelector('.p6_m').innerText = build[i].acquisition_cost;
+  //통행료 정보 가져오기
+  var y = document.querySelectorAll('.price');
+  var y1 = y[i].innerText;
+  document.querySelector('.p7_m').innerText = y1;
 
-    document.querySelector('.bb').style.visibility = "visible";
+  document.querySelector('.bb').style.visibility = "visible";
 }
 //esc누르면 information끄기
 function keydown() {
