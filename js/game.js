@@ -156,7 +156,8 @@ function land_price(i){
 }
 //능력 입력 함수
 function avility(i){
-    
+    var x = document.querySelectorAll('.PlayerInfo');
+    x[i].innerText = 능력;
 }
 //땅 색 바꾸기
 //i가 건물 번호 배열값
