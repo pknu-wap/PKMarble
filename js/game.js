@@ -4,16 +4,25 @@
 function PlaceBuilding(number, j) {
     var x = document.querySelectorAll('.build');
     var y = x[number].children;
-    for (let i = 0; i <= j; i++) {
+    var z = document.querySelectorAll('.landmark');
+    if(j == 4){
+        y[0].style.visibility = 'hidden';
+        y[1].style.visibility = 'hidden';
+        y[2].style.visibility = 'hidden';
+        z[number].style.visibility = "visible";
+    }
+    else{
+        for (let i = 0; i <= j; i++) {
         PB(i);
     }
 
-    function PB(n) {
-        y[n].style.visibility = "visible";
-        /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
-        y[n].style.animation = 'none';
-        y[n].offsetHeight;
-        y[n].style.animation = null;
+        function PB(n) {
+            y[n].style.visibility = "visible";
+            /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
+            y[n].style.animation = 'none';
+            y[n].offsetHeight;
+            y[n].style.animation = null;
+        }
     }
 }
 //랜드마크 세우기, 애니메이션은 아직 추가안함
