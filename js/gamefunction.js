@@ -515,13 +515,19 @@
         if (player_cell > 7 && player_cell <= 14) {
             player_line++;
             player_cell -= 7;
-            if (player_line > 4)
+            if (player_line > 4) {
+                players[player].money += 500000;
+                players[player].assets += 500000;
                 player_line = 1;
+            }
         } else if (player_cell > 14 && player_cell <= 21) {
             player_line += 2;
             player_cell -= 14;
-            if (player_line > 4)
+            if (player_line > 4) {
+                players[player].money += 500000;
+                players[player].assets += 500000;
                 player_line = 1;
+            }
         }
         players[player].cell = player_cell;
         players[player].line = player_line;
@@ -552,8 +558,8 @@
             var building_name = build[building_number].name;
             switch (building_name) {
                 case "START":
-                    players[player].money += 1000000;
-                    construct_building(player, building_number);
+                    players[player].money += 500000;
+                    players[player].assets += 500000; 
                     break;
                 case "미래관":
                     get_money(player);
@@ -565,7 +571,7 @@
                 case "호연관":
                     //향파관 이동
                     players[player].line = 4;
-                    players[player].ceil = 4;
+                    players[player].cell = 4;
                     playericon_move(player, players[player].line, players[player].cell);
                     end_turn();
                     break;
@@ -843,7 +849,9 @@
 
     function rob_money(player, percent, index) {
         //수위실은 배열 인덱스가 16
-        build[3].stack_of_money += players[player].money * percent;
+        var rob_money = players[player].money * percent;
+        build[3].stack_of_money += rob_money;
+        players[player].assets += players[player].money * (1 - percent);
         players[player].money *= (1 - percent);
         alert("현금 자산의 " + percent + "퍼센트가 몰수 당했습니다.");
         record("플레이어 " + (player + 1) + "의 돈이 몰수 당했습니다.");
@@ -896,22 +904,22 @@
 
     function check_line_monopoly() {
         var somebody_monopolize_line = false;
-        var amount_of_monopolized_ceil = 0;
+        var amount_of_monopolized_cell = 0;
         var building_number = 0;
         for (var p = 0; p < 4; p++) {
             for (var i = 0; i < 4; i++) {
                 for (var j = 1; j < 8; j++) {
                     building_number = j + (7 * i) - 1;
                     if (build[building_number].owner == players[p].id)
-                        amount_of_monopolized_ceil++;
+                        amount_of_monopolized_cell++;
                 }
             }
-            if (amount_of_monopolized_ceil == 7) {
+            if (amount_of_monopolized_cell == 7) {
                 players[p].line_monopoly = true;
                 somebody_monopolize_line = true;
                 break;
             }
-            amount_of_monopolized_ceil = 0;
+            amount_of_monopolized_cell = 0;
         }
         check_possibility_to_end_game(somebody_monopolize_line);
     }
