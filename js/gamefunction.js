@@ -533,6 +533,7 @@
 
     function check_current_board_cell(player) {
         var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
+        alert("도착한 곳 : " + build[building_number].name);
         console.log("building_number : " + building_number);
         console.log("special_building : " + build[building_number].special_building);
         if (!build[building_number].special_building) {
@@ -681,7 +682,9 @@
 
         if (players[player].money >= build[building_number].current_entrancefee) {
             players[player].money -= build[building_number].current_entrancefee;
+            players[player].assets -= build[building_number].current_entrancefee;
             players[land_owner].money += build[building_number].current_entrancefee;
+            players[land_owner].assets += build[building_number].current_entrancefee;
             //통행료를 지불했기 때문에 인수로 넘어감
             acquire_buildings(player, building_number);
         } else {
@@ -785,7 +788,7 @@
         var input_disposal_land;
         var sum_of_disposal = 0;
         while (players[player].money < build[building_number].acquisition_cost) {
-            input_disposal_land = prompt("매각할 땅을 입력해주세요\n" +
+            input_disposal_land = prompt("매각할 상대 또는 자신의 땅을 입력해주세요\n" +
                 "(땅의 번호를 입력해주세요.)\n" +
                 "현재 현금 : " + players[player].money, 0);
             parse_input_disposal_other_land = parseInt(input_disposal_land);
