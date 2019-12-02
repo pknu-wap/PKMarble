@@ -565,6 +565,7 @@
                     //향파관 이동
                     players[player].line = 4;
                     players[player].ceil = 4;
+                    playericon_move(player, players[player].line, players[player].ceil);
                     end_turn();
                     break;
                 case "대학축제":
@@ -588,6 +589,7 @@
                     //호연관 이동
                     players[player].line = 2;
                     players[player].cell = 5;
+                    playericon_move(player, players[player].line, players[player].ceil);
                     end_turn();
                     break;
                 default:
@@ -655,9 +657,11 @@
         console.log(building_number);
         var build_cost = build[building_number].build_cost[input]
         if (players[player].money >= build_cost) {
+
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             build[building_number].buildings = input;
+
             get_land(building_number, player);
             set_entrancefee(building_number);
             PlaceBuilding(building_number, input - 1);
@@ -718,7 +722,11 @@
             var confirm_acquire = confirm("현재 이 건물을 인수할 수 있습니다. 인수하시겠습니까?");
             if (confirm_acquire) {
                 players[player].money -= acquisition_cost;
-                players[player].assets += acquisition_cost;
+                players[player].assets -= acquisition_cost;
+                players[build[building_number].owner - 1].money += acquisition_cost;
+                players[build[building_number].owner - 1].assets += acquisition_cost;
+                players[build[building_number].owner - 1].assets -= build[building_number].build_cost[(build[building_number].buildings - 1)];
+                players[player].assets += build[building_number].build_cost[(build[building_number].buildings - 1)];
                 build[building_number].owner = players[player].id;
                 construct_building(player, building_number);
             } else {
@@ -820,6 +828,7 @@
         if (parse_bus_input < 29 && parse_bus_input > 0) {
             players[player].line = build[bus_input - 1].line;
             players[player].cell = build[bus_input - 1].cell;
+            playericon_move(player, players[player].line, players[player].ceil);
             players[player].bus = false;
         } else {
             alert("제대로 숫자를 입력 해주세요.")
