@@ -3,7 +3,9 @@
   src: url('koverwatch.ttf');
 }
 body{
-  background-image: linear-gradient(175deg, #16193B, #35478C, #4E7AC7 85%, #F28B50, #F2A03D 98.5%, #4E7AC7, #F2A03D);
+  overflow: hidden;
+  /* visibility: hidden; */
+  /* background-image: linear-gradient(175deg, #16193B, #35478C, #4E7AC7 85%, #F28B50, #F2A03D 98.5%, #4E7AC7, #F2A03D); */
   background-image: linear-gradient(135deg, #000000, #0D0D0D, #262626, #112959,  #113059, #616F8C, #112959);
   background-size: 100vw 100vh;
   font-family:koverwatch;
@@ -11,33 +13,61 @@ body{
   margin: 20px;
   min-width: 1000px;
   min-height: 650px;
-  /* animation: backColor 3s linear; */
 }
-/* @keyframes backColor{
+.cover{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #000000;
+  filter: opacity(0);
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  animation: entrance 2s linear;
+}
+@keyframes entrance {
   0%{
-    background-image: linear-gradient(150deg, #402C2C, #D9D4C5, #F2EFE4, #8C7D77, #402C2C);
-  }
-  20%{
-    background-image: linear-gradient(150deg, #F24C27, #402C2C, #D9D4C5, #F2EFE4, #8C7D77);
-  }
-  40%{
-    background-image: linear-gradient(150deg, #F2D5BB, #F24C27, #402C2C, #D9D4C5, #F2EFE4)
-  }
-  60%{
-    background-image: linear-gradient(150deg, #F29441, #F2D5BB, #F24C27, #402C2C, #D9D4C5)
-  }
-  80%{
-    background-image: linear-gradient(150deg, #F2E1AC, #F29441, #F2D5BB, #F24C27, #402C2C)
+    filter: opacity(1);
   }
   100%{
-    background-image: linear-gradient(150deg, #D9A404, #F2E1AC, #F29441, #F2D5BB, #F24C27);
+    filter: opacity(0);
   }
-} */
+}
 #title{
   font-size: 60px;
   color: white;
-  -webkit-text-stroke:1px black;
-  text-shadow: 0px 0px 5px #ffffff;
+  /* -webkit-text-stroke:1px black;
+  text-shadow: 0px 0px 5px #ffffff; */
+  animation: entrance_title1 11s linear, entrance_title2 1s cubic-bezier(0.09, 1.07, 0.79, 1.17) 11s, glowing 1s ease-in-out infinite 12.5s;
+}
+@keyframes entrance_title1 {
+  0%{
+    filter: opacity(0);
+  }
+  100%{
+    filter: opacity(0);
+  }
+}
+@keyframes entrance_title2 {
+  0%{
+    transform: translateX(500px);
+    filter: opacity(0);
+  }
+  100%{
+    transform: translateX(0);
+    filter: opacity(1);
+  }
+}
+@keyframes glowing {
+  0%{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
+  }
+  70%{
+    text-shadow: 0 0 5px #fff, 0 0 15px #ff4da6, 0 0 20px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6, 0 0 40px #ff4da6;
+  }
+  100%{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
+  }
 }
 #flex{
   display: flex;
@@ -48,6 +78,23 @@ body{
   grid-gap: 10px;
   margin-right: 50px;
   margin-top: 20px;
+  animation: entrance_grid1 3s linear, entrance_grid2 0.7s cubic-bezier(0.09, 1.07, 0.79, 1.17) 3s;
+}
+@keyframes entrance_grid1 {
+  0%{
+    filter: opacity(0);
+  }
+  100%{
+    filter: opacity(0);
+  }
+}
+@keyframes entrance_grid2 {
+  0%{
+    transform: translateX(-1000px);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }
 .PlayerCard{
   position: relative;
@@ -153,6 +200,34 @@ body{
     "left center right"
     "bottom bottom bottom";
   background-image: radial-gradient(circle farthest-corner at 30% 30%, #CFCFCF, #FFFFFF, #CFCFCF, transparent 10%);
+  animation: entrance_board1 5s linear, entrance_board2 0.7s cubic-bezier(0.09, 1.07, 0.79, 1.17) 5s, entrance_board3 1s linear 6s;
+}
+@keyframes entrance_board1 {
+  0%{
+    filter: opacity(0);
+  }
+  100%{
+    filter: opacity(0);
+  }
+}
+@keyframes entrance_board2 {
+  0%{
+    transform: translateY(-1000px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+@keyframes entrance_board3 {
+  0%{
+
+  }
+  50%{
+    box-shadow: 0px 0px 30px #FFFFFF;
+  }
+  100%{
+    box-shadow: none;
+  }
 }
 #r1 .b, #r3 .b{
   border-right: none;
@@ -305,7 +380,7 @@ body{
   height: 80px;
   color: #3D3927;
   font-family: koverwatch;
-  box-shadow: 0px 0px 3px #FFFFFF;
+  box-shadow: 0px 0px 5px #FFFFFF;
   box-sizing: border-box;
   transition-duration: 0.3s;
   cursor: pointer;
@@ -551,6 +626,25 @@ body{
   margin-left: 10px;
   width: 200px;
   height: 85vh;
+  animation: entrance_chat1 8s linear, entrance_chat2 2s linear 8s;
+}
+@keyframes entrance_chat1 {
+  0%{
+    filter: opacity(0);
+  }
+  100%{
+    filter: opacity(0);
+  }
+}
+@keyframes entrance_chat2 {
+  0%{
+    filter: opacity(0);
+    box-shadow: 0px 0px 30px #FFFFFF;
+  }
+  100%{
+    filter: opacity(1);
+    box-shadow: 0px 0px 30px #FFFFFF;
+  }
 }
 .sticky{
   position: sticky;

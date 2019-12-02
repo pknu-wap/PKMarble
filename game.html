@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css\game.css">
   </head>
   <body onkeydown="keydown()">
+    <div class="cover"></div>
     <div id="flex">
       <div id="grid">
         <div class="PlayerCard">
@@ -126,8 +127,8 @@
               <img src="image/building1.png">
               <img src="image/building1.png">
               <img src="image/building1.png">
-              <img class="landmark" src="Bigben.png">
             </div>
+            <img class="landmark" src="Bigben.png">
             <div class="name">11. 자연과학관</div>
             <div class="price">가격</div>
           </div>
@@ -283,11 +284,6 @@
     <input type="button" value="건물3" onclick="PlaceBuilding(1, 2)">
     <input type="button" value="랜드마크" onclick="PlaceLandmark(0)">
     <input class="test" type="button" value="없애기"><br>
-    <input type="button" value="건물1" onclick="PlaceBuilding(10, 0)">
-    <input type="button" value="건물2" onclick="PlaceBuilding(10, 1)">
-    <input type="button" value="건물3" onclick="PlaceBuilding(10, 2)">
-    <input type="button" value="랜드마크" onclick="PlaceBuilding(10, 3)">
-    <input type="button" value="없애기" onclick="cl(10)">
     <input type="button" value="주사위 굴리기버튼생성" onclick="show()">
     <input type="button" value="돈 없음" onclick="getmoney(this)">
     <input type="button" value="게임기록" onclick="record()">

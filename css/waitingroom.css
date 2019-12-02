@@ -60,7 +60,7 @@ body{
     filter: blur(0px);
   }
   100%{
-
+    filter: blur(0px);
   }
 }
 .flip-front {
@@ -134,7 +134,7 @@ body{
   position: absolute;
   left: 0px;
   top: 0px;
-  border-top: 100vh solid white;
+  border-top: 100vh solid black;
   border-right: 20vw solid transparent;
   animation: toright 1s linear;
   animation-play-state: paused;
@@ -149,7 +149,7 @@ body{
     transform: translateX(0);
   }
   100%{
-
+    transform: scaleX(1.01);
   }
 }
 .cover2{

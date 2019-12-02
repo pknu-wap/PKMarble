@@ -1,3 +1,4 @@
+//준비하기 단축키
 function keydown(i, self){
   var x = document.querySelectorAll('.showready');
   var y = window.getComputedStyle(x[i]).visibility;
@@ -25,7 +26,7 @@ function active(){
     }
   }
 }
-
+//등장 효과
 function join(i, self){
   var x = document.querySelectorAll('.flip-card');
   var y = window.getComputedStyle(x[i]).visibility;
@@ -51,11 +52,14 @@ function join(i, self){
     self.style.backgroundColor='red';
   }
 }
-
+//장면 전환 효과
 function scrtrs(){
   document.querySelector(".cover1").style.animationPlayState = "running";
   document.querySelector(".cover2").style.animationPlayState = "running";
 }
+//게임화면으로 넘어가기
 function link(){
   location.href='game.html';
 }
+var btn = document.querySelector('.test');
+btn.addEventListener("click", function(){setTimeout(function(){link()}, 1000)});
