@@ -146,3 +146,14 @@ function record(string) {
     var x = document.querySelector('.record');
     x.innerHTML = x.innerHTML + "<br>" + string;
 }
+//총재산, 돈, 등수 바꾸는 함수
+function record_player(){
+  var x = document.querySelectorAll('.allmoney');
+  var y = document.querySelectorAll('.money');
+  var z = document.querySelectorAll('.P_rank');
+  for(let i=0; i<4; i++){
+    x[i].innerHTML = players[i].assets;
+    y[i].innerHTML = players[i].money;
+    z[i].innerHTML = players[i].assets_rank;
+  }
+}
