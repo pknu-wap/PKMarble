@@ -457,7 +457,7 @@
     var sum_of_turn = 1;
 
     window.onload = dice_show();
-    
+
     function main() {
         record_player();
         start_turn(player_turn);
@@ -535,7 +535,6 @@
         var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
         console.log("building_number : " + building_number);
         console.log("special_building : " + build[building_number].special_building);
-        alert("도착 건물 : " + build[building_number].name);
         if (!build[building_number].special_building) {
             if (build[building_number].owner != players[player].id && build[building_number].owner != 0) {
                 cost_entrancefee(player, building_number);
@@ -659,6 +658,7 @@
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             build[building_number].buildings = input;
+            get_land(building_number, player);
             set_entrancefee(building_number);
             PlaceBuilding(building_number, input - 1);
             set_acquisition_cost(building_number);
