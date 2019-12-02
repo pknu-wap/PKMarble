@@ -427,3 +427,4 @@ var players = [{
         'double_dice_mode' : false,
     }
 ]
+export {build, players};
