@@ -110,15 +110,14 @@ function keydown() {
     }
 }
 //특수지역 돈 뺏은거 표시
-function getmoney(self) {
+function getmoney() {
     var x = document.querySelector('.moneybag');
     var y = window.getComputedStyle(x).visibility;
     if (y === 'hidden') {
         x.style.visibility = "visible";
-        self.value = "돈 강탈";
-    } else {
+    } 
+    else {
         x.style.visibility = "hidden";
-        self.value = "돈 없음";
     }
 }
 //roll  dice animation
@@ -200,12 +199,16 @@ function get_land(i, j) {
     }
 }
 //축제시 땅 빛나게 하기
-function festivalevent(i) {
+function festivalevent(player) {
     var x = document.querySelectorAll('.b');
     for (let i = 0; i < 28; i++) {
         x[i].style.animation = "none";
         x[i].style.WebkitAnimation = "none";
     }
-    x[i].style.animation = "glowing_b 1s linear infinite";
-    x[i].style.WebkitAnimation = "glowing_b 1s linear infinite";
+    for(let j = 0; j < 28; j++) {
+        if(build[j].owner == player){
+            x[j].style.animation = "glowing_b 1s linear infinite";
+            x[j].style.WebkitAnimation = "glowing_b 1s linear infinite";
+        }
+    }
 }
