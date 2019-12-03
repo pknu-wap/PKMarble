@@ -482,7 +482,7 @@
         } else if (players[player].festival) {
             festvial(player);
         } else if (players[player].skip_mode) {
-            record("플레이어 " + (player +1) + "이/가 휴학 중입니다! ");
+            record("플레이어 " + (player + 1) + "이/가 휴학 중입니다! ");
             players[player].skip_mode = false;
             end_turn();
         } else if (players[player].double_dice_mode) {
@@ -555,7 +555,7 @@
     function check_current_board_cell(player) {
         var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
         alert("도착한 곳 : " + build[building_number].name);
-        record("플레이어 " + (player +1) + "이/가 " + build[building_number].name + "에 도착했습니다.");
+        record("플레이어 " + (player + 1) + "이/가 " + build[building_number].name + "에 도착했습니다.");
         console.log("building_number : " + building_number);
         console.log("special_building : " + build[building_number].special_building);
         if (!build[building_number].special_building) {
@@ -664,6 +664,7 @@
                     }
                     break;
                 case '4':
+                    var parse_input = parseInt(input);
                     if (build[building_number].buildings == 3) {
                         check_buying_possibility_and_buying(player, building_number, parse_input);
                     } else {
@@ -900,7 +901,7 @@
             build[3].stack_of_money = 0;
             players[player].money += build[3].stack_of_money;
             players[player].assets += build[3].stack_of_money;
-            record("플레이어 " + (player + 1) + "이/가 " + build[3].stack_of_money +"만큼 얻었습니다.");
+            record("플레이어 " + (player + 1) + "이/가 " + build[3].stack_of_money + "만큼 얻었습니다.");
             end_turn();
         } else {
             alert("해당 지역에 쌓인 돈이 없습니다.");
@@ -1012,7 +1013,7 @@
     function item1(player) {
         var temp = random(1, 100);
         if (temp <= 10) {
-            record("플레이어 " + (player +1) + "이/가 버스 아이템 효과를 발동시켰습니다!!");
+            record("플레이어 " + (player + 1) + "이/가 버스 아이템 효과를 발동시켰습니다!!");
             alert("버스 아이템 효과를 발동시켰으므로 다음 턴에 원하는 지역으로 이동할 수 있습니다.");
             players[player].bus = true;
         }
@@ -1022,7 +1023,7 @@
 
         var temp = random(1, 100);
         if (temp <= 5) {
-            record("플레이어 " + (player+1) +"이/가 통행료 면제 아이템을 사용했습니다!!");
+            record("플레이어 " + (player + 1) + "이/가 통행료 면제 아이템을 사용했습니다!!");
             acquire_buildings(player, building_number);
         } else {
             cost_entrancefee(player, building_number);
@@ -1045,10 +1046,10 @@
 
     function item4(player, building_number) {
         var land_owner = build[building_number].owner - 1;
-        var temp = random(1 , 100);
-        if(temp <= 10) {
-            record("플레이어 " + (player +1) + "이/가 돈 강탈 아이템을 발동하였습니다.");
-            if(players[land_owner].money <= 0) {
+        var temp = random(1, 100);
+        if (temp <= 10) {
+            record("플레이어 " + (player + 1) + "이/가 돈 강탈 아이템을 발동하였습니다.");
+            if (players[land_owner].money <= 0) {
                 record("하지만 해당 땅 주인의 현금이 없으므로 걷어가지 못했습니다!");
                 return;
             }
