@@ -888,9 +888,9 @@
         //수위실은 배열 인덱스가 16
         var rob_money = players[player].money * percent;
         build[3].stack_of_money += rob_money;
-        players[player].assets -= players[player].money * (1 - percent);
-        players[player].money *= (1 - percent);
-        alert("현금 자산의 " + (percent * 100) + "퍼센트가 몰수 당했습니다.");
+        players[player].assets -= rob_money;
+        players[player].money -= rob_money;
+        alert("현금의 " + (percent * 100) + "퍼센트가 몰수 당했습니다.");
         record("플레이어 " + (player + 1) + "의 돈이 몰수 당했습니다.");
         end_turn();
     }
@@ -899,6 +899,8 @@
         if (build[3].stack_of_money > 0) {
             build[3].stack_of_money = 0;
             players[player].money += build[3].stack_of_money;
+            players[player].assets += build[3].stack_of_money;
+            record("플레이어 " + (player + 1) + "이/가 " + build[3].stack_of_money +"만큼 얻었습니다.");
             end_turn();
         } else {
             alert("해당 지역에 쌓인 돈이 없습니다.");
