@@ -195,21 +195,41 @@ function avility() {
 //플레이어 번호 0부터
 function get_land(i, j) {
     var x = document.querySelectorAll('.b');
-    if (j == 0) {
+    switch (j) {
+        case 0:
         x[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
-    }
-    if (j == 1) {
+            break;
+        case 1:
         x[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
-    }
-    if (j == 2) {
+            break;
+        case 2:
         x[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
-    }
-    if (j == 3) {
+            break;
+        case 3:
         x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
-    }
-    else{
+            break;
+        case 4:
         x[i].style.backgroundImage = "none";
-    }
+            break;
+        default:
+            // statements_def
+            break;
+        }
+    // if (j == 0) {
+    //     x[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
+    // }
+    // if (j == 1) {
+    //     x[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
+    // }
+    // if (j == 2) {
+    //     x[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
+    // }
+    // if (j == 3) {
+    //     x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
+    // }
+    // else{
+    //     x[i].style.backgroundImage = "none";
+    // }
 }
 //축제시 땅 빛나게 하기
 function festivalevent(player) {
