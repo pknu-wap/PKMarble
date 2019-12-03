@@ -10,7 +10,8 @@ function PlaceBuilding(number, j) {
         y[1].style.visibility = 'hidden';
         y[2].style.visibility = 'hidden';
         z[number].style.visibility = "visible";
-    } else {
+    } 
+    else {
         for (let i = 0; i <= j; i++) {
             PB(i);
         }
@@ -163,16 +164,16 @@ function avility() {
     for(let i = 0; i < 4; i++){
         switch (players[i].item) {
         case 1:
-        x[i].innerText = "내 땅 밟을 때 10퍼센트 확률로 그 지역에서 세계여행";
+        x[i].innerHTML = "내 땅 밟을 때 10퍼센트 확률로<br>그 지역에서 세계여행";
             break;
         case 2:
-        x[i].innerText = "상대 땅 밟을 때 5퍼센트 확률로 통행세 면제";
+        x[i].innerHTML = "상대 땅 밟을 때 5퍼센트 확률로<br>통행세 면제";
             break;
         case 3:
-        x[i].innerText = "통행세가 건물 값 1.5배 되는 패시브( 축제가 겹치면 1.2 * 1.5배 처리됨 )";
+        x[i].innerHTML = "통행세가 건물 값 1.5배 되는 패시브<br>( 축제가 겹치면 1.2 * 1.5배 처리됨 )";
             break;
         case 4:
-        x[i].innerText = "상대 땅 도착 시 10퍼센트 확률로 해당 건물주 돈 10퍼센트 뜯기";
+        x[i].innerHTML = "상대 땅 도착 시 10퍼센트 확률로<br>해당 건물주 돈 10퍼센트 뜯기";
             break;
         default:
             // statements_def
@@ -196,6 +197,9 @@ function get_land(i, j) {
     }
     if (j == 3) {
         x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
+    }
+    else{
+        x[i].style.backgroundImage = "none";
     }
 }
 //축제시 땅 빛나게 하기
