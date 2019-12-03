@@ -5,16 +5,16 @@ function PlaceBuilding(number, j) {
     var x = document.querySelectorAll('.build');
     var y = x[number].children;
     var z = document.querySelectorAll('.landmark');
-    if(j == 3){
+    if (j == 3) {
         y[0].style.visibility = 'hidden';
         y[1].style.visibility = 'hidden';
         y[2].style.visibility = 'hidden';
         z[number].style.visibility = "visible";
-    }
-    else{
+    } else {
         for (let i = 0; i <= j; i++) {
-        PB(i);
-    }
+            PB(i);
+        }
+
         function PB(n) {
             y[n].style.visibility = "visible";
             /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
@@ -22,7 +22,7 @@ function PlaceBuilding(number, j) {
             y[n].offsetHeight;
             y[n].style.animation = null;
         }
-        
+
     }
 }
 //랜드마크 세우기, 애니메이션은 아직 추가안함
@@ -46,7 +46,7 @@ function cl(number) {
 //자기 차례에 오른쪽으로 살짝 이동
 function slt(i) {
     var x = document.querySelectorAll('.PlayerCard')
-    for(let j = 0; j < 4; j++){
+    for (let j = 0; j < 4; j++) {
         x[j].style.transform = 'translateX(0px)';
     }
     x[i].style.transform = 'translateX(35px)';
@@ -56,16 +56,16 @@ function playericon_move(player, line, cell) {
     //땅정보 들고 오기, line, cell, n번째 칸
     var x = document.querySelectorAll('.chess');
     if (line == 1) {
-        x[player].style.transform = 'translateX('+(cell-1)*120+'px)';
+        x[player].style.transform = 'translateX(' + (cell - 1) * 120 + 'px)';
     }
     if (line == 2) {
-        x[player].style.transform = 'translate(840px, '+(cell-1)*80+'px)';
+        x[player].style.transform = 'translate(840px, ' + (cell - 1) * 80 + 'px)';
     }
     if (line == 3) {
-        x[player].style.transform = 'translate('+(840 - (cell-1)*120)+'px, 560px)';
+        x[player].style.transform = 'translate(' + (840 - (cell - 1) * 120) + 'px, 560px)';
     }
     if (line == 4) {
-        x[player].style.transform = 'translate(0px, '+(560 - (cell-1)*80)+'px)';
+        x[player].style.transform = 'translate(0px, ' + (560 - (cell - 1) * 80) + 'px)';
     }
 }
 //자기 차례에 주사위 버튼 보이게 하기
@@ -81,27 +81,27 @@ function dice_show() {
 
 
 //땅 클릭시 information 창 띄우기
-function clickland(i){
-  //땅 이름 정보 가져오기
-  var x = document.querySelectorAll('.name');
-  var x1 = x[i].innerText;
-  document.querySelector('.info_name').innerText = x1;
-  //이미지 가져오기
-  var z = document.querySelectorAll('.landmark');
-  document.querySelector('.info_image').src = z[i].src;
-  //건물 가격
-  document.querySelector('.p2_m').innerText = build[i].build_cost[0];
-  document.querySelector('.p3_m').innerText = build[i].build_cost[1];
-  document.querySelector('.p4_m').innerText = build[i].build_cost[2];
-  document.querySelector('.p5_m').innerText = build[i].build_cost[3];
-  //인수비용
-  document.querySelector('.p6_m').innerText = build[i].acquisition_cost;
-  //통행료 정보 가져오기
-  var y = document.querySelectorAll('.price');
-  var y1 = y[i].innerText;
-  document.querySelector('.p7_m').innerText = y1;
+function clickland(i) {
+    //땅 이름 정보 가져오기
+    var x = document.querySelectorAll('.name');
+    var x1 = x[i].innerText;
+    document.querySelector('.info_name').innerText = x1;
+    //이미지 가져오기
+    var z = document.querySelectorAll('.landmark');
+    document.querySelector('.info_image').src = z[i].src;
+    //건물 가격
+    document.querySelector('.p2_m').innerText = build[i].build_cost[0];
+    document.querySelector('.p3_m').innerText = build[i].build_cost[1];
+    document.querySelector('.p4_m').innerText = build[i].build_cost[2];
+    document.querySelector('.p5_m').innerText = build[i].build_cost[3];
+    //인수비용
+    document.querySelector('.p6_m').innerText = build[i].acquisition_cost;
+    //통행료 정보 가져오기
+    var y = document.querySelectorAll('.price');
+    var y1 = y[i].innerText;
+    document.querySelector('.p7_m').innerText = y1;
 
-  document.querySelector('.bb').style.visibility = "visible";
+    document.querySelector('.bb').style.visibility = "visible";
 }
 //esc누르면 information끄기
 function keydown() {
@@ -143,48 +143,66 @@ function record(string) {
     x.innerHTML = x.innerHTML + "<br>" + string;
 }
 //총재산, 돈, 등수 바꾸는 함수
-function record_player(){
-  var x = document.querySelectorAll('.allmoney');
-  var y = document.querySelectorAll('.money');
-  var z = document.querySelectorAll('.P_rank');
-  for(let i=0; i<4; i++){
-    x[i].innerHTML = players[i].assets;
-    y[i].innerHTML = players[i].money;
-    z[i].innerHTML = players[i].assets_rank;
-  }
+function record_player() {
+    var x = document.querySelectorAll('.allmoney');
+    var y = document.querySelectorAll('.money');
+    var z = document.querySelectorAll('.P_rank');
+    for (let i = 0; i < 4; i++) {
+        x[i].innerHTML = players[i].assets;
+        y[i].innerHTML = players[i].money;
+        z[i].innerHTML = players[i].assets_rank;
+    }
 }
 //건물 통행료 바꾸는 함수
-function land_price(i){
-  var x = document.querySelectorAll('.price');
-  x[i].innerHTML = build[i].current_entrancefee;
+function land_price(i) {
+    var x = document.querySelectorAll('.price');
+    x[i].innerHTML = build[i].current_entrancefee;
 }
 //능력 입력 함수
-function avility(i){
+function avility() {
     var x = document.querySelectorAll('.PlayerInfo');
-    x[i].innerText = 능력;
+    for(let i = 0; i < 4; i++){
+        switch (players[i].item) {
+        case 1:
+        x[i].innerText = "내 땅 밟을 때 10퍼센트 확률로 그 지역에서 세계여행";
+            break;
+        case 2:
+        x[i].innerText = "상대 땅 밟을 때 5퍼센트 확률로 통행세 면제";
+            break;
+        case 3:
+        x[i].innerText = "통행세가 건물 값 1.5배 되는 패시브( 축제가 겹치면 1.2 * 1.5배 처리됨 )";
+            break;
+        case 4:
+        x[i].innerText = "상대 땅 도착 시 10퍼센트 확률로 해당 건물주 돈 10퍼센트 뜯기";
+            break;
+        default:
+            // statements_def
+            break;
+        }
+    }
 }
 //땅 색 바꾸기
 //i가 건물 번호 배열값
 //플레이어 번호 0부터
-function get_land(i, j){
+function get_land(i, j) {
     var x = document.querySelectorAll('.b');
-    if(j == 0){
-         x[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
+    if (j == 0) {
+        x[i].style.backgroundImage = "linear-gradient(to right, #FF837E, #FFBFB4, #FF837E)";
     }
-    if(j == 1){
-         x[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
+    if (j == 1) {
+        x[i].style.backgroundImage = "linear-gradient(to right, #F2E527, #F2E085, #F2E527)";
     }
-    if(j == 2){
-         x[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
+    if (j == 2) {
+        x[i].style.backgroundImage = "linear-gradient(to right, #9ABF75, #EFF299, #9ABF75)";
     }
-    if(j == 3){
-         x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
+    if (j == 3) {
+        x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
     }
 }
 //축제시 땅 빛나게 하기
-function festivalevent(i){
+function festivalevent(i) {
     var x = document.querySelectorAll('.b');
-    for(let i = 0; i < 28; i++){
+    for (let i = 0; i < 28; i++) {
         x[i].style.animation = "none";
         x[i].style.WebkitAnimation = "none";
     }
