@@ -5,12 +5,14 @@ function keydown(i, self){
   if(y === 'hidden'){
     x[i].style.visibility = 'visible';
     self.value='준비해제(R)';
-    self.style.backgroundColor='green';
+    self.style.backgroundColor='#F2F1F0';
+    self.style.color='#261C18';
   }
   else{
     x[i].style.visibility = 'hidden';
     self.value='준비하기(R)';
-    self.style.backgroundColor='red';
+    self.style.backgroundColor='#261C18';
+    self.style.color = "#F2F1F0";
   }
 }
 
