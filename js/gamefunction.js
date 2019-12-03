@@ -481,8 +481,12 @@
         console.log(player + 1 + " 턴 입니다.");
         if (players[player].bus) {
             bus(player);
+
         } else if (players[player].festival) {
-            festvial(player);
+            //만약 축제가 다음 돌아오는 턴 동안 다른 누군가가 밟지 않을 경우 
+            players[player].festival = false;
+            festivalevent(5);
+            throw_dice(player);
         } else if (players[player].skip_mode) {
             record("플레이어 " + (player + 1) + "이/가 휴학 중입니다! ");
             players[player].skip_mode = false;
@@ -617,7 +621,7 @@
                     break;
                 case "환경해양관":
                     // 돈 5퍼센트 압수
-                    rob_money(player, 0.1, 19);
+                    rob_money(player, 0.1);
                     break;
                 case "셔틀버스":
                     // 세계 여행
@@ -857,14 +861,22 @@
 
     function reset_board() {}
 
+
     function festival(player) {
-        record("플레이어 " + (player + 1) + "이 축제를 열었습니다!");
-        if (players[player].festival) {
-            players[player].festival = false;
-            record("플레이어 " + (player + 1) + "의 축제가 끝났습니다!");
-        } else {
-            players[player].festvial = true;
+        var someone_is_festival_mode = false;
+        for (var i = 0; i < 4; i++) {
+            if (players[i].festvial) {
+                someone_is_festival_mode = true;
+                var player_who_is_festival_mode = i;
+            }
         }
+        if (someone_is_festival_mode) {
+            players[player_who_is_festival_mode].festival = false;
+            record("플레이어 " + (player_who_is_festival_mode + 1) + "의 축제가 끝났습니다!");
+        }
+        players[player].festival = true;
+        festivalevent(player);
+        record("플레이어 " + (player + 1) + "이/가 축제를 열었습니다!");
         end_turn();
     }
 
@@ -887,10 +899,13 @@
 
     }
 
-    function rob_money(player, percent, index) {
-        getmoney();
+    function rob_money(player, percent) {
+        if (build[3].stack_of_money == 0) {
+            getmoney();
+        }
         //수위실은 배열 인덱스가 16
         var rob_money = players[player].money * percent;
+        console.log('뺏긴 돈 : ' + rob_money);
         build[3].stack_of_money += rob_money;
         players[player].assets -= rob_money;
         players[player].money -= rob_money;
@@ -933,8 +948,14 @@
         var input_disposal_other_land = prompt("매각하실 땅을 선택해주세요.\n" +
             "(땅의 번호를 입력하세요.)", NaN);
         var parse_input_disposal_other_land = parseInt(input_disposal_other_land);
+        parse_input_disposal_other_land--;
         if (parse_input_disposal_other_land == NaN) {
             alert("제대로된 값을 입력해주세요.");
+            dispose_other_land(player);
+            return;
+        } else if (build[parse_input_disposal_other_land].special_building) {
+            alert("특수지역은 매각할 수 없습니다.\n" +
+                "제대로된 값을 입력해주세요.");
             dispose_other_land(player);
             return;
         } else if (build[parse_input_disposal_other_land].buildings == 4) {
@@ -942,6 +963,11 @@
         } else {
             build[parse_input_disposal_other_land].owner = 0;
             build[parse_input_disposal_other_land].buildings = 0;
+            build[parse_input_disposal_other_land].current_entrancefee = 0;
+            land_price(parse_input_disposal_other_land);
+            get_land(parse_input_disposal_other_land, 4);
+            PlaceBuilding(parse_input_disposal_other_land, 0);
+
         }
         alert(build[parse_input_disposal_other_land].name + " 을/를 매각하였습니다.");
         end_turn();
@@ -1038,7 +1064,7 @@
 
     function item3(land_owner, building_number, current_building_status) {
         if (!players[land_owner].festival) {
-            entrancefee1 = build[building_number].build_cost[current_building_status] * 1.5;
+            entrancefee1 = build[building_number].build_cost[current_building_status] * 2;
             build[building_number].current_entrancefee = entrancefee1;
             land_price(building_number);
         } else {

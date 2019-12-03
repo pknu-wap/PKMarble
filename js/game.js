@@ -238,7 +238,7 @@ function festivalevent(player) {
         x[i].style.animation = "none";
         x[i].style.WebkitAnimation = "none";
     }
-    if(player <= 4){
+    if(player < 4){
         for(let j = 0; j < 28; j++) {
             if(build[j].owner == player){
                 x[j].style.animation = "glowing_b 1s linear infinite";
