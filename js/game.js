@@ -5,7 +5,7 @@ function PlaceBuilding(number, j) {
     var x = document.querySelectorAll('.build');
     var y = x[number].children;
     var z = document.querySelectorAll('.landmark');
-    if(j == 4){
+    if(j == 3){
         y[0].style.visibility = 'hidden';
         y[1].style.visibility = 'hidden';
         y[2].style.visibility = 'hidden';
@@ -15,7 +15,6 @@ function PlaceBuilding(number, j) {
         for (let i = 0; i <= j; i++) {
         PB(i);
     }
-
         function PB(n) {
             y[n].style.visibility = "visible";
             /* trigger reflow, https://stackoverflow.com/questions/27637184/what-is-dom-reflow*/
@@ -23,6 +22,7 @@ function PlaceBuilding(number, j) {
             y[n].offsetHeight;
             y[n].style.animation = null;
         }
+        
     }
 }
 //랜드마크 세우기, 애니메이션은 아직 추가안함
@@ -44,16 +44,12 @@ function cl(number) {
     }
 }
 //자기 차례에 오른쪽으로 살짝 이동
-function slt(self) {
+function slt(i) {
     var x = document.querySelectorAll('.PlayerCard')
-    var y = document.querySelector('#a');
-    if (y.value === "오른쪽") {
-        x[0].style.transform = 'translateX(35px)';
-        self.value = "왼쪽";
-    } else {
-        x[0].style.transform = 'translateX(0px)';
-        self.value = "오른쪽";
+    for(let j = 0; j < 4; j++){
+        x[j].style.transform = 'translateX(0px)';
     }
+    x[i].style.transform = 'translateX(35px)';
 }
 
 function playericon_move(player, line, cell) {
@@ -90,6 +86,9 @@ function clickland(i){
   var x = document.querySelectorAll('.name');
   var x1 = x[i].innerText;
   document.querySelector('.info_name').innerText = x1;
+  //이미지 가져오기
+  var z = document.querySelectorAll('.landmark');
+  document.querySelector('.info_image').src = z[i].src;
   //건물 가격
   document.querySelector('.p2_m').innerText = build[i].build_cost[0];
   document.querySelector('.p3_m').innerText = build[i].build_cost[1];
@@ -132,10 +131,6 @@ function rolldice() {
     main();
     //시간
     x.style.visibility = 'hidden';
-
-}
-//플레이어 이동 에니매이션    ---미구현
-function playermove() {
 
 }
 //test

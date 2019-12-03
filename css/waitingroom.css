@@ -136,7 +136,7 @@ body{
   top: 0px;
   border-top: 100vh solid black;
   border-right: 20vw solid transparent;
-  animation: toright 1s linear;
+  animation: toright 1.5s linear;
   animation-play-state: paused;
 }
 @keyframes toright {
@@ -144,7 +144,7 @@ body{
     visibility: visible;
     transform: translateX(-60vw);
   }
-  70%{
+  60%{
     visibility: visible;
     transform: translateX(0);
   }
@@ -158,7 +158,7 @@ body{
   top: 0px;
   border-bottom: 100vh solid black;
   border-left: 20vw solid transparent;
-  animation: toleft 1s linear;
+  animation: toleft 1.5s linear;
   animation-play-state: paused;
 }
 @keyframes toleft {
@@ -166,7 +166,7 @@ body{
     visibility: visible;
     transform: translateX(60vw);
   }
-  70%{
+  60%{
     visibility: visible;
     transform: translateX(0);
   }

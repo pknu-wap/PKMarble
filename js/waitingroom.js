@@ -62,4 +62,4 @@ function link(){
   location.href='game.html';
 }
 var btn = document.querySelector('.test');
-btn.addEventListener("click", function(){setTimeout(function(){link()}, 1000)});
+btn.addEventListener("click", function(){setTimeout(function(){link()}, 1200)});

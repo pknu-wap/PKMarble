@@ -120,7 +120,7 @@ body{
 }
 .Player{
   display:grid;
-  grid-template-columns: 20% 50% 30%;
+  grid-template-columns: 20% 60% 20%;
   grid-template-rows: 35% 65%;
   grid-template-areas:
     "image name rank"
@@ -171,9 +171,10 @@ body{
   font-size: 23px;
 }
 .P_money{
+  position: relative;
   grid-area: money;
   padding-top: 5px;
-  padding-left: 14px;
+  padding-left: 50px;
   text-align: left;
   font-size: 30px;
 }
@@ -183,9 +184,33 @@ body{
 .money{
 
 }
+.navi1{
+  position: absolute;
+  left: 0;
+  top: 10px;
+  text-align: center;
+  background-color: #123478;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #FFFFFF;
+}
+.navi2{
+  position: absolute;
+  left: 0;
+  top: 40px;
+  text-align: center;
+  background-color: #123478;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #FFFFFF;
+}
 .P_rank{
   /* background-color: #FAE0D4; */
-  padding-top: 20px;
+  line-height: 100px;
   font-size: 40px;
   color: black;
   grid-area: rank;
@@ -615,15 +640,32 @@ body{
   bottom: 20px;
   left: 310px;
   border-radius: 50%;
-  border:1px solid gray;
-  background-color: violet;
+  border: none;
+  background-image: radial-gradient(#BF04A0, #59024B, #260115);
+  background-image: radial-gradient(#BF04A0, #59024B, #48038C, #8404D9);
+  background-image: radial-gradient(#BF04A0, #FFFFFF);
+  background-image: none;
+  background-color: transparent;
+  background-image: radial-gradient(#ff4da6, #58C0FF);
   width: 100px;
   height: 50px;
   font-size: 35px;
   font-family: koverwatch;
   color:white;
   transition-duration: 0.5s;
+  animation: glowing_btn 1s ease-in-out infinite 0.5s, glowing 1s ease-in-out infinite 0.5s;
   cursor: pointer;
+}
+@keyframes glowing_btn {
+  0%{
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #01ACE6, 0 0 20px #01ACE6, 0 0 25px #01ACE6, 0 0 30px #01ACE6, 0 0 35px #01ACE6;
+  }
+  70%{
+    box-shadow: 0 0 5px #fff, 0 0 15px #58C0FF, 0 0 20px #58C0FF, 0 0 25px #58C0FF, 0 0 30px #58C0FF, 0 0 35px #58C0FF, 0 0 40px #58C0FF;
+  }
+  100%{
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #01ACE6, 0 0 20px #01ACE6, 0 0 25px #01ACE6, 0 0 30px #01ACE6, 0 0 35px #01ACE6;
+  }
 }
 #rollbtn:active{
   transform:translateY(10px);
@@ -671,6 +713,7 @@ body{
   font-size: 30px;
 }
 .record{
+  line-height:  1.3rem;
   color: #FFFFFF;
   text-shadow: 0px 0px 5px #000000;
   font-size: 1rem;
