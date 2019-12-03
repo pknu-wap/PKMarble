@@ -314,7 +314,7 @@
         },
         {
             'id': 24,
-            'name': "자산관",
+            'name': "공학1관",
             'owner': 0,
             'build_cost': [260000, 780000, 1300000, 1300000],
             'acquisition_cost': 0,
@@ -384,11 +384,16 @@
 
         }
     ];
+    /*아이템1 : 내 땅 밟을 때 일정 확률로 그 지역에서 세계여행
+아이템2 : 상대 땅 밟을 때 일정 확률로 통행세 면제
+아이템3 : 통행세가 건물 값 2배 되는 패시브
+아이템4 : 상대 땅 도착 시 일정 확률로 해당 건물주 돈 20퍼센트 뜯기
+            */
     var players = [{
             'id': 1,
             'line': 1,
             'cell': 1,
-            'item': 0,
+            'item': 1,
             'assets': 10000000,
             'money': 10000000,
             'loan': false,
@@ -400,12 +405,14 @@
             'winner': false,
             'count_double_dice': 0,
             'double_dice_mode': false,
+            'skip_mode': false,
         },
         {
+
             'id': 2,
             'line': 1,
             'cell': 1,
-            'item': 1,
+            'item': 2,
             'money': 10000000,
             'assets': 10000000,
             'loan': false,
@@ -417,12 +424,13 @@
             'winner': false,
             'count_double_dice': 0,
             'double_dice_mode': false,
+            'skip_mode': false,
         },
         {
             'id': 3,
             'line': 1,
             'cell': 1,
-            'item': 2,
+            'item': 3,
             'money': 10000000,
             'assets': 10000000,
             'loan': false,
@@ -434,12 +442,13 @@
             'winner': false,
             'count_double_dice': 0,
             'double_dice_mode': false,
+            'skip_mode': false,
         },
         {
             'id': 4,
             'line': 1,
             'cell': 1,
-            'item': 3,
+            'item': 4,
             'money': 10000000,
             'assets': 10000000,
             'loan': false,
@@ -451,6 +460,7 @@
             'winner': false,
             'count_double_dice': 0,
             'double_dice_mode': false,
+            'skip_mode': false,
         }
     ]
     var player_turn = 0;
@@ -471,6 +481,10 @@
             bus(player);
         } else if (players[player].festival) {
             festvial(player);
+        } else if (players[player].skip_mode) {
+            record("플레이어 " + player + "이/가 휴학 중입니다! ");
+            players[player].skip_mode = false;
+            end_turn();
         } else if (players[player].double_dice_mode) {
             if (players[player].count_double_dice >= 3) {
                 players[player].count_double_dice = 0;
@@ -541,12 +555,25 @@
     function check_current_board_cell(player) {
         var building_number = (players[player].cell + (players[player].line - 1) * 7) - 1;
         alert("도착한 곳 : " + build[building_number].name);
+        record("플레이어 " + player + "이/가 " + build[building_number].name + "에 도착했습니다.");
         console.log("building_number : " + building_number);
         console.log("special_building : " + build[building_number].special_building);
         if (!build[building_number].special_building) {
             if (build[building_number].owner != players[player].id && build[building_number].owner != 0) {
+                //플레이어가 아이템 2를 가지고 있을 경우
+                if (players[player].item == 2) {
+                    item2(player);
+                    return;
+                } else if (players[player].item == 4) {
+                    item4(player, building_number);
+                }
                 cost_entrancefee(player, building_number);
             } else {
+                //플레이어가 아이템 1을 가지고 있을 경우
+                if (players[player].item == 1) {
+                    item1(player);
+                }
+                //플레이어의 건물이 이미 랜드마크일 경우
                 if (build[building_number].buildings == 4) {
                     alert("랜드마크를 건설했으므로 더이상 건설이 불가능합니다!!");
                     end_turn();
@@ -560,13 +587,15 @@
             switch (building_name) {
                 case "START":
                     players[player].money += 500000;
-                    players[player].assets += 500000; 
+                    players[player].assets += 500000;
                     break;
                 case "미래관":
                     get_money(player);
                     break;
                 case "대학휴학":
                     alert("한 턴 스킵됩니다.");
+                    record("플레이어 " + player + "이/가 휴학을 선언해 한턴 쉽니다.");
+                    players[player].skip_mode = true;
                     end_turn();
                     break;
                 case "호연관":
@@ -665,12 +694,11 @@
         console.log(building_number);
         var build_cost = build[building_number].build_cost[input - 1]
         if (players[player].money >= build_cost) {
-
             players[player].money -= build_cost;
             build[building_number].owner = players[player].id;
             build[building_number].buildings = input;
-            rank_assets();
 
+            rank_assets();
             get_land(building_number, player);
             set_entrancefee(building_number);
             PlaceBuilding(building_number, input - 1);
@@ -755,10 +783,14 @@
     function set_entrancefee(building_number) {
         var land_owner = build[building_number].owner - 1;
         var current_building_status = build[building_number].buildings - 1;
+        if (players[land_owner].item == 3) {
+            record("플레이어 " + land_owner + "이/가 통행료 증가 아이템을 효과를 사용했습니다!!");
+            item3(land_owner, building_number, current_building_status);
+            return;
+        }
         if (!players[land_owner].festival) {
             entrancefee1 = build[building_number].build_cost[current_building_status];
             build[building_number].current_entrancefee = entrancefee1;
-            console.log(entrancefee1);
             land_price(building_number);
         } else {
             entrancefee1 = build[building_number].build_cost[current_building_status] * 1.2;
@@ -843,6 +875,7 @@
             players[player].cell = build[bus_input - 1].cell;
             playericon_move(player, players[player].line, players[player].cell);
             players[player].bus = false;
+            check_current_board_cell(player);
         } else {
             alert("제대로 숫자를 입력 해주세요.")
             bus(player);
@@ -857,7 +890,7 @@
         build[3].stack_of_money += rob_money;
         players[player].assets -= players[player].money * (1 - percent);
         players[player].money *= (1 - percent);
-        alert("현금 자산의 " + (percent *100) + "퍼센트가 몰수 당했습니다.");
+        alert("현금 자산의 " + (percent * 100) + "퍼센트가 몰수 당했습니다.");
         record("플레이어 " + (player + 1) + "의 돈이 몰수 당했습니다.");
         end_turn();
     }
@@ -886,7 +919,7 @@
             }
 
         }
-        
+
     }
 
     function dispose_other_land(player) {
@@ -971,5 +1004,59 @@
                 }
 
             }
+        }
+    }
+    //10퍼센트 확률로 다음턴에 버스 효과
+    function item1(player) {
+        var temp = random(1, 100);
+        if (temp <= 10) {
+            record("플레이어 " + player + "이/가 버스 아이템 효과를 발동시켰습니다!!");
+            alert("버스 아이템 효과를 발동시켰으므로 다음 턴에 원하는 지역으로 이동할 수 있습니다.");
+            players[player].bus = true;
+        }
+    }
+    //5퍼센트 확률로 통행료 면제
+    function item2(player, building_number) {
+
+        var temp = random(1, 100);
+        if (temp <= 5) {
+            record("플레이어 " + player "이/가 통행료 면제 아이템을 사용했습니다!!");
+            acquire_buildings(player, building_number);
+            return;
+        } else {
+            cost_entrancefee(player, building_number);
+        }
+
+
+    }
+
+    function item3(land_owner, building_number, current_building_status) {
+        if (!players[land_owner].festival) {
+            entrancefee1 = build[building_number].build_cost[current_building_status] * 1.5;
+            build[building_number].current_entrancefee = entrancefee1;
+            land_price(building_number);
+        } else {
+            entrancefee1 = build[building_number].build_cost[current_building_status] * 1.2 * 1.5;
+            build[building_number].current_entrancefee = entrancefee1;
+            land_price(building_number);
+        }
+    }
+
+    function item4(player, building_number) {
+        var land_owner = build[building_number].owner - 1;
+        var temp = random(1 , 100);
+        if(temp <= 10) {
+            record("플레이어 " + player + "이/가 돈 강탈 아이템을 발동하였습니다.");
+            if(players[land_owner].money <= 0) {
+                record("하지만 해당 땅 주인의 현금이 없으므로 걷어가지 못했습니다!");
+                return;
+            }
+            var rob_money = players[land_owner].money * 0.1;
+            players[land_owner].money -= rob_money;
+            players[land_owner].assets -= rob_money;
+
+            players[player].money += rob_money;
+            players[player].mony += rob_money;
+            rank_assets();
         }
     }
