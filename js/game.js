@@ -181,3 +181,13 @@ function get_land(i, j){
          x[i].style.backgroundImage = "linear-gradient(to right, #3270A6, #36ABD9, #3270A6)";
     }
 }
+//축제시 땅 빛나게 하기
+function festivalevent(i){
+    var x = document.querySelectorAll('.b');
+    for(let i = 0; i < 28; i++){
+        x[i].style.animation = "none";
+        x[i].style.WebkitAnimation = "none";
+    }
+    x[i].style.animation = "glowing_b 1s linear infinite";
+    x[i].style.WebkitAnimation = "glowing_b 1s linear infinite";
+}
