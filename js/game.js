@@ -238,10 +238,12 @@ function festivalevent(player) {
         x[i].style.animation = "none";
         x[i].style.WebkitAnimation = "none";
     }
-    for(let j = 0; j < 28; j++) {
-        if(build[j].owner == player){
-            x[j].style.animation = "glowing_b 1s linear infinite";
-            x[j].style.WebkitAnimation = "glowing_b 1s linear infinite";
+    if(player <= 4){
+        for(let j = 0; j < 28; j++) {
+            if(build[j].owner == player){
+                x[j].style.animation = "glowing_b 1s linear infinite";
+                x[j].style.WebkitAnimation = "glowing_b 1s linear infinite";
+            }
         }
     }
 }
