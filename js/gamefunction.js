@@ -469,12 +469,14 @@
     window.onload = dice_show();
 
     function main() {
+        avility()
         rank_assets();
         record_player();
         start_turn(player_turn);
     }
 
     function start_turn(player) {
+        slt(player);
         alert("현재 플레이어 " + (player + 1) + " 턴 입니다.");
         console.log(player + 1 + " 턴 입니다.");
         if (players[player].bus) {
@@ -886,6 +888,7 @@
     }
 
     function rob_money(player, percent, index) {
+        getmoney();
         //수위실은 배열 인덱스가 16
         var rob_money = players[player].money * percent;
         build[3].stack_of_money += rob_money;
@@ -898,6 +901,7 @@
 
     function get_money(player) {
         if (build[3].stack_of_money > 0) {
+            getmoney();
             build[3].stack_of_money = 0;
             players[player].money += build[3].stack_of_money;
             players[player].assets += build[3].stack_of_money;
