@@ -489,6 +489,7 @@
             throw_dice(player);
         } else if (players[player].skip_mode) {
             record("플레이어 " + (player + 1) + "이/가 휴학 중입니다! ");
+            alert("현재 휴학 중이므로 한턴 쉽니다.");
             players[player].skip_mode = false;
             end_turn();
         } else if (players[player].double_dice_mode) {
@@ -496,7 +497,9 @@
                 players[player].count_double_dice = 0;
                 players[player].double_dice_mode = false;
                 end_turn();
+                return;
             }
+            
             throw_dice(player);
         } else {
             throw_dice(player);
@@ -600,7 +603,7 @@
                     break;
                 case "대학휴학":
                     alert("한 턴 스킵됩니다.");
-                    record("플레이어 " + (player + 1) + "이/가 휴학을 선언해 한턴 쉽니다.");
+                    record("플레이어 " + (player + 1) + "이/가 휴학을 선언해 다음 한턴 쉽니다.");
                     players[player].skip_mode = true;
                     end_turn();
                     break;
@@ -945,6 +948,16 @@
     }
 
     function dispose_other_land(player) {
+        var count_own = 0;
+        for(var i = 0; i < 28; i++) {
+            if(build[i].owner == 0)
+                count_own++;
+        }
+        if(count_own == 28) {
+            alert("매각할 땅이 없습니다!!!");
+            record("플레이어 " + (player + 1) +"이/가 매각을 실패하였습니다.");
+            end_turn();
+        }
         var input_disposal_other_land = prompt("매각하실 땅을 선택해주세요.\n" +
             "(땅의 번호를 입력하세요.)", NaN);
         var parse_input_disposal_other_land = parseInt(input_disposal_other_land);
@@ -960,15 +973,19 @@
             return;
         } else if (build[parse_input_disposal_other_land].buildings == 4) {
             build[parse_input_disposal_other_land].buildings = 3;
+            PlaceBuilding(parse_input_disposal_other_land, 4);
+            PlaceBuilding(parse_input_disposal_other_land, 2);
         } else {
             build[parse_input_disposal_other_land].owner = 0;
             build[parse_input_disposal_other_land].buildings = 0;
             build[parse_input_disposal_other_land].current_entrancefee = 0;
             land_price(parse_input_disposal_other_land);
             get_land(parse_input_disposal_other_land, 4);
-            PlaceBuilding(parse_input_disposal_other_land, 0);
+            PlaceBuilding(parse_input_disposal_other_land, 4);
 
         }
+        record("플레이어 " + (player + 1) +"이/가 "+ build[parse_input_disposal_other_land].name 
+            +"을/를 매각하였습니다.");
         alert(build[parse_input_disposal_other_land].name + " 을/를 매각하였습니다.");
         end_turn();
     }

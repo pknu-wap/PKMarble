@@ -240,7 +240,7 @@ function festivalevent(player) {
     }
     if(player < 4){
         for(let j = 0; j < 28; j++) {
-            if(build[j].owner == player){
+            if((build[j].owner - 1) == player){
                 x[j].style.animation = "glowing_b 1s linear infinite";
                 x[j].style.WebkitAnimation = "glowing_b 1s linear infinite";
             }
