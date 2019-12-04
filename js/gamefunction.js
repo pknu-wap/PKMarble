@@ -482,7 +482,7 @@
         if (players[player].bus) {
             bus(player);
 
-        } else if (players[player].festival) {
+        } else if (players[player].festival && !players[player].double_dice_mode) {
             //만약 축제가 다음 돌아오는 턴 동안 다른 누군가가 밟지 않을 경우 
             players[player].festival = false;
             festivalevent(5);
@@ -499,7 +499,7 @@
                 end_turn();
                 return;
             }
-            
+
             throw_dice(player);
         } else {
             throw_dice(player);
@@ -767,6 +767,10 @@
     function acquire_buildings(player, building_number) {
         var acquisition_cost = build[building_number].acquisition_cost;
         console.log("인수 비용 : " + acquisition_cost);
+        if(build[building_number].buildings == 4) {
+            alert("랜드마크이므로 인수할 수 없습니다.");
+            end_turn();
+        }
         if (players[player].money >= acquisition_cost) {
             var confirm_acquire = confirm("현재 이 건물을 인수할 수 있습니다. 인수하시겠습니까?");
             if (confirm_acquire) {
@@ -956,7 +960,9 @@
         if(count_own == 28) {
             alert("매각할 땅이 없습니다!!!");
             record("플레이어 " + (player + 1) +"이/가 매각을 실패하였습니다.");
+            count_own = 0;
             end_turn();
+            return;
         }
         var input_disposal_other_land = prompt("매각하실 땅을 선택해주세요.\n" +
             "(땅의 번호를 입력하세요.)", NaN);
@@ -1059,7 +1065,7 @@
     //10퍼센트 확률로 다음턴에 버스 효과
     function item1(player) {
         var temp = random(1, 100);
-        if (temp <= 10) {
+        if (temp <= 100) {
             record("플레이어 " + (player + 1) + "이/가 버스 아이템 효과를 발동시켰습니다!!");
             alert("버스 아이템 효과를 발동시켰으므로 다음 턴에 원하는 지역으로 이동할 수 있습니다.");
             players[player].bus = true;
@@ -1069,7 +1075,7 @@
     function item2(player, building_number) {
 
         var temp = random(1, 100);
-        if (temp <= 5) {
+        if (temp <= 100) {
             record("플레이어 " + (player + 1) + "이/가 통행료 면제 아이템을 사용했습니다!!");
             acquire_buildings(player, building_number);
         } else {
@@ -1094,7 +1100,7 @@
     function item4(player, building_number) {
         var land_owner = build[building_number].owner - 1;
         var temp = random(1, 100);
-        if (temp <= 10) {
+        if (temp <= 100) {
             record("플레이어 " + (player + 1) + "이/가 돈 강탈 아이템을 발동하였습니다.");
             if (players[land_owner].money <= 0) {
                 record("하지만 해당 땅 주인의 현금이 없으므로 걷어가지 못했습니다!");
