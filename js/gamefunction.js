@@ -10,7 +10,6 @@
             'special_building': true,
             'line': 1,
             'cell': 1,
-
         },
         {
             'id': 2,
@@ -35,7 +34,6 @@
             'special_building': false,
             'line': 1,
             'cell': 3,
-
         },
         {
             'id': 4,
@@ -49,7 +47,6 @@
             'line': 1,
             'cell': 4,
             'stack_of_money': 0,
-
         },
         {
             'id': 5,
@@ -62,8 +59,6 @@
             'special_building': false,
             'line': 1,
             'cell': 5,
-
-
         },
         {
             'id': 6,
@@ -88,10 +83,7 @@
             'special_building': false,
             'line': 1,
             'cell': 7,
-
-
         },
-
         {
             'id': 8,
             'name': "대학휴학",
@@ -103,8 +95,6 @@
             'special_building': true,
             'line': 2,
             'cell': 1,
-
-
         },
         {
             'id': 9,
@@ -129,8 +119,6 @@
             'special_building': false,
             'line': 2,
             'cell': 3,
-
-
         },
         {
             'id': 11,
@@ -143,8 +131,6 @@
             'special_building': false,
             'line': 2,
             'cell': 4,
-
-
         },
         {
             'id': 12,
@@ -157,8 +143,6 @@
             'special_building': true,
             'line': 2,
             'cell': 5,
-
-
         },
         {
             'id': 13,
@@ -184,8 +168,6 @@
             'special_building': false,
             'line': 2,
             'cell': 7,
-
-
         },
         {
             'id': 15,
@@ -198,8 +180,6 @@
             'special_building': true,
             'line': 3,
             'cell': 1,
-
-
         },
         {
             'id': 16,
@@ -212,8 +192,6 @@
             'special_building': false,
             'line': 3,
             'cell': 2,
-
-
         },
         {
             'id': 17,
@@ -226,8 +204,6 @@
             'special_building': true,
             'line': 3,
             'cell': 3,
-
-
         },
         {
             'id': 18,
@@ -240,7 +216,6 @@
             'special_building': false,
             'line': 3,
             'cell': 4,
-
         },
         {
             'id': 19,
@@ -253,8 +228,6 @@
             'special_building': false,
             'line': 3,
             'cell': 5,
-
-
         },
         {
             'id': 20,
@@ -281,8 +254,6 @@
             'special_building': false,
             'line': 3,
             'cell': 7,
-
-
         },
         {
             'id': 22,
@@ -295,8 +266,6 @@
             'special_building': true,
             'line': 4,
             'cell': 1,
-
-
         },
         {
             'id': 23,
@@ -309,8 +278,6 @@
             'special_building': false,
             'line': 4,
             'cell': 2,
-
-
         },
         {
             'id': 24,
@@ -323,7 +290,6 @@
             'special_building': false,
             'line': 4,
             'cell': 3,
-
 
         },
         {
@@ -507,6 +473,7 @@
     }
 
     function throw_dice(player) {
+        sound_diceroll();
         var dice1 = random(1, 6);
         var dice2 = random(1, 6);
         var sum_of_dice = dice1 + dice2;
@@ -555,6 +522,7 @@
         }
         players[player].cell = player_cell;
         players[player].line = player_line;
+        sound_playermove();
         playericon_move(player, players[player].line, players[player].cell);
         console.log("players[player].cell : " + players[player].cell);
         console.log("players[player].line : " + players[player].line);
@@ -605,6 +573,7 @@
                     alert("한 턴 스킵됩니다.");
                     record("플레이어 " + (player + 1) + "이/가 휴학을 선언해 다음 한턴 쉽니다.");
                     players[player].skip_mode = true;
+                    sound_rest();
                     end_turn();
                     break;
                 case "호연관":
@@ -617,6 +586,7 @@
                 case "대학축제":
                     //모든 소유 건물 통행료 1.2배
                     festival(player);
+                    sound_festival();
                     break;
                 case "수위실":
                     dispose_other_land(player);
