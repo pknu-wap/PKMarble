@@ -381,18 +381,18 @@
         </div>
       </div>
     </div>
-    <input type="button" id="a" value="오른쪽" onclick="slt(0)" style="width: 100px;">
-    <input type="button" value="건물1" onclick="PlaceBuilding(1, 0)">
-    <input type="button" value="건물2" onclick="PlaceBuilding(1, 1)">
-    <input type="button" value="건물3" onclick="PlaceBuilding(1, 2)">
-    <input type="button" value="랜드마크" onclick="PlaceBuilding(1, 3)">
-    <input class="test" type="button" value="없애기"><br>
-    <input type="button" value="주사위 굴리기버튼생성" onclick="dice_show()">
-    <input type="button" value="돈 없음" onclick="getmoney(this)">
-    <input type="button" value="게임기록" onclick="record('as')">
-    <input type="button" value="축제확인" onclick="festivalevent(2)";>
-    <input type="button" value="축제확인" onclick="festivalevent(1)";>
-    <input type="button" value="축제확인" onclick="festivalevent(10)";>
+    <audio class="diceroll_sound">
+      <source src="sound/diceroll.wav">
+    </audio>
+    <audio class="playermove_sound">
+      <source src="sound/playermove.wav">
+    </audio>
+    <audio class="festival_sound">
+      <source src="sound/festival.wav">
+    </audio>
+    <audio class="rest_sound">
+      <source src="sound/rest.mp3">
+    </audio>
 
     <script type="text/javascript" src="js\game.js"></script>
     <script type="text/javascript" scr="js\object.js"></script>

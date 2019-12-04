@@ -11,7 +11,7 @@ function PlaceBuilding(number, j) {
         y[1].style.visibility = 'hidden';
         y[2].style.visibility = 'hidden';
         z[number].style.visibility = "visible";
-        } 
+        }
         else {
             for (let i = 0; i <= j; i++) {
                 PB(i);
@@ -33,7 +33,7 @@ function PlaceBuilding(number, j) {
         y[2].style.visibility = 'hidden';
         z[number].style.visibility = "hidden";
     }
-    
+
 }
 //랜드마크 세우기, 애니메이션은 아직 추가안함
 function PlaceLandmark(number) {
@@ -125,7 +125,7 @@ function getmoney() {
     var y = window.getComputedStyle(x).visibility;
     if (y === 'hidden') {
         x.style.visibility = "visible";
-    } 
+    }
     else {
         x.style.visibility = "hidden";
     }
@@ -246,4 +246,16 @@ function festivalevent(player) {
             }
         }
     }
+}
+function sound_playermove(){
+  document.querySelector('.playermove_sound').play();
+}
+function sound_diceroll(){
+  document.querySelector('.diceroll_sound').play();
+}
+function sound_festival(){
+  document.querySelector('.festival_sound').play();
+}
+function sound_rest(){
+  document.querySelector('.rest_sound').play();
 }
